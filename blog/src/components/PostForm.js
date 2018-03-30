@@ -45,7 +45,7 @@ class PostForm extends Component {
         <h2>Create Post</h2>
         <form onSubmit={this.onSubmit}>
           <div className="form-group">
-            <label for="category">Category</label>
+            <label htmlFor="category">Category</label>
             <select
               id="category"
               name="category"
@@ -62,7 +62,7 @@ class PostForm extends Component {
           </div>
           <br />
           <div className="form-group">
-            <label for="title">Title</label>
+            <label htmlFor="title">Title</label>
             <br />
             <input
               type="text"
@@ -75,7 +75,7 @@ class PostForm extends Component {
           </div>
           <br />
           <div className="form-group">
-            <label for="body">Body</label>
+            <label htmlFor="body">Body</label>
             <br />
             <textarea
               id="body"
