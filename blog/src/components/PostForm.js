@@ -44,12 +44,13 @@ class PostForm extends Component {
       <div>
         <h2>Create Post</h2>
         <form onSubmit={this.onSubmit}>
-          <div>
-            <label htmlFor="category">Category:</label>
-            <br />
+          <div className="form-group">
+            <label for="category">Category</label>
             <select
+              id="category"
               name="category"
               onChange={this.onChange}
+              className="form-control"
               defaultValue={this.state.category}
             >
               {this.props.categories.map(category => (
@@ -60,29 +61,35 @@ class PostForm extends Component {
             </select>
           </div>
           <br />
-          <div>
-            <label htmlFor="title">Title:</label>
+          <div className="form-group">
+            <label for="title">Title</label>
             <br />
             <input
               type="text"
+              id="title"
               name="title"
+              className="form-control"
               onChange={this.onChange}
               value={this.state.title}
             />
           </div>
           <br />
-          <div>
-            <label htmlFor="body">Body:</label>
+          <div className="form-group">
+            <label for="body">Body</label>
             <br />
             <textarea
+              id="body"
               type="text"
               name="body"
+              className="form-control"
               onChange={this.onChange}
               value={this.state.body}
             />
           </div>
           <br />
-          <button type="submit">Submit</button>
+          <button type="submit" className="btn btn-info">
+            Submit
+          </button>
         </form>
       </div>
     );

@@ -11,8 +11,11 @@ class Posts extends Component {
   render() {
     const items = this.props.posts.map(post => (
       <div key={post.id}>
-        <h2>{post.title}</h2>
-        <div>Author:{post.author}</div>
+        <h3>{post.title}</h3>
+        <button style={styleMap.categoryLabel.style} disabled>
+          {post.category}
+        </button>
+        <div>Author - {post.author}</div>
         <p>{post.body}</p>
       </div>
     ));
@@ -32,4 +35,16 @@ Posts.PropTypes = {
 const mapStateToProps = state => ({
   posts: state.posts.items
 });
+
+let styleMap = {
+  categoryLabel: {
+    style: {
+      border: "0",
+      color: "white",
+      padding: "-10px",
+      backgroundColor: "red"
+    }
+  }
+};
+
 export default connect(mapStateToProps, { fetchPosts })(Posts);
