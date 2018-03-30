@@ -1,29 +1,15 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { fetchPosts } from "../actions/postActions";
 
 class Posts extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      posts: []
-    };
-  }
   componentDidMount() {
-    fetch("http://127.0.0.1:3001/posts", {
-      headers: {
-        Authorization: "ok",
-        dataType: "json"
-      }
-    })
-      .then(res => res.json())
-      .then(data =>
-        this.setState({
-          posts: data
-        })
-      );
+    this.props.fetchPosts();
   }
 
   render() {
-    const items = this.state.posts.map(post => (
+    const items = this.props.posts.map(post => (
       <div key={post.id}>
         <h2>{post.title}</h2>
         <div>Author:{post.author}</div>
@@ -39,4 +25,11 @@ class Posts extends Component {
   }
 }
 
-export default Posts;
+Posts.PropTypes = {
+  fetchPosts: PropTypes.func.isRequired,
+  posts: PropTypes.array.isRequired
+};
+const mapStateToProps = state => ({
+  posts: state.posts.items
+});
+export default connect(mapStateToProps, { fetchPosts })(Posts);
