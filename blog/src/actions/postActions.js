@@ -15,3 +15,21 @@ export const fetchPosts = () => dispatch => {
       })
     );
 };
+
+export const createPost = postData => dispatch => {
+  fetch("http://127.0.0.1:3001/posts", {
+    method: "POST",
+    headers: {
+      Authorization: "ok",
+      "content-type": "application/json"
+    },
+    body: JSON.stringify(postData)
+  })
+    .then(res => res.json())
+    .then(post =>
+      dispatch({
+        type: NEW_POST,
+        payload: post
+      })
+    );
+};

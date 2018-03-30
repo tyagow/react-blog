@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import { createPost } from "../actions/postActions";
 import guid from "../utils";
 
 class PostForm extends Component {
@@ -24,16 +27,7 @@ class PostForm extends Component {
       category: this.state.category
     };
 
-    fetch("http://127.0.0.1:3001/posts", {
-      method: "POST",
-      headers: {
-        Authorization: "ok",
-        "content-type": "application/json"
-      },
-      body: JSON.stringify(post)
-    })
-      .then(res => res.json())
-      .then(data => console.log(data));
+    this.props.createPost(post);
   }
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -94,4 +88,8 @@ class PostForm extends Component {
     );
   }
 }
-export default PostForm;
+
+PostForm.propTypes = {
+  createPost: PropTypes.func.isRequired
+};
+export default connect(null, { createPost })(PostForm);
