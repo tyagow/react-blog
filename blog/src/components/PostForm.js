@@ -36,7 +36,6 @@ class PostForm extends Component {
       .then(data => console.log(data));
   }
   onChange(e) {
-    console.log(e.target.value);
     this.setState({ [e.target.name]: e.target.value });
   }
   render() {
