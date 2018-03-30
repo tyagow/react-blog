@@ -22,4 +22,4 @@ yarn-error.log*
 */package-lock.json
 api-server/
 blog/node_modules/
-.idea/
+.vscode/
