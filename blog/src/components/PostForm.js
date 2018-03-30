@@ -10,7 +10,6 @@ class PostForm extends Component {
       author: "",
       category: "react"
     };
-    console.log(props);
 
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
