@@ -5,6 +5,7 @@ import "./App.css";
 
 import Posts from "../components/Posts";
 import PostForm from "../components/PostForm";
+import PostDetail from "../components/PostDetail";
 
 const categories = ["react", "js", "redux"];
 
@@ -21,6 +22,7 @@ const App = () => (
         </div>
       )}
     />
+    <Route exact path="/:category/:postId" component={PostDetail} />
   </div>
 );
 
