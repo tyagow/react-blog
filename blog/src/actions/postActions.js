@@ -1,4 +1,4 @@
-import { FETCH_POSTS, NEW_POST } from "./type";
+import { FETCH_POSTS, NEW_POST, GET_POST_BY_ID } from "./type";
 
 export const fetchPosts = () => dispatch => {
   fetch("http://127.0.0.1:3001/posts", {
@@ -16,6 +16,12 @@ export const fetchPosts = () => dispatch => {
     );
 };
 
+export const getPostById = postId => dispatch => {
+  dispatch({
+    type: GET_POST_BY_ID,
+    payload: postId
+  });
+};
 export const createPost = postData => dispatch => {
   fetch("http://127.0.0.1:3001/posts", {
     method: "POST",

@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { fetchPosts } from "../actions/postActions";
-import PostDetail from "./PostDetail";
+import PostLabel from "./PostLabel";
 
 class Posts extends Component {
   componentDidMount() {
-    this.props.fetchPosts();
+    // this.props.fetchPosts();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -15,7 +15,9 @@ class Posts extends Component {
     }
   }
   render() {
-    const items = this.props.posts.map(post => <PostDetail post={post} />);
+    const items = this.props.posts.map(post => (
+      <PostLabel key={post.id} post={post} />
+    ));
     return (
       <div>
         <h1>Posts</h1>

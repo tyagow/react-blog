@@ -1,8 +1,9 @@
-import { FETCH_POSTS, NEW_POST } from "../actions/type";
+import { FETCH_POSTS, NEW_POST, GET_POST_BY_ID } from "../actions/type";
 
 const initialState = {
   items: [],
-  item: {}
+  item: {},
+  postDetail: {}
 };
 
 export default function(state = initialState, action) {
@@ -16,6 +17,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         item: action.payload
+      };
+
+    case GET_POST_BY_ID:
+      return {
+        ...state,
+        postDetail: state.items.find(p => p.id === action.payload)
       };
 
     default:

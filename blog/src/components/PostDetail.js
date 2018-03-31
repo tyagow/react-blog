@@ -1,30 +1,38 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-const PostDetail = props => {
-  return (
-    <div key={props.post.id}>
-      <h3>{props.post.title}</h3>
-      <button style={styleMap.categoryLabel.style} disabled>
-        {props.post.category}
-      </button>
-      <div>Author - {props.post.author}</div>
-      <p>{props.post.body}</p>
-    </div>
-  );
-};
+import styleMap from "../styles";
+import { getPostById } from "../actions/postActions";
+
+class PostDetail extends Component {
+  componentDidMount = () => {
+    this.props.dispatch(getPostById(this.props.postId));
+  };
+
+  render() {
+    return (
+      <div>
+        {this.props.post && (
+          <div key={this.props.post.id}>
+            <h3>{this.props.post.title}</h3>
+            <button style={styleMap.categoryLabel.style} disabled>
+              {this.props.post.category}
+            </button>
+            <div>Author - {this.props.post.author}</div>
+            <p>{this.props.post.body}</p>
+          </div>
+        )}
+      </div>
+    );
+  }
+}
 
 PostDetail.propTypes = {
-  post: PropTypes.object.isRequired
+  postId: PropTypes.string.isRequired
 };
-var styleMap = {
-  categoryLabel: {
-    style: {
-      border: "0",
-      color: "white",
-      padding: "-10px",
-      backgroundColor: "red"
-    }
-  }
-};
-export default PostDetail;
+const mapStateToProps = state => ({
+  post: state.posts.postDetail
+});
+
+export default connect(mapStateToProps)(PostDetail);
