@@ -4,7 +4,15 @@ const styleMap = {
       border: "0",
       color: "white",
       padding: "-10px",
-      backgroundColor: "red"
+      backgroundColor: "red",
+      width: "20%"
+    }
+  },
+  postDetail: {
+    cardPost: {
+      style: {
+        margin: "10px"
+      }
     }
   }
 };
