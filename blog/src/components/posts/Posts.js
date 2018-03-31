@@ -1,14 +1,9 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { fetchPosts } from "../actions/postActions";
 import PostLabel from "./PostLabel";
 
 class Posts extends Component {
-  componentDidMount() {
-    // this.props.fetchPosts();
-  }
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.newPost) {
       this.props.posts.unshift(nextProps.newPost);
@@ -37,4 +32,4 @@ const mapStateToProps = state => ({
   newPost: state.posts.item
 });
 
-export default connect(mapStateToProps, { fetchPosts })(Posts);
+export default connect(mapStateToProps)(Posts);

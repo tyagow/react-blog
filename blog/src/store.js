@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import rootReducer from "./reducers";
-import { fetchPosts } from "./actions/postActions";
+import { fetchPosts, fetchCategories } from "./actions/postActions";
 const initialState = {};
 
 const middleware = [thunk];
@@ -16,5 +16,6 @@ const store = createStore(
 );
 
 store.dispatch(fetchPosts());
+store.dispatch(fetchCategories());
 
 export default store;

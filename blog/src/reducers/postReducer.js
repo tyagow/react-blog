@@ -1,9 +1,16 @@
-import { FETCH_POSTS, NEW_POST, GET_POST_BY_ID } from "../actions/type";
+import {
+  FETCH_POSTS,
+  NEW_POST,
+  GET_POST_BY_ID,
+  FETCH_CATEGORIES,
+  FETCH_COMMENTS
+} from "../actions/type";
 
 const initialState = {
   items: [],
   item: {},
-  postDetail: {}
+  postDetail: {},
+  categories: []
 };
 
 export default function(state = initialState, action) {
@@ -22,7 +29,20 @@ export default function(state = initialState, action) {
     case GET_POST_BY_ID:
       return {
         ...state,
-        postDetail: state.items.find(p => p.id === action.payload)
+        postDetail: action.payload
+      };
+
+    case FETCH_CATEGORIES:
+      return {
+        ...state,
+        categories: action.payload
+      };
+
+    case FETCH_COMMENTS:
+      console.log(action.payload);
+      return {
+        ...state,
+        comments: action.payload
       };
 
     default:

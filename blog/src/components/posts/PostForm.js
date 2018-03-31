@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { createPost } from "../actions/postActions";
-import guid from "../utils";
+import { createPost } from "../../actions/postActions";
+import guid from "../../utils";
 
 class PostForm extends Component {
   constructor(props) {
@@ -44,13 +44,13 @@ class PostForm extends Component {
               name="category"
               onChange={this.onChange}
               className="form-control"
-              defaultValue={this.state.category}
             >
-              {this.props.categories.map(category => (
-                <option key={category} value={category}>
-                  {category}
-                </option>
-              ))}
+              {this.props.categories &&
+                this.props.categories.map(category => (
+                  <option key={category} value={category}>
+                    {category}
+                  </option>
+                ))}
             </select>
           </div>
           <br />
@@ -80,6 +80,20 @@ class PostForm extends Component {
             />
           </div>
           <br />
+          <div className="form-group">
+            <label htmlFor="author">Author</label>
+            <br />
+            <input
+              type="text"
+              id="author"
+              name="author"
+              className="form-control"
+              onChange={this.onChange}
+              value={this.state.author}
+            />
+          </div>
+          <br />
+
           <button type="submit" className="btn btn-info">
             Submit
           </button>
@@ -90,6 +104,11 @@ class PostForm extends Component {
 }
 
 PostForm.propTypes = {
-  createPost: PropTypes.func.isRequired
+  createPost: PropTypes.func.isRequired,
+  categories: PropTypes.array
 };
-export default connect(null, { createPost })(PostForm);
+const mapStateToProps = state => ({
+  categories: state.posts.categories
+});
+
+export default connect(mapStateToProps, { createPost })(PostForm);

@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
 
-import Posts from "../components/Posts";
-import PostForm from "../components/PostForm";
-import PostDetail from "../components/PostDetail";
+import Posts from "../components/posts/Posts";
+import PostForm from "../components/posts/PostForm";
+import PostDetail from "../components/posts/PostDetail";
+import Comments from "../components/comments/Comments";
 
 const categories = ["react", "js", "redux"];
 
@@ -15,7 +16,7 @@ class App extends Component {
           exact
           path="/"
           render={() => (
-            <div className="App">
+            <div className="container">
               <PostForm categories={categories} />
               <hr />
               <Posts />
@@ -25,7 +26,12 @@ class App extends Component {
         <Route
           exact
           path="/:category/:postId"
-          render={({ match }) => <PostDetail postId={match.params.postId} />}
+          render={({ match }) => (
+            <div className="">
+              <PostDetail postId={match.params.postId} />
+              <Comments postId={match.params.postId} />
+            </div>
+          )}
         />
       </div>
     );
