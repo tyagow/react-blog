@@ -15,7 +15,7 @@ class PostDetail extends Component {
         {this.props.post && (
           <div className="container">
             <div className="row">
-              <div classNakme="col-lg-8">
+              <div className="col-lg-8">
                 <h1>
                   <Link
                     to={`/${this.props.post.category}/${this.props.post.id}`}
@@ -58,9 +58,9 @@ class PostDetail extends Component {
 }
 
 PostDetail.propTypes = {
-  postId: PropTypes.string.isRequired,
-  post: PropTypes.object,
-  getPostById: PropTypes.func.isRequired
+  postId: PropTypes.string.isRequired
+  // post: PropTypes.object
+  // getPostById: PropTypes.func.isRequired
 };
 const mapStateToProps = state => ({
   post: state.posts.postDetail
