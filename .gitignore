@@ -1,13 +1,15 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
+node_modules/
 
 # testing
-/coverage
+coverage/
+__snapshots__/
+
 
 # production
-/build
+build/
 
 # misc
 .DS_Store
@@ -23,3 +25,4 @@ yarn-error.log*
 api-server/
 blog/node_modules/
 .vscode/
+
