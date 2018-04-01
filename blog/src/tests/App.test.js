@@ -3,16 +3,16 @@ import * as Enzyme from "enzyme";
 import { MemoryRouter } from "react-router";
 import Adapter from "enzyme-adapter-react-16";
 import { Provider } from "react-redux";
-import configureStore from "redux-mock-store";
+import mockStore, { initialState } from "./setupTest";
 
 import App from "../containers/App";
 import HomePage from "../containers/HomePage";
 import NotFoundPage from "../containers/NotFoundPage";
+import PostDetail from "../components/posts/PostDetail";
 
 Enzyme.configure({ adapter: new Adapter() });
-
-const middlewares = [];
-const mockStore = configureStore(middlewares);
+const fetchMock = require("fetch-mock");
+fetchMock.get("*", {});
 
 test("invalid path should redirect to 404", () => {
   const wrapper = Enzyme.mount(
@@ -23,12 +23,7 @@ test("invalid path should redirect to 404", () => {
   expect(wrapper.find(HomePage)).toHaveLength(0);
   expect(wrapper.find(NotFoundPage)).toHaveLength(1);
 });
-test("valid path should not redirect to 404", () => {
-  const initialState = {
-    posts: {
-      items: []
-    }
-  };
+test("valid path / should render HomePage component", () => {
   const store = mockStore(initialState);
 
   const wrapper = Enzyme.mount(
@@ -41,5 +36,20 @@ test("valid path should not redirect to 404", () => {
     </MemoryRouter>
   );
   expect(wrapper.find(HomePage)).toHaveLength(1);
+  expect(wrapper.find(NotFoundPage)).toHaveLength(0);
+});
+test("valid path /:category/:id should render PostDetail and Comments component", () => {
+  const store = mockStore(initialState);
+
+  const wrapper = Enzyme.mount(
+    <MemoryRouter initialEntries={["/react/12432"]}>
+      <Provider store={store}>
+        <div>
+          <App />
+        </div>
+      </Provider>
+    </MemoryRouter>
+  );
+  expect(wrapper.find(PostDetail)).toHaveLength(1);
   expect(wrapper.find(NotFoundPage)).toHaveLength(0);
 });
