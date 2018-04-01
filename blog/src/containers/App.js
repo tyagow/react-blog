@@ -6,8 +6,6 @@ import Comments from "../components/comments/Comments";
 import NotFoundPage from "./NotFoundPage";
 import HomePage from "./HomePage";
 
-const categories = ["react", "js", "redux"];
-
 class App extends Component {
   render() {
     return (
