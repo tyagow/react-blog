@@ -15,8 +15,10 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "test:coverage": "react-scripts test --coverage --env=jsdom",
+    "test":
+      "react-scripts test --env=jsdom --setupFiles='./src/tests/setupTest.js'",
+    "test:coverage":
+      "react-scripts test --coverage --env=jsdom --setupFiles='./src/tests/setupTest.js'",
     "eject": "react-scripts eject",
     "precommit": "pretty-quick --staged"
   },
@@ -45,9 +47,7 @@
       "src/**/*.{js,sx}",
       "!src/index.js",
       "!src/registerServiceWorker.js",
-      "!src/setupTest.js",
-      "!src/api/*",
-      "!src/BooksAPI.js"
+      "!src/tests/setupTest.js"
     ],
     "snapshotSerializers": ["enzyme-to-json/serializer"]
   }
