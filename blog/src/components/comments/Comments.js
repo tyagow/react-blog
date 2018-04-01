@@ -6,7 +6,7 @@ import { fetchCommentsByPostId } from "../../actions/postActions";
 
 class Comments extends Component {
   componentDidMount() {
-    this.props.fetchCommentsByPostId(this.props.postId);
+    this.props.dispatch(fetchCommentsByPostId(this.props.postId));
   }
   render() {
     return (
@@ -32,11 +32,10 @@ class Comments extends Component {
 }
 
 Comments.propTypes = {
-  postId: PropTypes.string.isRequired,
-  fetchCommentsByPostId: PropTypes.func.isRequired
+  postId: PropTypes.string.isRequired
 };
 const mapStateToProps = state => ({
   comments: state.posts.comments
 });
 
-export default connect(mapStateToProps, { fetchCommentsByPostId })(Comments);
+export default connect(mapStateToProps)(Comments);
