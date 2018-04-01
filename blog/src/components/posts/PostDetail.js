@@ -7,7 +7,7 @@ import { getPostById } from "../../actions/postActions";
 
 class PostDetail extends Component {
   componentDidMount() {
-    this.props.getPostById(this.props.postId);
+    this.props.dispatch(getPostById(this.props.postId));
   }
   render() {
     return (
@@ -66,4 +66,4 @@ const mapStateToProps = state => ({
   post: state.posts.postDetail
 });
 
-export default connect(mapStateToProps, { getPostById })(PostDetail);
+export default connect(mapStateToProps)(PostDetail);
