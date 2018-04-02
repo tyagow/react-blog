@@ -2,7 +2,7 @@ import React from "react";
 import PostForm from "../components/posts/PostForm";
 import Posts from "../components/posts/Posts";
 
-const HomePage = () => {
+export const HomePage = () => {
   return (
     <div className="container">
       <PostForm />

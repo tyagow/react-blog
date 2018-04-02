@@ -8,7 +8,7 @@ import mockStore, { initialState } from "./setupTest";
 import App from "../containers/App";
 import HomePage from "../containers/HomePage";
 import NotFoundPage from "../containers/NotFoundPage";
-import PostDetail from "../components/posts/PostDetail";
+import PostDetailPage from "../containers/PostDetailPage";
 
 Enzyme.configure({ adapter: new Adapter() });
 const fetchMock = require("fetch-mock");
@@ -50,6 +50,6 @@ test("valid path /:category/:id should render PostDetail and Comments component"
       </Provider>
     </MemoryRouter>
   );
-  expect(wrapper.find(PostDetail)).toHaveLength(1);
+  expect(wrapper.find(PostDetailPage)).toHaveLength(1);
   expect(wrapper.find(NotFoundPage)).toHaveLength(0);
 });

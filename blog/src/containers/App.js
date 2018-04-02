@@ -5,6 +5,7 @@ import PostDetail from "../components/posts/PostDetail";
 import Comments from "../components/comments/Comments";
 import NotFoundPage from "./NotFoundPage";
 import HomePage from "./HomePage";
+import PostDetailPage from "./PostDetailPage";
 
 class App extends Component {
   render() {
@@ -15,12 +16,7 @@ class App extends Component {
           <Route
             exact
             path="/:category/:postId"
-            render={({ match }) => (
-              <div className="">
-                <PostDetail postId={match.params.postId} />
-                <Comments postId={match.params.postId} />
-              </div>
-            )}
+            render={({ match }) => <PostDetailPage match={match} />}
           />
           <Route component={NotFoundPage} />
         </Switch>
