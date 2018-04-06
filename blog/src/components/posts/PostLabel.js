@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import styleMap from "../../styles";
 
-export default props => {
+export const PostLabel = props => {
   return (
     <div key={props.post.id}>
       <Link to={`/${props.post.category}/${props.post.id}`}>
@@ -16,3 +16,4 @@ export default props => {
     </div>
   );
 };
+export default PostLabel;

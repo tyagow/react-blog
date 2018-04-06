@@ -4,7 +4,7 @@ import {
   GET_POST_BY_ID,
   FETCH_CATEGORIES,
   FETCH_COMMENTS
-} from "./type";
+} from "./ActionTypes";
 
 export const fetchPosts = () => dispatch => {
   fetch("http://127.0.0.1:3001/posts", {

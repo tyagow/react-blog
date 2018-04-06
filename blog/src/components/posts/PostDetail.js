@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 import { getPostById } from "../../actions/postActions";
 
-class PostDetail extends Component {
+export class PostDetail extends Component {
   componentDidMount() {
     this.props.dispatch(getPostById(this.props.postId));
   }
@@ -58,9 +58,8 @@ class PostDetail extends Component {
 }
 
 PostDetail.propTypes = {
-  postId: PropTypes.string.isRequired
-  // post: PropTypes.object
-  // getPostById: PropTypes.func.isRequired
+  postId: PropTypes.string.isRequired,
+  post: PropTypes.array
 };
 const mapStateToProps = state => ({
   post: state.posts.postDetail

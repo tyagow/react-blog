@@ -1,37 +1,37 @@
 import React from "react";
 import { shallow, configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
-import Enzyme, { mount } from "enzyme";
+import Enzyme from "enzyme";
 
-import { Comments } from "../components/comments/Comments";
+import { PostLabel } from "../../components/posts/PostLabel";
 
 configure({ adapter: new Adapter() });
 
 Enzyme.configure({ adapter: new Adapter() });
 function setup() {
   const props = {
-    postId: "1",
-    comments: [{ id: 1, author: "test", voteScore: 1, body: "Body comment" }],
-    dispatch: jest.fn()
+    post: {
+      id: 1,
+      category: "react",
+      title: "Test title",
+      author: "Test Author"
+    }
   };
-  const enzymeWrapper = shallow(<Comments {...props} />);
+  const enzymeWrapper = shallow(<PostLabel {...props} />);
   return {
     props,
     enzymeWrapper
   };
 }
-describe("Comments", () => {
-  it("renders comments without crashing", () => {
+describe("PostLabel", () => {
+  it("renders PostLabel without crashing", () => {
     const { enzymeWrapper } = setup();
     expect(enzymeWrapper).toMatchSnapshot();
   });
   it("should render self and subcomponents", () => {
-    const { enzymeWrapper } = setup();
-    expect(enzymeWrapper.find("h3").text()).toBe("Comments");
-    const commentAuthor = enzymeWrapper.find("h4.comment-author");
-    expect(commentAuthor.length).toBe(1);
-    expect(commentAuthor.text()).toBe("test");
-
+    const { props, enzymeWrapper } = setup();
+    expect(enzymeWrapper.find("h3").text()).toBe(props.post.title);
+    expect(enzymeWrapper.find("button").text()).toBe(props.post.category);
     // const todoInputProps = enzymeWrapper.find("TodoTextInput").props();
     // expect(todoInputProps.newTodo).toBe(true);
     // expect(todoInputProps.placeholder).toEqual("What needs to be done?");

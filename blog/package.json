@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.0.0",
+    "jquery": "^3.3.1",
+    "popper.js": "^1.14.3",
     "react": "^16.3.0",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.3.0",
@@ -19,6 +21,8 @@
       "react-scripts test --env=jsdom --setupFiles='./src/tests/setupTest.js'",
     "test:coverage":
       "react-scripts test --coverage --env=jsdom --setupFiles='./src/tests/setupTest.js'",
+    "posttest":
+      "react-scripts test --coverage --env=jsdom --setupFiles='./src/tests/setupTest.js",
     "eject": "react-scripts eject",
     "precommit": "pretty-quick --staged"
   },
