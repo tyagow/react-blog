@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import { fetchCommentsByPostId } from "../../actions/postActions";
 
-class Comments extends Component {
+export class Comments extends Component {
   componentDidMount() {
     this.props.dispatch(fetchCommentsByPostId(this.props.postId));
   }
@@ -18,9 +18,11 @@ class Comments extends Component {
             {this.props.comments.map(comment => (
               <div key={comment.id} className="jumbotron jumbotron-fluid">
                 <div className="container">
-                  <h4>{comment.author}</h4>
-                  <p>{comment.body}</p>
-                  <div>Score: {comment.voteScore}</div>
+                  <h4 className="comment-author">{comment.author}</h4>
+                  <p className="comment-body">{comment.body}</p>
+                  <div className="comment-score">
+                    Score: {comment.voteScore}
+                  </div>
                 </div>
               </div>
             ))}
