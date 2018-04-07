@@ -1,4 +1,4 @@
-import * as actions from "../../actions/postActions";
+import * as actions from "../../actions/PostActions";
 import * as types from "../../actions/ActionTypes";
 import fetchMock from "fetch-mock";
 
@@ -8,15 +8,14 @@ describe("async actions", () => {
     fetchMock.restore();
   });
   it("creates FETCH_TODOS_SUCCESS when fetching todos has been done", () => {
-    fetchMock.getOnce("/todos", {
-      body: { todos: ["do something"] },
+    fetchMock.getOnce("http://127.0.0.1:3001/posts", {
+      body: { [{}] },
       headers: { "content-type": "application/json" }
     });
     const expectedActions = [
       { type: types.FETCH_TODOS_REQUEST },
       { type: types.FETCH_TODOS_SUCCESS, body: { todos: ["do something"] } }
     ];
-    const store = mockStore({ todos: [] });
     return store.dispatch(actions.fetchTodos()).then(() => {
       // return of async actions
       expect(store.getActions()).toEqual(expectedActions);
