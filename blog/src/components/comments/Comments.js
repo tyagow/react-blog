@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import { fetchCommentsByPostId } from "../../actions/postActions";
+import { fetchCommentsByPostId } from "../../actions/PostActions";
 
 export class Comments extends Component {
   componentDidMount() {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { createPost } from "../../actions/postActions";
+import { createPost } from "../../actions/PostActions";
 import guid from "../../utils";
 
 class PostForm extends Component {

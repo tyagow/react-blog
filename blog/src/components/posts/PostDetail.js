@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { getPostById } from "../../actions/postActions";
+import { getPostById } from "../../actions/PostActions";
 
 export class PostDetail extends Component {
   componentDidMount() {

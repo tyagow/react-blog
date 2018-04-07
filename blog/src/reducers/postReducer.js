@@ -4,7 +4,7 @@ import {
   GET_POST_BY_ID,
   FETCH_CATEGORIES,
   FETCH_COMMENTS
-} from "../actions/type";
+} from "../actions/ActionTypes";
 
 const initialState = {
   items: [],
