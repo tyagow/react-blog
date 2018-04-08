@@ -12,6 +12,4 @@ console.error = message => {
 };
 
 const middlewares = [thunk];
-const mockStore = configureStore(middlewares);
-
-export default mockStore;
+global.mockStore = configureStore(middlewares);

@@ -3,7 +3,6 @@ import * as Enzyme from "enzyme";
 import { MemoryRouter } from "react-router";
 import Adapter from "enzyme-adapter-react-16";
 import { Provider } from "react-redux";
-import mockStore from "../setupTest";
 
 import App from "../../containers/App";
 import HomePage from "../../containers/HomePage";
@@ -29,7 +28,7 @@ test("invalid path should redirect to 404", () => {
   expect(wrapper.find(NotFoundPage)).toHaveLength(1);
 });
 test("valid path / should render HomePage component", () => {
-  const store = mockStore(initialState);
+  const store = global.mockStore(initialState);
 
   const wrapper = Enzyme.mount(
     <MemoryRouter initialEntries={["/"]}>
@@ -44,7 +43,7 @@ test("valid path / should render HomePage component", () => {
   expect(wrapper.find(NotFoundPage)).toHaveLength(0);
 });
 test("valid path /:category/:id should render PostDetail and Comments component", () => {
-  const store = mockStore(initialState);
+  const store = global.mockStore(initialState);
 
   const wrapper = Enzyme.mount(
     <MemoryRouter initialEntries={["/react/12432"]}>
