@@ -95,18 +95,4 @@ describe("PostReducer reducer", () => {
       categories: categories
     });
   });
-  it("should handle FETCH_COMMENTS action", () => {
-    const comments = [{ body: "teste" }];
-    expect(
-      PostReducer(
-        {},
-        {
-          type: types.FETCH_COMMENTS,
-          payload: comments
-        }
-      )
-    ).toEqual({
-      comments: comments
-    });
-  });
 });

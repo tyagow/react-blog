@@ -3,7 +3,6 @@ import {
   NEW_POST,
   GET_POST_BY_ID,
   FETCH_CATEGORIES,
-  FETCH_COMMENTS,
   FETCHING_POSTS,
   FETCH_POSTS_FAILURE
 } from "../actions/ActionTypes";
@@ -51,13 +50,6 @@ export default function(state = initialState, action) {
         ...state,
         categories: action.payload
       };
-
-    case FETCH_COMMENTS:
-      return {
-        ...state,
-        comments: action.payload
-      };
-
     default:
       return state;
   }
