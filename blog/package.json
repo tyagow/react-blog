@@ -18,11 +18,11 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test":
-      "react-scripts test --env=jsdom --setupFiles='./src/tests/setupTest.js'",
+      "react-scripts test --env=jsdom --setupFiles='./src/__tests__/setupTest.js'",
     "test:coverage":
-      "react-scripts test --coverage --env=jsdom --setupFiles='./src/tests/setupTest.js'",
+      "react-scripts test --coverage --env=jsdom --setupFiles='./src/__tests__/setupTest.js'",
     "posttest":
-      "react-scripts test --coverage --env=jsdom --setupFiles='./src/tests/setupTest.js",
+      "react-scripts test --coverage --env=jsdom --setupFiles='./src/__tests__/setupTest.js",
     "eject": "react-scripts eject",
     "precommit": "pretty-quick --staged"
   },
@@ -51,7 +51,7 @@
       "src/**/*.{js,sx}",
       "!src/index.js",
       "!src/registerServiceWorker.js",
-      "!src/tests/setupTest.js",
+      "!src/__tests__/setupTest.js",
       "!index.js"
     ],
     "snapshotSerializers": ["enzyme-to-json/serializer"]
