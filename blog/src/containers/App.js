@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Route, Switch } from "react-router-dom";
 
-import PostDetail from "../components/posts/PostDetail";
-import Comments from "../components/comments/Comments";
 import NotFoundPage from "./NotFoundPage";
 import HomePage from "./HomePage";
 import PostDetailPage from "./PostDetailPage";
