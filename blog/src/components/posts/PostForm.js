@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { createPost } from "../../actions/PostActions";
+import { createPost } from "../../actions/postActions";
 import guid from "../../utils";
 
 class PostForm extends Component {
@@ -23,6 +23,7 @@ class PostForm extends Component {
       id: guid(),
       title: this.state.title,
       body: this.state.body,
+      author: this.state.author,
       timestamp: Date.now(),
       category: this.state.category
     };

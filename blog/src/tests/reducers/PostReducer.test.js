@@ -1,5 +1,5 @@
 import PostReducer from "../../reducers/PostReducer";
-import * as types from "../../actions/ActionTypes";
+import * as types from "../../actions/actionTypes";
 
 describe("PostReducer reducer", () => {
   it("should handle initial state", () => {

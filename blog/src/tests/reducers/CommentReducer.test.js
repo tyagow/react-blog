@@ -1,4 +1,4 @@
-import * as types from "../../actions/ActionTypes";
+import * as types from "../../actions/actionTypes";
 import CommentReducer from "../../reducers/CommentReducer";
 
 describe("CommentReducer reducer", () => {

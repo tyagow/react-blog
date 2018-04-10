@@ -5,7 +5,7 @@ import {
   FETCH_CATEGORIES,
   FETCHING_POSTS,
   FETCH_POSTS_FAILURE
-} from "../actions/ActionTypes";
+} from "../actions/actionTypes";
 
 const initialState = {
   items: [],

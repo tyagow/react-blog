@@ -1,7 +1,7 @@
 import fetchMock from "fetch-mock";
 
-import * as actions from "../../actions/PostActions";
-import * as types from "../../actions/ActionTypes";
+import * as actions from "../../actions/postActions";
+import * as types from "../../actions/actionTypes";
 // import mockStore from "../setupTest";
 
 describe("actions", async () => {

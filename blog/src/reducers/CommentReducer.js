@@ -1,4 +1,4 @@
-import { FETCH_COMMENTS } from "../actions/ActionTypes";
+import { FETCH_COMMENTS } from "../actions/actionTypes";
 
 export const initialState = {
   fetching: false,
