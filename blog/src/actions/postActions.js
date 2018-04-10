@@ -6,7 +6,7 @@ import {
   FETCH_CATEGORIES,
   FETCH_COMMENTS,
   FETCHING_POSTS
-} from "./ActionTypes";
+} from "./actionTypes";
 
 export const fetchPostsSuccess = payload => ({
   type: FETCH_POSTS_SUCCESS,
