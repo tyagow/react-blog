@@ -15,7 +15,4 @@ const store = createStore(
   )
 );
 
-store.dispatch(fetchPosts());
-store.dispatch(fetchCategories());
-
 export default store;
