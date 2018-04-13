@@ -3,7 +3,6 @@ import {
   NEW_POST,
   GET_POST_BY_ID,
   FETCH_CATEGORIES,
-  FETCHING_POSTS,
   FETCH_POSTS_FAILURE
 } from "../actions/actionTypes";
 
@@ -17,11 +16,6 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case FETCHING_POSTS:
-      return {
-        ...state,
-        fetching: true
-      };
     case FETCH_POSTS_SUCCESS:
       return {
         ...state,
