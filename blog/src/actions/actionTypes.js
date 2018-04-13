@@ -1,5 +1,5 @@
 // POSTS
-export const FETCHING_POSTS = "FETCHING_POSTS";
+export const GET_POSTS = "GET_POSTS";
 export const FETCH_POSTS_SUCCESS = "FETCH_POSTS_SUCCESS";
 export const FETCH_POSTS_FAILURE = "FETCH_POSTS_FAILURE";
 
@@ -11,3 +11,10 @@ export const NEW_POST_FAILURE = "NEW_POST_FAILURE";
 export const FETCH_CATEGORIES = "FETCH_CATEGORIES";
 // COMENTS
 export const FETCH_COMMENTS = "FETCH_COMMENTS";
+
+//ui
+export const START_NETWORK = "START_NETWORK";
+export const END_NETWORK = "END_NETWORK";
+
+//api
+export const API = "API";
