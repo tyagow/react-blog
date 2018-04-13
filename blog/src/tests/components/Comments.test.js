@@ -12,7 +12,8 @@ function setup() {
   const props = {
     postId: "1",
     comments: [{ id: 1, author: "test", voteScore: 1, body: "Body comment" }],
-    dispatch: jest.fn()
+    dispatch: jest.fn(),
+    fetchCommentsByPostId: jest.fn()
   };
   const enzymeWrapper = shallow(<Comments {...props} />);
   return {

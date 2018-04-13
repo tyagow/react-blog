@@ -15,6 +15,9 @@ fetchMock.get("*", {});
 const initialState = {
   posts: {
     items: []
+  },
+  comments: {
+    items: []
   }
 };
 

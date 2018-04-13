@@ -2,7 +2,6 @@ import fetchMock from "fetch-mock";
 
 import * as actions from "../../actions/postActions";
 import * as types from "../../actions/actionTypes";
-// import mockStore from "../setupTest";
 
 describe("actions", async () => {
   afterEach(() => {
@@ -10,36 +9,21 @@ describe("actions", async () => {
     fetchMock.restore();
   });
 
-  it("fetchPosts should dispatch a FETCH_POSTS_SUCCESS  action with a payload", () => {
-    const expectedActions = [
-      { type: types.FETCHING_POSTS },
-      { type: types.FETCH_POSTS_SUCCESS, payload: ["teste"] }
-    ];
-    fetchMock.getOnce("http://127.0.0.1:3001/posts", ["teste"]);
-    const store = global.mockStore();
-    return store
-      .dispatch(actions.fetchPosts())
-      .then(() => expect(store.getActions()).toEqual(expectedActions));
-  });
-
-  it("fetchPostsFailure should dispatch a FETCH_POSTS_FAILURE action", () => {
-    expect(actions.fetchPostsFailure()).toEqual({
-      type: types.FETCH_POSTS_FAILURE
-    });
-  });
-
-  it("fetchPosts should dispatch FETCHING_POSTS and FETCH_POSTS_FAILURE action", () => {
+  it("fetchPosts should dispatch GET_POSTS and FETCH_POSTS_FAILURE action", () => {
     const store = global.mockStore();
 
     const expectedActions = [
-      { type: types.FETCHING_POSTS },
-      { type: types.FETCH_POSTS_FAILURE }
+      {
+        type: types.API,
+        payload: {
+          label: "posts",
+          success: actions.setPosts,
+          url: "http://127.0.0.1:3001/posts/"
+        }
+      }
     ];
-    fetchMock.mock("http://127.0.0.1:3001/posts", 400);
 
-    // fetchMock.get("*", {});
-    return store
-      .dispatch(actions.fetchPosts())
-      .then(() => expect(store.getActions()).toEqual(expectedActions));
+    actions.getPosts()(store.dispatch);
+    expect(store.getActions()).toEqual(expectedActions);
   });
 });
