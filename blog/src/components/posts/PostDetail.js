@@ -59,7 +59,7 @@ export class PostDetail extends Component {
 
 PostDetail.propTypes = {
   postId: PropTypes.string.isRequired,
-  post: PropTypes.array
+  post: PropTypes.object
 };
 const mapStateToProps = state => ({
   post: state.posts.postDetail
