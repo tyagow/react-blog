@@ -12,18 +12,6 @@ describe("PostReducer reducer", () => {
     });
   });
 
-  it("should handle FETCHING_POSTS action", () => {
-    expect(
-      PostReducer(
-        {},
-        {
-          type: types.FETCHING_POSTS
-        }
-      )
-    ).toEqual({
-      fetching: true
-    });
-  });
   it("should handle FETCH_POSTS_FAILURE action", () => {
     expect(
       PostReducer(
