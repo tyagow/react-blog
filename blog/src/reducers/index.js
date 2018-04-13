@@ -1,8 +1,10 @@
 import { combineReducers } from "redux";
-import PostReducer from "./PostReducer";
-import CommentReducer from "./CommentReducer";
+import posts from "./PostReducer";
+import ui from "./ui";
+import comments from "./CommentReducer";
 
 export default combineReducers({
-  posts: PostReducer,
-  comments: CommentReducer
+  posts,
+  comments,
+  ui
 });
