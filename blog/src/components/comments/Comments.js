@@ -2,11 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import { fetchCommentsByPostId } from "../../actions/postActions";
+import { fetchCommentsByPostId } from "../../actions/commentsActions";
 
 export class Comments extends Component {
   componentDidMount() {
-    this.props.dispatch(fetchCommentsByPostId(this.props.postId));
+    this.props.fetchCommentsByPostId(this.props.postId);
   }
   render() {
     return (
@@ -37,7 +37,7 @@ Comments.propTypes = {
   postId: PropTypes.string.isRequired
 };
 const mapStateToProps = state => ({
-  comments: state.posts.comments
+  comments: state.comments.items
 });
 
-export default connect(mapStateToProps)(Comments);
+export default connect(mapStateToProps, { fetchCommentsByPostId })(Comments);
