@@ -1,9 +1,9 @@
 import {
-  NEW_POST,
-  GET_POST_BY_ID,
+  NEW_POST_SUCCESS,
   FETCH_POSTS_SUCCESS,
-  FETCH_CATEGORIES,
-  API
+  API,
+  GET_POST_BY_ID_SUCCESS,
+  FETCH_CATEGORIES_SUCCESS
 } from "./actionTypes";
 
 export const setPosts = posts => ({
@@ -27,26 +27,23 @@ export const getPostById = postId => dispatch => {
     type: API,
     payload: {
       url: "http://127.0.0.1:3001/posts/" + postId,
-      success: post =>
-        dispatch({
-          type: GET_POST_BY_ID,
-          payload: post
-        }),
+      success: setPost,
       label: "post_detail"
     }
   });
 };
+
+export const setPost = post => ({
+  type: GET_POST_BY_ID_SUCCESS,
+  payload: post
+});
 
 export const createPost = postData => dispatch => {
   dispatch({
     type: API,
     payload: {
       url: "http://127.0.0.1:3001/posts/",
-      success: post =>
-        dispatch({
-          type: NEW_POST,
-          payload: post
-        }),
+      success: newPost,
       label: "post_create",
       method: "post",
       body: JSON.stringify(postData)
@@ -54,17 +51,23 @@ export const createPost = postData => dispatch => {
   });
 };
 
-export const fetchCategories = () => dispatch => {
+export const newPost = post => ({
+  type: NEW_POST_SUCCESS,
+  payload: post
+});
+
+export const getCategories = () => dispatch => {
   dispatch({
     type: API,
     payload: {
       url: "http://127.0.0.1:3001/categories",
-      success: data =>
-        dispatch({
-          type: FETCH_CATEGORIES,
-          payload: data.categories.map(obj => obj.name)
-        }),
+      success: setCategories,
       label: "post_categories_list"
     }
   });
 };
+
+export const setCategories = data => ({
+  type: FETCH_CATEGORIES_SUCCESS,
+  payload: data
+});
