@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import PostLabel from "./PostLabel";
-import { getPosts, fetchCategories } from "../../actions/postActions";
+import { getPosts, getCategories } from "../../actions/postActions";
 
 class Posts extends Component {
   componentDidMount = () => {
+    this.props.getCategories();
     this.props.getPosts();
-    this.props.fetchCategories();
   };
 
   componentWillReceiveProps(nextProps) {
@@ -37,4 +37,4 @@ const mapStateToProps = state => ({
   newPost: state.posts.item
 });
 
-export default connect(mapStateToProps, { getPosts, fetchCategories })(Posts);
+export default connect(mapStateToProps, { getPosts, getCategories })(Posts);

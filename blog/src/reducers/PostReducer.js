@@ -1,9 +1,9 @@
 import {
   FETCH_POSTS_SUCCESS,
-  NEW_POST,
-  GET_POST_BY_ID,
-  FETCH_CATEGORIES,
-  FETCH_POSTS_FAILURE
+  NEW_POST_SUCCESS,
+  FETCH_POSTS_FAILURE,
+  GET_POST_BY_ID_SUCCESS,
+  FETCH_CATEGORIES_SUCCESS
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -27,22 +27,22 @@ export default function(state = initialState, action) {
         ...state,
         fetching: false
       };
-    case NEW_POST:
+    case NEW_POST_SUCCESS:
       return {
         ...state,
         item: action.payload
       };
 
-    case GET_POST_BY_ID:
+    case GET_POST_BY_ID_SUCCESS:
       return {
         ...state,
         postDetail: action.payload
       };
 
-    case FETCH_CATEGORIES:
+    case FETCH_CATEGORIES_SUCCESS:
       return {
         ...state,
-        categories: action.payload
+        categories: action.payload.categories.map(x => x.name)
       };
     default:
       return state;

@@ -9,11 +9,11 @@ describe("CommentReducer reducer", () => {
     });
   });
 
-  it("should handle FETCH_COMMENTS action", () => {
+  it("should handle FETCH_COMMENTS_SUCCES action", () => {
     const comments = [{ body: "teste" }];
     expect(
       CommentReducer(undefined, {
-        type: types.FETCH_COMMENTS,
+        type: types.FETCH_COMMENTS_SUCCESS,
         payload: comments
       })
     ).toEqual({

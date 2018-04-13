@@ -41,13 +41,13 @@ describe("PostReducer reducer", () => {
       fetching: false
     });
   });
-  it("should handle NEW_POST action", () => {
+  it("should handle NEW_POST_SUCCESS action", () => {
     const post = { title: "A New Hope", body: "Test body" };
     expect(
       PostReducer(
         {},
         {
-          type: types.NEW_POST,
+          type: types.NEW_POST_SUCCESS,
           payload: post
         }
       )
@@ -55,13 +55,13 @@ describe("PostReducer reducer", () => {
       item: post
     });
   });
-  it("should handle GET_POST_BY_ID action", () => {
+  it("should handle GET_POST_BY_ID_SUCCESS action", () => {
     const post = { title: "A New Hope", body: "Test body" };
     expect(
       PostReducer(
         {},
         {
-          type: types.GET_POST_BY_ID,
+          type: types.GET_POST_BY_ID_SUCCESS,
           payload: post
         }
       )
@@ -69,14 +69,15 @@ describe("PostReducer reducer", () => {
       postDetail: post
     });
   });
-  it("should handle FETCH_CATEGORIES action", () => {
-    const categories = ["react", "redux"];
+  it("should handle FETCH_CATEGORIES_SUCCESS action", () => {
+    const categories = ["react"];
+    const to_normalize = { categories: [{ name: "react" }] };
     expect(
       PostReducer(
         {},
         {
-          type: types.FETCH_CATEGORIES,
-          payload: categories
+          type: types.FETCH_CATEGORIES_SUCCESS,
+          payload: to_normalize
         }
       )
     ).toEqual({

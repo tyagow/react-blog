@@ -1,4 +1,4 @@
-import { FETCH_COMMENTS } from "../actions/actionTypes";
+import { FETCH_COMMENTS_SUCCESS } from "../actions/actionTypes";
 
 export const initialState = {
   fetching: false,
@@ -7,7 +7,7 @@ export const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case FETCH_COMMENTS:
+    case FETCH_COMMENTS_SUCCESS:
       return {
         ...state,
         items: action.payload
