@@ -7,7 +7,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import store from "./store/store";
 
 import "bootstrap/dist/css/bootstrap.css";
-import "./index.css";
+import "./styles/index.css";
 import registerServiceWorker from "./registerServiceWorker";
 
 ReactDOM.render(
