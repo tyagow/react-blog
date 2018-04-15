@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { createPost } from "../../actions/postActions";
 import guid from "../../utils";
 
-class PostForm extends Component {
+export class PostForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
