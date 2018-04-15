@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import PostLabel from "./PostLabel";
 import { getPosts, getCategories } from "../../actions/postActions";
 
-class Posts extends Component {
+export class Posts extends Component {
   componentDidMount = () => {
     this.props.getCategories();
     this.props.getPosts();
@@ -16,9 +16,7 @@ class Posts extends Component {
     }
   }
   render() {
-    const items = this.props.posts.map(post => (
-      <PostLabel key={post.id} post={post} />
-    ));
+    const items = getPostLabelList(this.props.posts);
     return (
       <div>
         <h1>Posts</h1>
@@ -36,5 +34,8 @@ const mapStateToProps = state => ({
   posts: state.posts.items,
   newPost: state.posts.item
 });
+
+export const getPostLabelList = posts =>
+  posts.map(post => <PostLabel key={post.id} post={post} />);
 
 export default connect(mapStateToProps, { getPosts, getCategories })(Posts);
