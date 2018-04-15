@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import styleMap from "../../styles";
-
 export const PostLabel = props => {
   return (
     <div key={props.post.id}>
@@ -16,4 +14,16 @@ export const PostLabel = props => {
     </div>
   );
 };
+const styleMap = {
+  categoryLabel: {
+    style: {
+      border: "0",
+      color: "white",
+      padding: "-10px",
+      backgroundColor: "red",
+      width: "20%"
+    }
+  }
+};
+
 export default PostLabel;
