@@ -1,4 +1,6 @@
+import fetchMock from "fetch-mock";
 import api from "../../middlewares/api";
+import * as actionTypes from "../../actions/actionTypes";
 
 const create = () => {
   const store = {
@@ -9,26 +11,27 @@ const create = () => {
   const invoke = action => api(store)(next)(action);
   return { store, next, invoke };
 };
+
 describe("API middleware tests", () => {
+  beforeEach(() => {
+    fetchMock.reset();
+    fetchMock.restore();
+  });
+
   it("passes through non API action type", () => {
     const { next, invoke } = create();
-    const action = { type: "TEST" };
+    const action = { type: "NO-API-ACTION" };
     invoke(action);
     expect(next).toHaveBeenCalledWith(action);
   });
-  // it("calls the function", () => {
-  //   const { invoke } = create();
-  //   const fn = jest.fn();
-  //   invoke(fn);
-  //   expect(fn).toHaveBeenCalled();
-  // });
-  // it("passes dispatch and getState", () => {
-  //   const { store, invoke } = create();
-  //   invoke((dispatch, getState) => {
-  //     dispatch("TEST DISPATCH");
-  //     getState();
-  //   });
-  //   expect(store.dispatch).toHaveBeenCalledWith("TEST DISPATCH");
-  //   expect(store.getState).toHaveBeenCalled();
-  // });
+  it("calls the START_NETWORK action", () => {
+    fetchMock.get("*", {});
+
+    const { invoke, store } = create();
+    const action = { type: actionTypes.API, payload: { success: jest.fn() } };
+    const startNetwork = { type: actionTypes.START_NETWORK, payload: "global" };
+    invoke(action);
+
+    expect(store.dispatch).toHaveBeenCalledWith(startNetwork);
+  });
 });
