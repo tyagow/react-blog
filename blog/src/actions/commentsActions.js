@@ -1,4 +1,4 @@
-import { FETCH_COMMENTS_SUCCESS, API } from "./actionTypes";
+import { FETCH_COMMENTS_SUCCESS, API, CREATE_COMMENT } from "./actionTypes";
 
 export const fetchCommentsByPostId = postId => dispatch => {
   dispatch({
@@ -14,4 +14,9 @@ export const fetchCommentsByPostId = postId => dispatch => {
 export const setComments = comments => ({
   type: FETCH_COMMENTS_SUCCESS,
   payload: comments
+});
+
+export const createComment = comment => ({
+  type: CREATE_COMMENT,
+  payload: comment
 });

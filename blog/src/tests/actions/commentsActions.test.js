@@ -26,4 +26,12 @@ describe("commentActions", async () => {
     };
     expect(actions.setComments(["test"])).toEqual(expectedRsult);
   });
+
+  it("createComment should dispatch CREATE_COMMENT", () => {
+    const expectedResult = {
+      type: types.CREATE_COMMENT,
+      payload: ""
+    };
+    expect(actions.createComment("")).toEqual(expectedResult);
+  });
 });
