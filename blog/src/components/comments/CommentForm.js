@@ -38,9 +38,10 @@ export class CommentForm extends Component {
         <form onSubmit={this.onSubmit} className="commentbox-form">
           <div className="form-group">
             <label htmlFor="comment">Comment</label>
+            <br />
             <textarea
               id="comment"
-              className="commentbox-TextInput"
+              className="commentbox-TextInput form-control"
               type="text"
               name="comment"
               onChange={this.onChange}
@@ -48,17 +49,23 @@ export class CommentForm extends Component {
           </div>
           <div className="form-group">
             <label htmlFor="author">Author</label>
+            <br />
             <input
-              className="commentbox-author"
+              className="commentbox-author form-control"
               id="author"
               type="text"
               name="author"
               onChange={this.onChange}
             />
           </div>
-          <button type="submit" className="commentbox-button btn btn-info">
-            Send Comment
-          </button>
+          <div className="form-group">
+            <button
+              type="submit"
+              className="commentbox-button form-control btn btn-info"
+            >
+              Send Comment
+            </button>
+          </div>
         </form>
       </div>
     );
