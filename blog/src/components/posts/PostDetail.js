@@ -37,12 +37,13 @@ export class PostDetail extends Component {
                   9:00 PM
                 </p>
                 <p>
-                  <i className="fa fa-tags" /> Category:{" "}
-                  <a href="">
+                  <i className="fa fa-tags" />
+                  Category:{" "}
+                  <Link to={`/${this.props.post.category}`}>
                     <span className="badge badge-info">
                       {this.props.post.category}
                     </span>
-                  </a>{" "}
+                  </Link>
                 </p>
 
                 <hr />
