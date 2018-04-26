@@ -5,25 +5,22 @@ export const PostLabel = props => {
   return (
     <div key={props.post.id}>
       <Link to={`/${props.post.category}/${props.post.id}`}>
-        <h3>{props.post.title}</h3>
+        <h3 className="postlabel-title">{props.post.title}</h3>
       </Link>
-      <button style={styleMap.categoryLabel.style} disabled>
-        {props.post.category}
-      </button>
-      <div>Author - {props.post.author}</div>
+      <Link to={`/${props.post.category}`}>
+        <span className="badge badge-info">{props.post.category}</span>
+      </Link>
+      <div>
+        <label htmlFor="postlabel-author">Author: </label>{" "}
+        <strong>
+          {" "}
+          <span id="postlabel-author" className="postlabel-author">
+            {props.post.author}
+          </span>
+        </strong>
+      </div>
     </div>
   );
-};
-const styleMap = {
-  categoryLabel: {
-    style: {
-      border: "0",
-      color: "white",
-      padding: "-10px",
-      backgroundColor: "red",
-      width: "20%"
-    }
-  }
 };
 
 export default PostLabel;

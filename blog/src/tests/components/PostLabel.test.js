@@ -28,20 +28,16 @@ describe("PostLabel", () => {
     const { enzymeWrapper } = setup();
     expect(enzymeWrapper).toMatchSnapshot();
   });
-  it("should render self and subcomponents", () => {
+  it("should render post title", () => {
     const { props, enzymeWrapper } = setup();
-    expect(enzymeWrapper.find("h3").text()).toBe(props.post.title);
-    expect(enzymeWrapper.find("button").text()).toBe(props.post.category);
-    // const todoInputProps = enzymeWrapper.find("TodoTextInput").props();
-    // expect(todoInputProps.newTodo).toBe(true);
-    // expect(todoInputProps.placeholder).toEqual("What needs to be done?");
+    expect(enzymeWrapper.find(".postlabel-title").text()).toBe(
+      props.post.title
+    );
   });
-  // it("should call addTodo if length of text is greater than 0", () => {
-  //   const { enzymeWrapper, props } = setup();
-  //   const input = enzymeWrapper.find("TodoTextInput");
-  //   input.props().onSave("");
-  //   expect(props.addTodo.mock.calls.length).toBe(0);
-  //   input.props().onSave("Use Redux");
-  //   expect(props.addTodo.mock.calls.length).toBe(1);
-  // });
+  it("should render post author", () => {
+    const { props, enzymeWrapper } = setup();
+    expect(enzymeWrapper.find(".postlabel-author").text()).toBe(
+      props.post.author
+    );
+  });
 });
