@@ -34,4 +34,33 @@ describe("commentActions", async () => {
     };
     expect(actions.createComment("")).toEqual(expectedResult);
   });
+  describe("submitVote", () => {
+    it("should dispatch API action with correct payload", () => {
+      const store = global.mockStore();
+      const expectedActions = [
+        {
+          type: types.API,
+          payload: {
+            label: "comments_upVote",
+            body: { option: "upVote" },
+            success: actions.updateComment,
+            method: "post",
+            url: "http://127.0.0.1:3001/comments/1"
+          }
+        }
+      ];
+
+      actions.submitVoteComment(1, "upVote")(store.dispatch);
+      expect(store.getActions()).toEqual(expectedActions);
+    });
+  });
+  describe("updateComment", () => {
+    it("should dispatch UPDATE_COMMENTS", () => {
+      const expectedResult = {
+        type: types.UPDATE_COMMENT,
+        payload: {}
+      };
+      expect(actions.updateComment({})).toEqual(expectedResult);
+    });
+  });
 });

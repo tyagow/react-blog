@@ -21,4 +21,34 @@ describe("CommentReducer reducer", () => {
       items: comments
     });
   });
+  describe("UPDATE_COMMENT", () => {
+    let initialState = {
+      fetching: false,
+      items: [
+        {
+          id: "894tuq4ut84ut8v4t8wun89g",
+          voteScore: 1
+        }
+      ]
+    };
+    it("should update comment", () => {
+      expect(
+        CommentReducer(initialState, {
+          type: types.UPDATE_COMMENT,
+          payload: {
+            id: "894tuq4ut84ut8v4t8wun89g",
+            voteScore: 2
+          }
+        })
+      ).toEqual({
+        fetching: false,
+        items: [
+          {
+            id: "894tuq4ut84ut8v4t8wun89g",
+            voteScore: 2
+          }
+        ]
+      });
+    });
+  });
 });
