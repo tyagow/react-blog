@@ -2,7 +2,11 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import { fetchCommentsByPostId } from "../../actions/commentsActions";
+import {
+  fetchCommentsByPostId,
+  updateComment
+} from "../../actions/commentsActions";
+import VoteForm from "../votes/VoteForm";
 
 export class Comments extends Component {
   componentDidMount() {
@@ -20,8 +24,29 @@ export class Comments extends Component {
                 <div className="container">
                   <h4 className="comment-author">{comment.author}</h4>
                   <p className="comment-body">{comment.body}</p>
-                  <div className="comment-score">
-                    Score: {comment.voteScore}
+                  <div className="flex-row d-flex">
+                    <div className="p-2 comment-score">
+                      Votes:{" "}
+                      <span className="success">{comment.voteScore}</span>
+                    </div>
+                    <div className="p-2">
+                      <VoteForm
+                        type="upVote"
+                        className="fa fa-thumbs-up"
+                        id={comment.id}
+                        label="comments"
+                        callback={updateComment}
+                      />
+                    </div>
+                    <div className="p-2">
+                      <VoteForm
+                        type="downVote"
+                        className="fa fa-thumbs-down"
+                        id={comment.id}
+                        label="comments"
+                        callback={updateComment}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
@@ -40,4 +65,7 @@ const mapStateToProps = state => ({
   comments: state.comments.items
 });
 
-export default connect(mapStateToProps, { fetchCommentsByPostId })(Comments);
+export default connect(mapStateToProps, {
+  fetchCommentsByPostId,
+  updateComment
+})(Comments);
