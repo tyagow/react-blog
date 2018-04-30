@@ -3,7 +3,8 @@ import {
   NEW_POST_SUCCESS,
   FETCH_POSTS_FAILURE,
   GET_POST_BY_ID_SUCCESS,
-  FETCH_CATEGORIES_SUCCESS
+  FETCH_CATEGORIES_SUCCESS,
+  UPDATE_POST
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -43,6 +44,17 @@ export default function(state = initialState, action) {
       return {
         ...state,
         categories: action.payload.categories.map(x => x.name)
+      };
+
+    case UPDATE_POST:
+      return {
+        ...state,
+        items: state.items.map(
+          item =>
+            item.id === action.payload.id
+              ? { ...item, ...action.payload }
+              : item
+        )
       };
     default:
       return state;
