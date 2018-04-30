@@ -8,7 +8,13 @@ import { VoteForm } from "../../components/votes/VoteForm";
 configure({ adapter: new Adapter() });
 
 function setup(type = "upVote") {
-  const props = { type };
+  const props = {
+    type,
+    className: "fa fa-thumbs-down",
+    id: "1",
+    label: "posts",
+    callback: jest.fn()
+  };
   const enzymeWrapper = shallow(<VoteForm {...props} />);
   return {
     props,
@@ -24,5 +30,4 @@ describe("Vote Component", () => {
     const { enzymeWrapper } = setup();
     expect(enzymeWrapper.find(".vote-button").length).toBe(1);
   });
-  it("renderIcon should  return class name fa-thumbs-up when type parameter is 'upVote'", () => {});
 });

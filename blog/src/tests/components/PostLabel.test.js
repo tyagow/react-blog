@@ -40,4 +40,7 @@ describe("PostLabel", () => {
       props.post.author
     );
   });
+  describe("sendUpVote", () => {
+    it("should ", () => {});
+  });
 });

@@ -11,7 +11,8 @@ Enzyme.configure({ adapter: new Adapter() });
 const setup = (renderer = shallow) => {
   const createPost = jest.fn();
   const props = {
-    createPost: createPost
+    createPost: createPost,
+    getCategories: jest.fn()
   };
   const enzymeWrapper = renderer(<PostForm {...props} />);
   return {

@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { UpVote } from "../votes/UpVote";
-import { DownVote } from "../votes/DownVote";
+import VoteForm from "../votes/VoteForm";
+import { sendVote, updatePost } from "../../actions/postActions";
+import connect from "react-redux/lib/connect/connect";
 
 export const PostLabel = props => {
   return (
@@ -25,18 +26,33 @@ export const PostLabel = props => {
             </span>
           </strong>
         </div>
+      </div>
+      <div className="flex-row d-flex">
         <div className="p-2">
           Votes: <span className="success">{props.post.voteScore}</span>
         </div>
         <div className="p-2">
-          <UpVote onSubmitVote={() => {}} />
+          <VoteForm
+            type="upVote"
+            className="fa fa-thumbs-up"
+            id={props.post.id}
+            label="posts"
+            callback={updatePost}
+          />
         </div>
         <div className="p-2">
-          <DownVote onSubmitVote={() => {}} />
+          <VoteForm
+            type="downVote"
+            className="fa fa-thumbs-down"
+            id={props.post.id}
+            label="posts"
+            callback={updatePost}
+          />
         </div>
       </div>
+      <hr />
     </div>
   );
 };
 
-export default PostLabel;
+export default connect(undefined, { sendVote, updatePost })(PostLabel);
