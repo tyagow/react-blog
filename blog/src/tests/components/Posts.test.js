@@ -30,10 +30,9 @@ describe("Posts", () => {
     expect(getPosts).toHaveBeenCalled();
   });
 
-  it("", () => {
-    const { getCategories, getPosts } = setup();
-    expect(getCategories).toHaveBeenCalled();
-    expect(getPosts).toHaveBeenCalled();
+  it("should have link to posts/create", () => {
+    const { enzymeWrapper } = setup([post]);
+    expect(enzymeWrapper.find(".posts-create")).toHaveLength(1);
   });
 });
 const getPostProps = posts => {

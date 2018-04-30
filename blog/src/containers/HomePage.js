@@ -1,12 +1,13 @@
 import React from "react";
-import PostForm from "../components/posts/PostForm";
 import Posts from "../components/posts/Posts";
+import Header from "../components/ui/Header";
 
 export const HomePage = () => (
-  <div className="container">
-    <PostForm />
-    <hr />
-    <Posts />
+  <div>
+    <Header />
+    <div className="container">
+      <Posts />
+    </div>
   </div>
 );
 
