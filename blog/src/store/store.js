@@ -2,10 +2,11 @@ import { createStore, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
 import rootReducer from "../reducers";
 import api from "../middlewares/api";
+import redirect from "../middlewares/redirect";
 
 const initialState = {};
 
-const middleware = [thunk, api];
+const middleware = [thunk, api, redirect];
 
 const store = createStore(
   rootReducer,
