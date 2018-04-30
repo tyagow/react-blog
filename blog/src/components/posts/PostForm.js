@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import { createPost } from "../../actions/postActions";
+import { createPost, getCategories } from "../../actions/postActions";
 import guid from "../../utils";
+import { withRouter } from "react-router-dom";
 
 export class PostForm extends Component {
   constructor(props) {
@@ -17,6 +18,10 @@ export class PostForm extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
+  componentDidMount = () => {
+    this.props.getCategories();
+  };
+
   onSubmit(e) {
     e.preventDefault();
     const post = {
@@ -29,6 +34,7 @@ export class PostForm extends Component {
     };
 
     this.props.createPost(post);
+    this.props.history.push("/");
   }
   onChange(e) {
     this.setState({ [e.target.name]: e.target.value });
@@ -112,4 +118,6 @@ const mapStateToProps = state => ({
   categories: state.posts.categories
 });
 
-export default connect(mapStateToProps, { createPost })(PostForm);
+export default connect(mapStateToProps, { createPost, getCategories })(
+  withRouter(PostForm)
+);
