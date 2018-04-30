@@ -23,7 +23,6 @@ describe("CommentReducer reducer", () => {
   });
   describe("UPDATE_COMMENT", () => {
     let initialState = {
-      fetching: false,
       items: [
         {
           id: "894tuq4ut84ut8v4t8wun89g",
@@ -41,7 +40,6 @@ describe("CommentReducer reducer", () => {
           }
         })
       ).toEqual({
-        fetching: false,
         items: [
           {
             id: "894tuq4ut84ut8v4t8wun89g",

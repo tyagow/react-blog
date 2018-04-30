@@ -108,4 +108,43 @@ describe("actions", async () => {
     };
     expect(actions.setCategories(categories)).toEqual(expectedRsult);
   });
+  describe("sendVote", () => {
+    it("should dispatch API call  API action type with correct payload", () => {
+      const store = global.mockStore();
+      let voteOption = {
+        option: "upVote"
+      };
+      const expectedAction = [
+        {
+          type: types.API,
+          payload: {
+            label: "posts_vote",
+            success: actions.getPosts,
+            url: "http://127.0.0.1:3001/posts/1",
+            method: "post",
+            body: JSON.stringify(voteOption)
+          }
+        }
+      ];
+
+      let vote = {
+        type: "upVote",
+        url: "posts/1",
+        callback: actions.getPosts,
+        label: "posts"
+      };
+
+      actions.sendVote(vote)(store.dispatch);
+      expect(store.getActions()).toEqual(expectedAction);
+    });
+  });
+  describe("updatePost", () => {
+    it("updatePost should dispatch correct action and payload", () => {
+      const expectedRsult = {
+        type: types.UPDATE_POST,
+        payload: "test"
+      };
+      expect(actions.updatePost("test")).toEqual(expectedRsult);
+    });
+  });
 });

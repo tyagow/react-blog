@@ -84,4 +84,32 @@ describe("PostReducer reducer", () => {
       categories: categories
     });
   });
+  describe("UPDATE_POST", () => {
+    let initialState = {
+      items: [
+        {
+          id: "894tuq4ut84ut8v4t8wun89g",
+          voteScore: 1
+        }
+      ]
+    };
+    it("should update comment", () => {
+      expect(
+        PostReducer(initialState, {
+          type: types.UPDATE_POST,
+          payload: {
+            id: "894tuq4ut84ut8v4t8wun89g",
+            voteScore: 2
+          }
+        })
+      ).toEqual({
+        items: [
+          {
+            id: "894tuq4ut84ut8v4t8wun89g",
+            voteScore: 2
+          }
+        ]
+      });
+    });
+  });
 });

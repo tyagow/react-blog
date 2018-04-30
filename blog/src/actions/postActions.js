@@ -3,7 +3,8 @@ import {
   FETCH_POSTS_SUCCESS,
   API,
   GET_POST_BY_ID_SUCCESS,
-  FETCH_CATEGORIES_SUCCESS
+  FETCH_CATEGORIES_SUCCESS,
+  UPDATE_POST
 } from "./actionTypes";
 
 export const setPosts = posts => ({
@@ -71,4 +72,25 @@ export const getCategories = () => dispatch => {
 export const setCategories = data => ({
   type: FETCH_CATEGORIES_SUCCESS,
   payload: data
+});
+
+export const sendVote = ({ type, url, callback, label }) => dispatch => {
+  let voteOption = {
+    option: type
+  };
+  dispatch({
+    type: API,
+    payload: {
+      url: "http://127.0.0.1:3001/" + url,
+      success: callback,
+      label: label + "_vote",
+      method: "post",
+      body: JSON.stringify(voteOption)
+    }
+  });
+};
+
+export const updatePost = post => ({
+  type: UPDATE_POST,
+  payload: post
 });
