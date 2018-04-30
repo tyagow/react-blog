@@ -56,7 +56,8 @@
       "!src/index.js",
       "!src/registerServiceWorker.js",
       "!src/tests/setupTest.js",
-      "!index.js"
+      "!index.js",
+      "!src/store/store.js"
     ],
     "snapshotSerializers": ["enzyme-to-json/serializer"]
   }
