@@ -53,7 +53,8 @@ export const createPost = postData => dispatch => {
 
 export const newPost = post => ({
   type: NEW_POST_SUCCESS,
-  payload: post
+  payload: post,
+  redirect: "posts/" + post.id
 });
 
 export const getCategories = () => dispatch => {
