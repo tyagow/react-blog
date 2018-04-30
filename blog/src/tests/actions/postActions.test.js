@@ -77,9 +77,10 @@ describe("actions", async () => {
   it("newPost should dispatch NEW_POST with correct payload", () => {
     const expectedRsult = {
       type: types.NEW_POST_SUCCESS,
-      payload: "test"
+      payload: { id: 1 },
+      redirect: "posts/1"
     };
-    expect(actions.newPost("test")).toEqual(expectedRsult);
+    expect(actions.newPost({ id: 1 })).toEqual(expectedRsult);
   });
 
   it("getCategories  should dispatch API action type with correct payload", () => {
