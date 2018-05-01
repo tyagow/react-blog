@@ -43,7 +43,7 @@ export class PostForm extends Component {
     return (
       <div>
         <h2>Create Post</h2>
-        <form onSubmit={this.onSubmit}>
+        <form className="postform-form" onSubmit={this.onSubmit}>
           <div className="form-group">
             <label htmlFor="category">Category</label>
             <select
