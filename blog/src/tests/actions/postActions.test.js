@@ -1,5 +1,3 @@
-import fetchMock from "fetch-mock";
-
 import * as actions from "../../actions/postActions";
 import * as types from "../../actions/actionTypes";
 
