@@ -4,7 +4,8 @@ import {
   FETCH_POSTS_FAILURE,
   GET_POST_BY_ID_SUCCESS,
   FETCH_CATEGORIES_SUCCESS,
-  UPDATE_POST
+  UPDATE_POST,
+  UPDATE_POST_FILTER
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -57,6 +58,13 @@ export default function(state = initialState, action) {
               : item
         )
       };
+
+    case UPDATE_POST_FILTER:
+      return {
+        ...state,
+        visibilityFilter: action.payload
+      };
+
     default:
       return state;
   }

@@ -4,7 +4,8 @@ import {
   API,
   GET_POST_BY_ID_SUCCESS,
   FETCH_CATEGORIES_SUCCESS,
-  UPDATE_POST
+  UPDATE_POST,
+  UPDATE_POST_FILTER
 } from "./actionTypes";
 
 export const setPosts = posts => ({
@@ -93,4 +94,9 @@ export const sendVote = ({ type, url, callback, label }) => dispatch => {
 export const updatePost = post => ({
   type: UPDATE_POST,
   payload: post
+});
+
+export const updatePostFilter = filter => ({
+  type: UPDATE_POST_FILTER,
+  payload: filter
 });
