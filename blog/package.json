@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "bootstrap": "4.1.0",
+    "chai": "^4.1.2",
     "font-awesome": "^4.7.0",
     "history": "^4.7.2",
     "jquery": "^3.3.1",
