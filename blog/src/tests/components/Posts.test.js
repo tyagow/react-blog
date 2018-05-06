@@ -1,13 +1,8 @@
 import React from "react";
-import { shallow, configure } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-import Enzyme from "enzyme";
+import { shallow } from "enzyme";
 
 import { Posts, mapStateToProps } from "../../components/posts/Posts";
 
-configure({ adapter: new Adapter() });
-
-Enzyme.configure({ adapter: new Adapter() });
 const setup = (posts = undefined, renderer = shallow) => {
   const { props, getCategories, getPosts } = getPostProps(posts);
   const enzymeWrapper = renderer(<Posts {...props} />);
@@ -42,11 +37,13 @@ describe("Posts", () => {
     });
   });
 });
+
 const getPostProps = posts => {
   const getPosts = jest.fn();
   const getCategories = jest.fn();
   const props = {
     posts: posts ? posts : [post],
+    categories: ["react"],
     getCategories: getCategories,
     getPosts: getPosts
   };

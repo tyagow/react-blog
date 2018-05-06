@@ -9,11 +9,10 @@ import NotFoundPage from "../../containers/NotFoundPage";
 import PostDetailPage from "../../containers/PostDetailPage";
 import PostForm from "../../components/posts/PostForm";
 
-Enzyme.configure({ adapter: new Adapter() });
-
 const initialState = {
   posts: {
-    items: []
+    items: [],
+    categories: []
   },
   comments: {
     items: []

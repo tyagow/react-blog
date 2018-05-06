@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
+import Link from "react-router-dom/Link";
+
 import PostLabel from "./PostLabel";
 import { getPosts, getCategories } from "../../actions/postActions";
-import Link from "react-router-dom/Link";
 import { makeGetVisiblePosts } from "../../selectors";
+import ButtonList from "../../components/ui/ButtonList";
 
 export class Posts extends Component {
   componentDidMount = () => {
@@ -27,6 +29,10 @@ export class Posts extends Component {
         <Link to="posts/create">
           <button className="btn btn-info posts-create">Create Post</button>
         </Link>
+        <ButtonList
+          labels={this.props.categories}
+          data-test="posts-categories-buttonlist"
+        />
         <br />
         {items}
       </div>
@@ -36,13 +42,15 @@ export class Posts extends Component {
 
 Posts.propTypes = {
   posts: PropTypes.array.isRequired,
-  newPost: PropTypes.object
+  newPost: PropTypes.object,
+  categories: PropTypes.array.isRequired
 };
 const makeMapStateToProps = () => {
   const getVisiblePosts = makeGetVisiblePosts();
   const mapStateToProps = (state, props) => ({
     posts: getVisiblePosts(state, props),
-    newPost: state.posts.item
+    newPost: state.posts.item,
+    categories: state.posts.categories
   });
   return mapStateToProps;
 };
