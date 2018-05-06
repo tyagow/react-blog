@@ -113,4 +113,19 @@ describe("PostReducer reducer", () => {
       });
     });
   });
+  describe("UPDATE_POST_FILTER", () => {
+    it("should update correctly visibilityFilter with given payload", () => {
+      let initialState = {
+        visibilityFilter: "all"
+      };
+      expect(
+        PostReducer(initialState, {
+          type: types.UPDATE_POST_FILTER,
+          payload: "react"
+        })
+      ).toEqual({
+        visibilityFilter: "react"
+      });
+    });
+  });
 });

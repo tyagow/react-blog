@@ -145,4 +145,13 @@ describe("actions", async () => {
       expect(actions.updatePost("test")).toEqual(expectedRsult);
     });
   });
+  describe("updatePostFilter", () => {
+    it("should dispatch correct action and payload", () => {
+      const expectedRsult = {
+        type: types.UPDATE_POST_FILTER,
+        payload: "all"
+      };
+      expect(actions.updatePostFilter("all")).toEqual(expectedRsult);
+    });
+  });
 });
