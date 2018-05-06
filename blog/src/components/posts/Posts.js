@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import PostLabel from "./PostLabel";
 import { getPosts, getCategories } from "../../actions/postActions";
 import Link from "react-router-dom/Link";
+import { makeGetVisiblePosts } from "../../selectors";
 
 export class Posts extends Component {
   componentDidMount = () => {
@@ -37,10 +38,16 @@ Posts.propTypes = {
   posts: PropTypes.array.isRequired,
   newPost: PropTypes.object
 };
-const mapStateToProps = state => ({
-  posts: state.posts.items,
-  newPost: state.posts.item
-});
+const makeMapStateToProps = () => {
+  const getVisiblePosts = makeGetVisiblePosts();
+  const mapStateToProps = (state, props) => ({
+    posts: getVisiblePosts(state, props),
+    newPost: state.posts.item
+  });
+  return mapStateToProps;
+};
+
+export const mapStateToProps = makeMapStateToProps();
 
 export const getPostLabelList = posts =>
   posts.map(post => <PostLabel key={post.id} post={post} />);

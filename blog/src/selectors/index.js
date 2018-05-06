@@ -1,8 +1,8 @@
 import { createSelector } from "reselect";
 
-export const getVisibilityFilter = (state, props) =>
-  state.posts.visibilityFilter;
-
+export const getVisibilityFilter = (state, props) => {
+  return state.posts.visibilityFilter;
+};
 export const getPosts = (state, props) => state.posts.items;
 
 export const makeGetVisiblePosts = () => {
@@ -10,13 +10,13 @@ export const makeGetVisiblePosts = () => {
     [getVisibilityFilter, getPosts],
     (visibilityFilter, posts) => {
       switch (visibilityFilter) {
-        case "ALL":
+        case "all":
           return posts;
         default:
-          return posts;
+          return posts.filter(post => post.category === visibilityFilter);
       }
     }
   );
 };
 
-export default makeGetVisibleTodos;
+export default makeGetVisiblePosts;

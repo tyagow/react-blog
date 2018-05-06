@@ -3,7 +3,7 @@ import { shallow, configure } from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import Enzyme from "enzyme";
 
-import { Posts } from "../../components/posts/Posts";
+import { Posts, mapStateToProps } from "../../components/posts/Posts";
 
 configure({ adapter: new Adapter() });
 
@@ -33,6 +33,13 @@ describe("Posts", () => {
   it("should have link to posts/create", () => {
     const { enzymeWrapper } = setup([post]);
     expect(enzymeWrapper.find(".posts-create")).toHaveLength(1);
+  });
+  describe("mapStateToProps", () => {
+    it("should map correctly given state to props", () => {
+      const state = { posts: { items: [], item: {} } };
+      const props = {};
+      expect(mapStateToProps(state, props)).toEqual({ posts: [], newPost: {} });
+    });
   });
 });
 const getPostProps = posts => {

@@ -8,7 +8,8 @@ describe("PostReducer reducer", () => {
       items: [],
       item: {},
       postDetail: {},
-      categories: []
+      categories: [],
+      visibilityFilter: "all"
     });
   });
 

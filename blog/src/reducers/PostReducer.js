@@ -12,7 +12,8 @@ const initialState = {
   item: {},
   postDetail: {},
   categories: [],
-  fetching: false
+  fetching: false,
+  visibilityFilter: "all"
 };
 
 export default function(state = initialState, action) {
