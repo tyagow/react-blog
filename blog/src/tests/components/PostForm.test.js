@@ -1,13 +1,8 @@
 import React from "react";
-import { shallow, configure } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-import Enzyme from "enzyme";
+import { shallow } from "enzyme";
 
 import { PostForm } from "../../components/posts/PostForm";
 
-configure({ adapter: new Adapter() });
-
-Enzyme.configure({ adapter: new Adapter() });
 const setup = (renderer = shallow) => {
   const createPost = jest.fn();
   let history = {
