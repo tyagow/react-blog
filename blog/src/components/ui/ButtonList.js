@@ -15,7 +15,7 @@ export class ButtonList extends Component {
         <div className="btn-group">
           <button
             data-test="all"
-            onChange={e => this.onClick("all")}
+            onClick={e => this.onClick("all")}
             type="button"
             className="btn btn-primary"
             key="posts-cetegories-btn-filter-all"
@@ -41,7 +41,8 @@ export class ButtonList extends Component {
 }
 
 ButtonList.propTypes = {
-  labels: PropTypes.array.isRequired
+  labels: PropTypes.array.isRequired,
+  callback: PropTypes.func.isRequired
 };
 
 export default ButtonList;
