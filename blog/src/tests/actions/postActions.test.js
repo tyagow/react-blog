@@ -147,11 +147,15 @@ describe("actions", async () => {
   });
   describe("updatePostFilter", () => {
     it("should dispatch correct action and payload", () => {
-      const expectedRsult = {
-        type: types.UPDATE_POST_FILTER,
-        payload: "all"
-      };
-      expect(actions.updatePostFilter("all")).toEqual(expectedRsult);
+      const expectedRsult = [
+        {
+          type: types.UPDATE_POST_FILTER,
+          payload: "all"
+        }
+      ];
+      const store = global.mockStore();
+      actions.updatePostFilter("all")(store.dispatch);
+      expect(store.getActions()).toEqual(expectedRsult);
     });
   });
 });

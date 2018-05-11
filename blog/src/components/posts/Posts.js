@@ -4,7 +4,11 @@ import { connect } from "react-redux";
 import Link from "react-router-dom/Link";
 
 import PostLabel from "./PostLabel";
-import { getPosts, getCategories } from "../../actions/postActions";
+import {
+  getPosts,
+  getCategories,
+  updatePostFilter
+} from "../../actions/postActions";
 import { makeGetVisiblePosts } from "../../selectors";
 import ButtonList from "../../components/ui/ButtonList";
 
@@ -15,7 +19,7 @@ export class Posts extends Component {
   };
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.newPost) {
+    if (nextProps.newPost && nextProps.newPost.id) {
       this.props.posts.unshift(nextProps.newPost);
     }
   }
@@ -32,6 +36,7 @@ export class Posts extends Component {
         <ButtonList
           labels={this.props.categories}
           data-test="posts-categories-buttonlist"
+          callback={this.props.updatePostFilter}
         />
         <br />
         {items}
@@ -60,4 +65,8 @@ export const mapStateToProps = makeMapStateToProps();
 export const getPostLabelList = posts =>
   posts.map(post => <PostLabel key={post.id} post={post} />);
 
-export default connect(mapStateToProps, { getPosts, getCategories })(Posts);
+export default connect(mapStateToProps, {
+  getPosts,
+  getCategories,
+  updatePostFilter
+})(Posts);

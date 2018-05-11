@@ -96,7 +96,9 @@ export const updatePost = post => ({
   payload: post
 });
 
-export const updatePostFilter = filter => ({
-  type: UPDATE_POST_FILTER,
-  payload: filter
-});
+export const updatePostFilter = filter => dispatch => {
+  dispatch({
+    type: UPDATE_POST_FILTER,
+    payload: filter
+  });
+};
