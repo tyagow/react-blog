@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import { getPostById } from "../../actions/postActions";
 
 export class PostDetail extends Component {
+  state = {
+    editing: false
+  };
   componentDidMount() {
     this.props.getPostById(this.props.postId);
   }
@@ -16,13 +19,7 @@ export class PostDetail extends Component {
           <div className="container">
             <div className="row">
               <div className="col-lg-8">
-                <h1>
-                  <Link
-                    to={`/${this.props.post.category}/${this.props.post.id}`}
-                  >
-                    {this.props.post.title}
-                  </Link>
-                </h1>
+                <h1>{this.props.post.title}</h1>
                 <p className="lead">
                   <i className="fa fa-user" /> by{" "}
                   <Link
