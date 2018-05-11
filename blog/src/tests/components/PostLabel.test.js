@@ -5,9 +5,6 @@ import Enzyme from "enzyme";
 
 import { PostLabel } from "../../components/posts/PostLabel";
 
-configure({ adapter: new Adapter() });
-
-Enzyme.configure({ adapter: new Adapter() });
 function setup() {
   const props = {
     post: {

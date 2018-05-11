@@ -1,13 +1,6 @@
 import React from "react";
-import { shallow, configure } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-import Enzyme from "enzyme";
-
-import { Header, mapStateToProps } from "../../components/ui/Header";
-
-configure({ adapter: new Adapter() });
-
-Enzyme.configure({ adapter: new Adapter() });
+import { shallow } from "enzyme";
+import { Header } from "../../components/ui/Header";
 function setup() {
   const enzymeWrapper = shallow(<Header />);
   return {
