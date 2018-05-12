@@ -12,6 +12,9 @@ export class PostDetail extends Component {
   componentDidMount() {
     this.props.getPostById(this.props.postId);
   }
+  onClick = () => {
+    this.setState({ editing: !this.state.editing });
+  };
   render() {
     return (
       <div>
@@ -19,23 +22,26 @@ export class PostDetail extends Component {
           <div className="container">
             <div className="row">
               <div className="col-lg-8">
-                <h1>{this.props.post.title}</h1>
+                <h1 data-test="postdetail-title">{this.props.post.title}</h1>
                 <p className="lead">
-                  <i className="fa fa-user" /> by{" "}
-                  <Link
-                    to={`/${this.props.post.category}/${this.props.post.id}`}
+                  <i className="fa fa-user" /> by {this.props.post.author}{" "}
+                  <button
+                    data-test="postdetail-btn-editable"
+                    className="btn btn-info"
+                    onClick={() => {
+                      this.onClick();
+                    }}
                   >
-                    {this.props.post.author}
-                  </Link>
+                    Edit
+                  </button>
                 </p>
                 <hr />
                 <p>
-                  <i className="fa fa-calendar" /> Posted on August 24, 2014 at
-                  9:00 PM
+                  <i className="fa fa-calendar" /> Posted on{" "}
+                  {this.props.post.timestamp}
                 </p>
                 <p>
-                  <i className="fa fa-tags" />
-                  Category:{" "}
+                  <i className="fa fa-tags" /> Category:{" "}
                   <Link to={`/${this.props.post.category}`}>
                     <span className="badge badge-info">
                       {this.props.post.category}
