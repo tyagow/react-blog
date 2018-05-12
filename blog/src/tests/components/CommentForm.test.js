@@ -1,13 +1,8 @@
 import React from "react";
-import { shallow, configure } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-import Enzyme from "enzyme";
+import { shallow } from "enzyme";
 
 import { CommentForm } from "../../components/comments/CommentForm";
 
-configure({ adapter: new Adapter() });
-
-Enzyme.configure({ adapter: new Adapter() });
 const setup = (renderer = shallow) => {
   const createComment = jest.fn();
   const props = {
