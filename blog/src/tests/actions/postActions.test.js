@@ -145,6 +145,37 @@ describe("actions", async () => {
       expect(actions.updatePost("test")).toEqual(expectedRsult);
     });
   });
+  describe("updatePostDetail", () => {
+    it("should dispatch API call with expected payload", () => {
+      const store = global.mockStore();
+      let postOption = {
+        title: "test",
+        body: "body test"
+      };
+      const expectedAction = [
+        {
+          type: types.API,
+          payload: {
+            label: "postdetail_update",
+            success: actions.setPost,
+            url: "http://127.0.0.1:3001/posts/1",
+            method: "put",
+            body: JSON.stringify(postOption)
+          }
+        }
+      ];
+
+      let post = {
+        id: "1",
+        title: "test",
+        body: "body test"
+      };
+
+      actions.updatePostDetail(post)(store.dispatch);
+      expect(store.getActions()).toEqual(expectedAction);
+    });
+  });
+
   describe("updatePostFilter", () => {
     it("should dispatch correct action and payload", () => {
       const expectedRsult = [

@@ -102,3 +102,16 @@ export const updatePostFilter = filter => dispatch => {
     payload: filter
   });
 };
+
+export const updatePostDetail = post => dispatch => {
+  dispatch({
+    type: API,
+    payload: {
+      url: "http://127.0.0.1:3001/posts/" + post.id,
+      success: setPost,
+      label: "postdetail_update",
+      method: "put",
+      body: JSON.stringify({ title: post.title, body: post.body })
+    }
+  });
+};
