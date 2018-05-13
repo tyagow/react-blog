@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { getPostById } from "../../actions/postActions";
+import { getPostById, updatePostDetail } from "../../actions/postActions";
 
 export class PostDetail extends Component {
   state = {
@@ -24,6 +24,15 @@ export class PostDetail extends Component {
   };
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
+  };
+  updatePost = () => {
+    this.setState({ editing: false });
+    const post = {
+      id: this.state.id,
+      title: this.state.title,
+      body: this.state.body
+    };
+    this.props.updatePostDetail(post);
   };
   render() {
     const { editing, title, author, timestamp, body } = this.state;
@@ -49,17 +58,32 @@ export class PostDetail extends Component {
                   )}
                 </h1>
                 <p className="lead">
-                  <i className="fa fa-user" /> by {author}{" "}
-                  <button
-                    data-test="postdetail-btn-editable"
-                    className="btn btn-info"
-                    onClick={() => {
-                      this.onClick();
-                    }}
-                  >
-                    Edit
-                  </button>
+                  {editing ? (
+                    <button
+                      data-test="postdetail-btn-update"
+                      className="btn btn-primary"
+                      onClick={() => {
+                        this.updatePost();
+                      }}
+                    >
+                      Update
+                    </button>
+                  ) : (
+                    <button
+                      data-test="postdetail-btn-editable"
+                      className="btn btn-info"
+                      onClick={() => {
+                        this.onClick();
+                      }}
+                    >
+                      Edit
+                    </button>
+                  )}
                 </p>
+                <p>
+                  <i className="fa fa-user" /> by {author}{" "}
+                </p>
+
                 <hr />
                 <p>
                   <i className="fa fa-calendar" /> Posted on {timestamp}
@@ -105,4 +129,6 @@ const mapStateToProps = state => ({
   post: state.posts.postDetail
 });
 
-export default connect(mapStateToProps, { getPostById })(PostDetail);
+export default connect(mapStateToProps, { getPostById, updatePostDetail })(
+  PostDetail
+);

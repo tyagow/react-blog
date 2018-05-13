@@ -11,7 +11,8 @@ function setup(editing = false) {
       body: "Post bodyyyyy",
       category: "react",
       title: "Test title"
-    }
+    },
+    updatePostDetail: jest.fn()
   };
   const enzymeWrapper = shallow(<PostDetail {...props} />);
   enzymeWrapper.setState({ editing });
@@ -48,10 +49,19 @@ describe("PostDetail", () => {
   });
   describe("Update post button", () => {
     it("should have an update button if state.editing = true", () => {
-      const { enzymeWrapper } = setup();
+      const { enzymeWrapper } = setup(true);
       expect(
         enzymeWrapper.find("[data-test='postdetail-btn-update']").length
       ).toEqual(1);
+    });
+    it("should call props.updatePostDetail function", () => {
+      const { enzymeWrapper, props } = setup(true);
+      const updateButton = enzymeWrapper.find(
+        "[data-test='postdetail-btn-update']"
+      );
+      updateButton.simulate("click");
+      expect(props.updatePostDetail).toBeCalled();
+      expect(enzymeWrapper.state().editing).toEqual(false);
     });
   });
 
