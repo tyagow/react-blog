@@ -12,19 +12,44 @@ export class PostDetail extends Component {
   componentDidMount() {
     this.props.getPostById(this.props.postId);
   }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.post) {
+      return { ...nextProps.post };
+    }
+    return null;
+  }
   onClick = () => {
     this.setState({ editing: !this.state.editing });
   };
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
   render() {
+    const { editing, title, author, timestamp, body } = this.state;
     return (
       <div>
-        {this.props.post && (
+        {title && (
           <div className="container">
             <div className="row">
               <div className="col-lg-8">
-                <h1 data-test="postdetail-title">{this.props.post.title}</h1>
+                <h1>
+                  {editing ? (
+                    <div>
+                      <input
+                        data-test="postdetail-title-editable"
+                        type="text"
+                        name="title"
+                        onChange={this.onChange}
+                        value={title}
+                      />
+                    </div>
+                  ) : (
+                    <span data-test="postdetail-title">{title}</span>
+                  )}
+                </h1>
                 <p className="lead">
-                  <i className="fa fa-user" /> by {this.props.post.author}{" "}
+                  <i className="fa fa-user" /> by {author}{" "}
                   <button
                     data-test="postdetail-btn-editable"
                     className="btn btn-info"
@@ -37,20 +62,31 @@ export class PostDetail extends Component {
                 </p>
                 <hr />
                 <p>
-                  <i className="fa fa-calendar" /> Posted on{" "}
-                  {this.props.post.timestamp}
+                  <i className="fa fa-calendar" /> Posted on {timestamp}
                 </p>
                 <p>
                   <i className="fa fa-tags" /> Category:{" "}
-                  <Link to={`/${this.props.post.category}`}>
+                  <Link to={`/${this.state.category}`}>
                     <span className="badge badge-info">
-                      {this.props.post.category}
+                      {this.state.category}
                     </span>
                   </Link>
                 </p>
 
                 <hr />
-                <p className="lead">{this.props.post.body}</p>
+                <p className="lead">
+                  {editing ? (
+                    <input
+                      data-test="postdetail-body-editable"
+                      type="text"
+                      name="body"
+                      onChange={this.onChange}
+                      value={body}
+                    />
+                  ) : (
+                    <span data-test="postdetail-body">{body}</span>
+                  )}
+                </p>
                 <br />
               </div>
             </div>
