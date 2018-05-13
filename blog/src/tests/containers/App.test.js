@@ -1,7 +1,6 @@
 import React from "react";
 import * as Enzyme from "enzyme";
 import { MemoryRouter } from "react-router";
-import Adapter from "enzyme-adapter-react-16";
 import { Provider } from "react-redux";
 import App from "../../containers/App";
 import HomePage from "../../containers/HomePage";
