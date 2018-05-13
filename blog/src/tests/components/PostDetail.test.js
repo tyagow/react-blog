@@ -61,7 +61,9 @@ describe("PostDetail", () => {
       );
       updateButton.simulate("click");
       expect(props.updatePostDetail).toBeCalled();
-      expect(enzymeWrapper.state().editing).toEqual(false);
+      it("state should change to editing = false ", () => {
+        expect(enzymeWrapper.state().editing).toEqual(false);
+      });
     });
   });
 
