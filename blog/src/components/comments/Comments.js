@@ -14,20 +14,23 @@ export class Comments extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="col-8">
         {this.props.comments && (
-          <div>
+          <div className="">
             <h3>Comments</h3>
             <hr />
             {this.props.comments.map(comment => (
-              <div key={comment.id} className="jumbotron jumbotron-fluid">
-                <div className="container">
+              <div key={comment.id} className="jumbotron  bg-light p-4 ">
+                <div className="">
                   <h4 className="comment-author">{comment.author}</h4>
                   <p className="comment-body">{comment.body}</p>
                   <div className="flex-row d-flex">
                     <div className="p-2 comment-score">
-                      Votes:{" "}
-                      <span className="success">{comment.voteScore}</span>
+                      <i
+                        className="fa fa-heart-o  align-middle"
+                        style={{ "font-size": "24px" }}
+                      />{" "}
+                      <span className="">{comment.voteScore}</span>
                     </div>
                     <div className="p-2">
                       <VoteForm
@@ -52,7 +55,7 @@ export class Comments extends Component {
               </div>
             ))}
           </div>
-        )});
+        )}
       </div>
     );
   }

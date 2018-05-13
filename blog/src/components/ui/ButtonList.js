@@ -17,7 +17,7 @@ export class ButtonList extends Component {
             data-test="all"
             onClick={e => this.onClick("all")}
             type="button"
-            className="btn btn-primary"
+            className="btn btn-outline-info btn-sm"
             key="posts-cetegories-btn-filter-all"
           >
             all
@@ -27,7 +27,7 @@ export class ButtonList extends Component {
               <button
                 data-test={label}
                 type="button"
-                className="btn btn-primary"
+                className="btn btn-outline-info btn-sm"
                 onClick={e => this.onClick(label)}
                 key={"posts-cetegories-btn-filter" + label}
               >

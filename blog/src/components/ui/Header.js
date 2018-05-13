@@ -5,7 +5,7 @@ import connect from "react-redux/lib/connect/connect";
 export const Header = props => {
   return (
     <div>
-      <nav className="navbar navbar-expand-sm bg-light navbar-light">
+      <nav className="navbar navbar-expand-sm bg-info navbar-dark">
         <ul className="navbar-nav">
           <li className="navbar-brand">
             <span className="">... Udacity Readble</span>

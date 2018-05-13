@@ -37,83 +37,74 @@ export class PostDetail extends Component {
   render() {
     const { editing, title, author, timestamp, body } = this.state;
     return (
-      <div>
+      <div className="col-12">
         {title && (
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-8">
-                <h1>
-                  {editing ? (
-                    <div>
-                      <input
-                        data-test="postdetail-title-editable"
-                        type="text"
-                        name="title"
-                        onChange={this.onChange}
-                        value={title}
-                      />
-                    </div>
-                  ) : (
-                    <span data-test="postdetail-title">{title}</span>
-                  )}
-                </h1>
-                <p className="lead">
-                  {editing ? (
-                    <button
-                      data-test="postdetail-btn-update"
-                      className="btn btn-primary"
-                      onClick={() => {
-                        this.updatePost();
-                      }}
-                    >
-                      Update
-                    </button>
-                  ) : (
-                    <button
-                      data-test="postdetail-btn-editable"
-                      className="btn btn-info"
-                      onClick={() => {
-                        this.onClick();
-                      }}
-                    >
-                      Edit
-                    </button>
-                  )}
-                </p>
-                <p>
-                  <i className="fa fa-user" /> by {author}{" "}
-                </p>
+          <div>
+            <h1 className="mt-4">
+              {editing ? (
+                <input
+                  data-test="postdetail-title-editable"
+                  type="text"
+                  name="title"
+                  onChange={this.onChange}
+                  value={title}
+                />
+              ) : (
+                <span data-test="postdetail-title">{title}</span>
+              )}
+              {editing ? (
+                <button
+                  data-test="postdetail-btn-update"
+                  className="btn btn-info ml-4 btn-sm"
+                  onClick={() => {
+                    this.updatePost();
+                  }}
+                >
+                  Update
+                </button>
+              ) : (
+                <button
+                  data-test="postdetail-btn-editable"
+                  className="btn btn-info ml-4  btn-sm"
+                  onClick={() => {
+                    this.onClick();
+                  }}
+                >
+                  Edit
+                </button>
+              )}
+            </h1>
+            <p className="lead" />
+            <p>
+              <i className="fa fa-user" /> by {author}{" "}
+            </p>
 
-                <hr />
-                <p>
-                  <i className="fa fa-calendar" /> Posted on {timestamp}
-                </p>
-                <p>
-                  <i className="fa fa-tags" /> Category:{" "}
-                  <Link to={`/${this.state.category}`}>
-                    <span className="badge badge-info">
-                      {this.state.category}
-                    </span>
-                  </Link>
-                </p>
+            <hr />
+            <p>
+              <i className="fa fa-calendar" /> Posted on {timestamp}
+            </p>
+            <p>
+              <i className="fa fa-tags" /> Category:{" "}
+              <Link to={`/${this.state.category}`}>
+                <span className="badge badge-info">{this.state.category}</span>
+              </Link>
+            </p>
 
-                <hr />
-                <p className="lead">
-                  {editing ? (
-                    <input
-                      data-test="postdetail-body-editable"
-                      type="text"
-                      name="body"
-                      onChange={this.onChange}
-                      value={body}
-                    />
-                  ) : (
-                    <span data-test="postdetail-body">{body}</span>
-                  )}
-                </p>
-                <br />
-              </div>
-            </div>
+            <hr />
+            <p className="lead">
+              {editing ? (
+                <input
+                  data-test="postdetail-body-editable"
+                  type="text"
+                  name="body"
+                  onChange={this.onChange}
+                  value={body}
+                />
+              ) : (
+                <span data-test="postdetail-body">{body}</span>
+              )}
+            </p>
+            <br />
           </div>
         )}
       </div>

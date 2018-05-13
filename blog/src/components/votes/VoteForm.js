@@ -24,7 +24,10 @@ export class VoteForm extends Component {
   render() {
     return (
       <div>
-        <button className="vote-button" onClick={this.onSubmitVote}>
+        <button
+          className="btn btn-outline-info btn-sm vote-button"
+          onClick={this.onSubmitVote}
+        >
           <i className={this.props.className} />
         </button>
       </div>

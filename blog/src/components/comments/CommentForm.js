@@ -34,7 +34,7 @@ export class CommentForm extends Component {
 
   render() {
     return (
-      <div>
+      <div className="col-8">
         <form onSubmit={this.onSubmit} className="commentbox-form">
           <div className="form-group">
             <label htmlFor="comment">Comment</label>

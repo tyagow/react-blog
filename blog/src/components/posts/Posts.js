@@ -27,12 +27,14 @@ export class Posts extends Component {
     const items = getPostLabelList(this.props.posts);
     return (
       <div>
-        <h1>Posts</h1>
+        <h1 className="mt-4">
+          <span>Posts</span>
+          <Link className="float-right" to="posts/create">
+            <button className="btn btn-info posts-create">Create Post</button>
+          </Link>
+        </h1>
         <hr />
 
-        <Link to="posts/create">
-          <button className="btn btn-info posts-create">Create Post</button>
-        </Link>
         <ButtonList
           labels={this.props.categories}
           data-test="posts-categories-buttonlist"

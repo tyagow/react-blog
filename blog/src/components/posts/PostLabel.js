@@ -8,17 +8,15 @@ export const PostLabel = props => {
   return (
     <div key={props.post.id}>
       <Link to={`/${props.post.category}/${props.post.id}`}>
-        <h3 className="postlabel-title">{props.post.title}</h3>
+        <h3 className="postlabel-title text-info">{props.post.title}</h3>
       </Link>
 
       <div className="d-flex flex-row">
         <div className="p-2">
-          <Link to={`/${props.post.category}`}>
-            <span className="badge badge-info">{props.post.category}</span>
-          </Link>
-        </div>
-        <div className="p-2">
-          <label htmlFor="postlabel-author">Author: </label>{" "}
+          <label htmlFor="postlabel-author">
+            {" "}
+            <i className="fa fa-user-circle" />
+          </label>{" "}
           <strong>
             {" "}
             <span id="postlabel-author" className="postlabel-author">
@@ -26,10 +24,21 @@ export const PostLabel = props => {
             </span>
           </strong>
         </div>
+        <div className="p-2">
+          <Link to={`/${props.post.category}`}>
+            <span className="badge badge-info">{props.post.category}</span>
+          </Link>
+        </div>
       </div>
       <div className="flex-row d-flex">
         <div className="p-2">
-          Votes: <span className="success">{props.post.voteScore}</span>
+          <span className="success align-middle">
+            <i
+              className="fa fa-heart-o  align-middle"
+              style={{ "font-size": "24px" }}
+            />{" "}
+            <strong> {props.post.voteScore}</strong>
+          </span>
         </div>
         <div className="p-2">
           <VoteForm
