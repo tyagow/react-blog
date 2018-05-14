@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import Timestamp from "react-timestamp";
 
 import { getPostById, updatePostDetail } from "../../actions/postActions";
 
@@ -81,7 +82,8 @@ export class PostDetail extends Component {
 
             <hr />
             <p>
-              <i className="fa fa-calendar" /> Posted on {timestamp}
+              <i className="fa fa-calendar" />{" "}
+              <Timestamp time={timestamp} twentyFourHour />
             </p>
             <p>
               <i className="fa fa-tags" /> Category:{" "}
