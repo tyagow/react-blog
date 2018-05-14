@@ -20,14 +20,7 @@ export class Posts extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.newPost && nextProps.newPost.id) {
-      if (this.props.posts.includes(nextProps.newPost)) {
-        this.props.posts.map(post => {
-          if (post.id === nextProps.newPost.id) {
-            return nextProps.newPost;
-          }
-          return post;
-        });
-      } else {
+      if (!this.props.posts.find(post => nextProps.newPost.id === post.id)) {
         this.props.posts.unshift(nextProps.newPost);
       }
     }
