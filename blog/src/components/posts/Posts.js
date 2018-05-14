@@ -18,13 +18,13 @@ export class Posts extends Component {
     this.props.getPosts();
   };
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.newPost && nextProps.newPost.id) {
-      if (!this.props.posts.find(post => nextProps.newPost.id === post.id)) {
-        this.props.posts.unshift(nextProps.newPost);
-      }
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.newPost && nextProps.newPost.id) {
+  //     if (!this.props.posts.find(post => nextProps.newPost.id === post.id)) {
+  //       this.props.posts.unshift(nextProps.newPost);
+  //     }
+  //   }
+  // }
   render() {
     const items = getPostLabelList(this.props.posts);
     return (
