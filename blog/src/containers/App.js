@@ -11,13 +11,15 @@ class App extends Component {
     return (
       <div>
         <Switch>
-          <Route exact path="/" render={() => <HomePage />} />
+          <Route exact path="/" render={({ match }) => <HomePage />} />
           <Route exact path="/posts/create" render={() => <PostForm />} />
           <Route
             exact
             path="/:category/:postId"
             render={({ match }) => <PostDetailPage match={match} />}
           />
+          <Route exact path="/:category/" render={() => "teste"} />
+
           <Route component={NotFoundPage} />
         </Switch>
       </div>

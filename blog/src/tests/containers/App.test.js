@@ -20,7 +20,7 @@ const initialState = {
 describe("App component", () => {
   test("invalid path should redirect to 404", () => {
     const wrapper = Enzyme.mount(
-      <MemoryRouter initialEntries={["/random"]}>
+      <MemoryRouter initialEntries={["/random/deep/todeep"]}>
         <App />
       </MemoryRouter>
     );
