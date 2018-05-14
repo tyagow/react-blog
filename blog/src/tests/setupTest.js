@@ -1,3 +1,4 @@
+import raf from "./shim.js";
 import { shallow, render, mount, configure } from "enzyme";
 import thunk from "redux-thunk";
 import configureStore from "redux-mock-store";
