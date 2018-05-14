@@ -48,6 +48,7 @@
     "prettier": "1.8.0",
     "pretty-quick": "^1.4.1",
     "react-scripts": "^1.1.1",
+    "react-timestamp": "^4.4.0",
     "redux-mock-store": "^1.5.1",
     "redux-observable": "^0.18.0",
     "redux-tdd": "^1.1.0"
