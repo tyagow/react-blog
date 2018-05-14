@@ -9,6 +9,7 @@ function setup(editing = false) {
       id: 1,
       author: "Mike",
       body: "Post bodyyyyy",
+      timestamp: "1526300729",
       category: "react",
       title: "Test title"
     },
