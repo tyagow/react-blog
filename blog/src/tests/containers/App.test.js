@@ -4,6 +4,7 @@ import { MemoryRouter } from "react-router";
 import { Provider } from "react-redux";
 import App from "../../containers/App";
 import HomePage from "../../containers/HomePage";
+import CategoryPage from "../../containers/CategoryPage";
 import NotFoundPage from "../../containers/NotFoundPage";
 import PostDetailPage from "../../containers/PostDetailPage";
 import PostForm from "../../components/posts/PostForm";
@@ -70,6 +71,21 @@ describe("App component", () => {
       </MemoryRouter>
     );
     expect(wrapper.find(PostForm)).toHaveLength(1);
+    expect(wrapper.find(NotFoundPage)).toHaveLength(0);
+  });
+  test("valid path /react/ should render CategoryPage", () => {
+    const store = global.mockStore(initialState);
+
+    const wrapper = Enzyme.mount(
+      <MemoryRouter initialEntries={["/react/"]}>
+        <Provider store={store}>
+          <div>
+            <App />
+          </div>
+        </Provider>
+      </MemoryRouter>
+    );
+    expect(wrapper.find(CategoryPage)).toHaveLength(1);
     expect(wrapper.find(NotFoundPage)).toHaveLength(0);
   });
   it("should match App shallow snapshot", () => {
