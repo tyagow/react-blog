@@ -58,7 +58,7 @@ export class CommentForm extends Component {
               onChange={this.onChange}
             />
           </div>
-          <div className="form-group">
+          <div className="form-group col-6">
             <button
               type="submit"
               className="commentbox-button form-control btn btn-info"
