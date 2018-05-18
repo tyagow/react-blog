@@ -23,14 +23,15 @@ export class Comments extends Component {
               <div key={comment.id} className="jumbotron  bg-light p-4 ">
                 <div className="">
                   <h4 className="comment-author">{comment.author}</h4>
+                  <hr />
                   <p className="comment-body">{comment.body}</p>
                   <div className="flex-row d-flex">
                     <div className="p-2 comment-score">
                       <i
-                        className="fa fa-heart-o  align-middle"
+                        className="fa fa-heart align-middle text-danger"
                         style={{ "font-size": "24px" }}
                       />{" "}
-                      <span className="">{comment.voteScore}</span>
+                      <strong className="">{comment.voteScore}</strong>
                     </div>
                     <div className="p-2">
                       <VoteForm
