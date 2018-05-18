@@ -9,9 +9,9 @@ export class CommentForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      comment: "",
+      body: "",
       author: "",
-      parent_id: props.parent_id
+      parentId: props.parentId
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -21,7 +21,7 @@ export class CommentForm extends Component {
     e.preventDefault();
     const comment = {
       id: guid(),
-      body: this.state.comment,
+      body: this.state.body,
       author: this.state.author,
       timestamp: Date.now(),
       parentId: this.state.parent_id
@@ -40,12 +40,15 @@ export class CommentForm extends Component {
             <label htmlFor="comment">Comment</label>
             <br />
             <textarea
-              id="comment"
+              id="body"
               className="commentbox-TextInput form-control"
               type="text"
-              name="comment"
+              value={this.state.body}
+              name="body"
               onChange={this.onChange}
-            />
+            >
+              {this.state.body}
+            </textarea>
           </div>
           <div className="form-group">
             <label htmlFor="author">Author</label>
@@ -54,6 +57,7 @@ export class CommentForm extends Component {
               className="commentbox-author form-control"
               id="author"
               type="text"
+              value={this.state.author}
               name="author"
               onChange={this.onChange}
             />
