@@ -22,15 +22,9 @@ describe("PostDetailPage", () => {
       shallow(<PostDetailPage match={{ params: { postId: "1" } }} />)
     ).toMatchSnapshot();
   });
-  test("should render CommentForm Component, checking by className", () => {
+  test("should render CommentForm Component, checking by shallow render", () => {
     expect(
-      mount(
-        <Provider store={global.mockStore(initialState)}>
-          <MemoryRouter>
-            <PostDetailPage match={{ params: { postId: "1" } }} />
-          </MemoryRouter>
-        </Provider>
-      ).find(".commentbox-form").length
-    ).toBe(1);
+      shallow(<PostDetailPage match={{ params: { postId: "1" } }} />)
+    ).toMatchSnapshot();
   });
 });

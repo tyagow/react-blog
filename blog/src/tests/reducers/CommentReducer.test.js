@@ -1,6 +1,13 @@
 import * as types from "../../actions/actionTypes";
 import CommentReducer from "../../reducers/CommentReducer";
-
+const initialState = {
+  items: [
+    {
+      id: "2",
+      voteScore: 1
+    }
+  ]
+};
 describe("CommentReducer reducer", () => {
   it("should handle initial state", () => {
     expect(CommentReducer(undefined, {})).toEqual({
@@ -22,29 +29,41 @@ describe("CommentReducer reducer", () => {
     });
   });
   describe("UPDATE_COMMENT", () => {
-    let initialState = {
-      items: [
-        {
-          id: "894tuq4ut84ut8v4t8wun89g",
-          voteScore: 1
-        }
-      ]
-    };
     it("should update comment", () => {
       expect(
         CommentReducer(initialState, {
           type: types.UPDATE_COMMENT,
           payload: {
-            id: "894tuq4ut84ut8v4t8wun89g",
+            id: "2",
             voteScore: 2
           }
         })
       ).toEqual({
         items: [
           {
-            id: "894tuq4ut84ut8v4t8wun89g",
+            id: "2",
             voteScore: 2
           }
+        ]
+      });
+    });
+  });
+  describe("NEW_COMMENT", () => {
+    it("should add new comment in items", () => {
+      expect(
+        CommentReducer(initialState, {
+          type: types.NEW_COMMENT,
+          payload: {
+            id: "3"
+          }
+        })
+      ).toEqual({
+        items: [
+          {
+            id: "2",
+            voteScore: 1
+          },
+          { id: "3" }
         ]
       });
     });

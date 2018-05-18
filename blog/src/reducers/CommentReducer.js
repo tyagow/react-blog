@@ -1,4 +1,8 @@
-import { FETCH_COMMENTS_SUCCESS, UPDATE_COMMENT } from "../actions/actionTypes";
+import {
+  FETCH_COMMENTS_SUCCESS,
+  UPDATE_COMMENT,
+  NEW_COMMENT
+} from "../actions/actionTypes";
 
 export const initialState = {
   fetching: false,
@@ -23,7 +27,11 @@ export default function(state = initialState, action) {
               : item
         )
       };
-
+    case NEW_COMMENT:
+      return {
+        ...state,
+        items: [...state.items, action.payload]
+      };
     default:
       return state;
   }
