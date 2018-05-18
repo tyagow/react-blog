@@ -13,21 +13,15 @@ export class ButtonList extends Component {
     return (
       <div className="">
         <div className="btn-group">
-          <button
-            data-test="all"
-            onClick={e => this.onClick("all")}
-            type="button"
-            className="btn btn-outline-info btn-sm"
-            key="posts-cetegories-btn-filter-all"
-          >
-            all
-          </button>
           {this.props.labels &&
             this.props.labels.map(label => (
               <button
                 data-test={label}
                 type="button"
-                className="btn btn-outline-info btn-sm"
+                className={
+                  "btn btn-outline-info btn-sm" +
+                  (this.props.active === label ? " active" : "")
+                }
                 onClick={e => this.onClick(label)}
                 key={"posts-cetegories-btn-filter" + label}
               >
@@ -42,7 +36,8 @@ export class ButtonList extends Component {
 
 ButtonList.propTypes = {
   labels: PropTypes.array.isRequired,
-  callback: PropTypes.func.isRequired
+  callback: PropTypes.func.isRequired,
+  active: PropTypes.string
 };
 
 export default ButtonList;
