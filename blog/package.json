@@ -26,9 +26,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom --setupFiles='./src/tests/setupTest.js'",
-    "test:coverage": "react-scripts test --coverage --env=jsdom --setupFiles='./src/tests/setupTest.js'",
-    "posttest": "react-scripts test --coverage --env=jsdom --setupFiles='./src/tests/setupTest.js",
+    "test":
+      "react-scripts test --env=jsdom --setupFiles='./src/tests/setupTest.js'",
+    "test:coverage":
+      "react-scripts test --coverage --env=jsdom --setupFiles='./src/tests/setupTest.js'",
+    "posttest":
+      "react-scripts test --coverage --env=jsdom --setupFiles='./src/tests/setupTest.js",
     "eject": "react-scripts eject",
     "precommit": "pretty-quick --staged"
   },
@@ -59,8 +62,6 @@
       "!index.js",
       "!src/store/store.js"
     ],
-    "snapshotSerializers": [
-      "enzyme-to-json/serializer"
-    ]
+    "snapshotSerializers": ["enzyme-to-json/serializer"]
   }
 }
