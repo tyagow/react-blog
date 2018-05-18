@@ -14,7 +14,7 @@ export class Comments extends Component {
   }
   render() {
     return (
-      <div className="col-8">
+      <div className="col-8 mt-4">
         {this.props.comments && (
           <div className="">
             <h3>Comments</h3>
@@ -29,7 +29,7 @@ export class Comments extends Component {
                     <div className="p-2 comment-score">
                       <i
                         className="fa fa-heart align-middle text-danger"
-                        style={{ "font-size": "24px" }}
+                        style={{ fontSize: "24px" }}
                       />{" "}
                       <strong className="">{comment.voteScore}</strong>
                     </div>
