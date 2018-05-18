@@ -1,7 +1,7 @@
 import {
   FETCH_COMMENTS_SUCCESS,
   API,
-  CREATE_COMMENT,
+  NEW_COMMENT,
   UPDATE_COMMENT
 } from "./actionTypes";
 
@@ -40,7 +40,20 @@ export const setComments = comments => ({
   payload: comments
 });
 
-export const createComment = comment => ({
-  type: CREATE_COMMENT,
+export const newComment = comment => ({
+  type: NEW_COMMENT,
   payload: comment
 });
+
+export const createComment = comment => dispatch => {
+  dispatch({
+    type: API,
+    payload: {
+      url: "http://127.0.0.1:3001/comments",
+      body: JSON.stringify(comment),
+      method: "post",
+      success: newComment,
+      label: "comments_create"
+    }
+  });
+};

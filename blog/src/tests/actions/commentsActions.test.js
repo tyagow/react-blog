@@ -27,13 +27,34 @@ describe("commentActions", async () => {
     expect(actions.setComments(["test"])).toEqual(expectedRsult);
   });
 
-  it("createComment should dispatch CREATE_COMMENT", () => {
-    const expectedResult = {
-      type: types.CREATE_COMMENT,
-      payload: ""
-    };
-    expect(actions.createComment("")).toEqual(expectedResult);
+  it("createComment should dispatch API action with correct payload", () => {
+    const store = global.mockStore();
+    const expectedActions = [
+      {
+        type: types.API,
+        payload: {
+          label: "comments_create",
+          success: actions.newComment,
+          method: "post",
+          body: JSON.stringify({ id: "1" }),
+          url: "http://127.0.0.1:3001/comments"
+        }
+      }
+    ];
+
+    actions.createComment({ id: "1" })(store.dispatch);
+    expect(store.getActions()).toEqual(expectedActions);
   });
+  describe("newComment", () => {
+    it("should ", () => {
+      const expectedResult = {
+        type: types.NEW_COMMENT,
+        payload: { id: 1 }
+      };
+      expect(actions.newComment({ id: 1 })).toEqual(expectedResult);
+    });
+  });
+
   describe("submitVote", () => {
     it("should dispatch API action with correct payload", () => {
       const store = global.mockStore();
