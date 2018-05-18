@@ -18,13 +18,6 @@ export class Posts extends Component {
     this.props.getPosts();
   };
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.newPost && nextProps.newPost.id) {
-  //     if (!this.props.posts.find(post => nextProps.newPost.id === post.id)) {
-  //       this.props.posts.unshift(nextProps.newPost);
-  //     }
-  //   }
-  // }
   render() {
     const items = getPostLabelList(this.props.posts);
     return (
@@ -38,7 +31,8 @@ export class Posts extends Component {
         <hr />
 
         <ButtonList
-          labels={this.props.categories}
+          active={this.props.visibilityFilter}
+          labels={["all", ...this.props.categories]}
           data-test="posts-categories-buttonlist"
           callback={this.props.updatePostFilter}
         />
@@ -59,7 +53,8 @@ const makeMapStateToProps = () => {
   const mapStateToProps = (state, props) => ({
     posts: getVisiblePosts(state, props),
     newPost: state.posts.item,
-    categories: state.posts.categories
+    categories: state.posts.categories,
+    visibilityFilter: state.posts.visibilityFilter
   });
   return mapStateToProps;
 };
