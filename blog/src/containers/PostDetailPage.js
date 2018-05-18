@@ -3,6 +3,7 @@ import PostDetail from "../components/posts/PostDetail";
 import Comments from "../components/comments/Comments";
 import CommentForm from "../components/comments/CommentForm";
 import Header from "../components/ui/Header";
+import { ToggleComponent } from "../components/ui/ToggleComponent";
 
 const PostDetailPage = props => (
   <div>
@@ -13,7 +14,9 @@ const PostDetailPage = props => (
           <PostDetail postId={props.match.params.postId} />
         </div>
         <div className="row">
-          <CommentForm parend_id={props.match.params.postId} />
+          <ToggleComponent labelOn="Create Comment" labelOff="Hide Form">
+            <CommentForm parend_id={props.match.params.postId} />
+          </ToggleComponent>
         </div>
         <div className="row">
           <Comments postId={props.match.params.postId} />
