@@ -4,10 +4,10 @@ import { MemoryRouter } from "react-router";
 import { Provider } from "react-redux";
 import App from "../../containers/App";
 import HomePage from "../../containers/HomePage";
-import CategoryPage from "../../containers/CategoryPage";
 import NotFoundPage from "../../containers/NotFoundPage";
 import PostDetailPage from "../../containers/PostDetailPage";
 import PostForm from "../../components/posts/PostForm";
+import { CategoryPage } from "../../containers/CategoryPage";
 
 const initialState = {
   posts: {
@@ -32,15 +32,15 @@ describe("App component", () => {
     const store = global.mockStore(initialState);
 
     const wrapper = Enzyme.mount(
-      <MemoryRouter initialEntries={["/"]}>
-        <Provider store={store}>
+      <Provider store={store}>
+        <MemoryRouter initialEntries={["/"]}>
           <div>
             <App />
           </div>
-        </Provider>
-      </MemoryRouter>
+        </MemoryRouter>
+      </Provider>
     );
-    expect(wrapper.find(HomePage)).toHaveLength(1);
+    expect(wrapper.find(CategoryPage)).toHaveLength(1);
     expect(wrapper.find(NotFoundPage)).toHaveLength(0);
   });
   test("valid path /:category/:id should render PostDetail and Comments component", () => {
@@ -76,7 +76,7 @@ describe("App component", () => {
   test("valid path /react/ should render CategoryPage", () => {
     const store = global.mockStore(initialState);
 
-    const wrapper = Enzyme.mount(
+    const wrapper = Enzyme.render(
       <MemoryRouter initialEntries={["/react/"]}>
         <Provider store={store}>
           <div>
@@ -85,8 +85,7 @@ describe("App component", () => {
         </Provider>
       </MemoryRouter>
     );
-    expect(wrapper.find(CategoryPage)).toHaveLength(1);
-    expect(wrapper.find(NotFoundPage)).toHaveLength(0);
+    expect(wrapper).toMatchSnapshot();
   });
   it("should match App shallow snapshot", () => {
     const wrapper = Enzyme.shallow(<App />);

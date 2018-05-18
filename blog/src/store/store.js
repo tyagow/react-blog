@@ -1,14 +1,25 @@
-import { createStore, applyMiddleware, compose } from "redux";
+import { createStore, combineReducers, applyMiddleware, compose } from "redux";
 import thunk from "redux-thunk";
-import rootReducer from "../reducers";
+import createHistory from "history/createBrowserHistory";
+import { routerReducer, routerMiddleware } from "react-router-redux";
+
 import api from "../middlewares/api";
+import posts from "../reducers/PostReducer";
+import ui from "../reducers/ui";
+import comments from "../reducers/CommentReducer";
 
 const initialState = {};
-
-const middleware = [thunk, api];
+export const history = createHistory();
+const rmiddleware = routerMiddleware(history);
+const middleware = [rmiddleware, thunk, api];
 
 const store = createStore(
-  rootReducer,
+  combineReducers({
+    posts,
+    comments,
+    ui,
+    router: routerReducer
+  }),
   initialState,
   compose(
     applyMiddleware(...middleware),

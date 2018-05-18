@@ -1,22 +1,23 @@
-import App from "./containers/App";
 import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
-import { BrowserRouter as Router } from "react-router-dom";
-
-import store from "./store/store";
+import { ConnectedRouter } from "react-router-redux";
 
 import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.min.css";
 import "./styles/index.css";
 import registerServiceWorker from "./registerServiceWorker";
 
+import store, { history } from "./store/store";
+import App from "./containers/App";
+
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
+    <ConnectedRouter history={history}>
       <App />
-    </Router>
+    </ConnectedRouter>
   </Provider>,
+
   document.getElementById("root")
 );
 registerServiceWorker();
