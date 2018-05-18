@@ -21,10 +21,10 @@ export class CommentForm extends Component {
     e.preventDefault();
     const comment = {
       id: guid(),
-      comment: this.state.comment,
+      body: this.state.comment,
       author: this.state.author,
       timestamp: Date.now(),
-      parent_id: this.state.parent_id
+      parentId: this.state.parent_id
     };
     this.props.createComment(comment);
   }
