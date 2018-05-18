@@ -1,17 +1,21 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { updatePostFilter } from "../actions/postActions";
+
 import Posts from "../components/posts/Posts";
 import Header from "../components/ui/Header";
 
-import PropTypes from "prop-types";
-
-export default class CategoryPage extends Component {
+export class CategoryPage extends Component {
   static propTypes = {
     category: PropTypes.string.isRequired
   };
   componentDidMount = () => {
-    console.log(this.props.category);
+    this.props.updatePostFilter(this.props.category);
   };
-
+  componentDidUpdate = () => {
+    this.props.updatePostFilter(this.props.category);
+  };
   render() {
     return (
       <div>
@@ -23,3 +27,5 @@ export default class CategoryPage extends Component {
     );
   }
 }
+
+export default connect(undefined, { updatePostFilter })(CategoryPage);
