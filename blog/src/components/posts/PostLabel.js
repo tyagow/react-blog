@@ -39,7 +39,7 @@ export const PostLabel = props => {
           <span className="success align-middle">
             <i
               className="fa fa-heart   text-danger"
-              style={{ "font-size": "24px" }}
+              style={{ fontSize: "24px" }}
             />{" "}
             <strong> {props.post.voteScore}</strong>
           </span>
