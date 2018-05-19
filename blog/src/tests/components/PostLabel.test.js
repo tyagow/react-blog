@@ -10,7 +10,7 @@ function setup() {
       id: 1,
       category: "react",
       title: "Test title",
-      commentCount: "4",
+      commentCount: 4,
       author: "Test Author"
     }
   };
