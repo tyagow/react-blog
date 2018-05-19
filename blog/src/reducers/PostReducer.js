@@ -5,7 +5,7 @@ import {
   GET_POST_BY_ID_SUCCESS,
   FETCH_CATEGORIES_SUCCESS,
   UPDATE_POST,
-  UPDATE_POST_FILTER
+  UPDATE_POST_CATEGORY_FILTER
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -14,7 +14,9 @@ const initialState = {
   postDetail: {},
   categories: [],
   fetching: false,
-  visibilityFilter: "all"
+  filters: {
+    category: "all"
+  }
 };
 
 export default function(state = initialState, action) {
@@ -59,10 +61,10 @@ export default function(state = initialState, action) {
         )
       };
 
-    case UPDATE_POST_FILTER:
+    case UPDATE_POST_CATEGORY_FILTER:
       return {
         ...state,
-        visibilityFilter: action.payload
+        filters: { ...state.filters, category: action.payload }
       };
 
     default:
