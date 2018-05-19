@@ -28,7 +28,7 @@ export class Comments extends Component {
                   <div className="flex-row d-flex">
                     <div className="p-2 comment-score">
                       <i
-                        className="fa fa-heart align-middle text-danger"
+                        className="fa fa-heart text-danger"
                         style={{ fontSize: "24px" }}
                       />{" "}
                       <strong className="">{comment.voteScore}</strong>
