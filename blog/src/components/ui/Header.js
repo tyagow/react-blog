@@ -24,7 +24,7 @@ export class Header extends Component {
             </li>
             {categories &&
               categories.map(category => (
-                <li className="nav-item">
+                <li className="nav-item" key={category}>
                   <Link to={`/${category}`}>
                     <span className="nav-link active">
                       <span className="">{category}</span>
