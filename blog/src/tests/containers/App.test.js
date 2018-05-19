@@ -12,7 +12,8 @@ import { CategoryPage } from "../../containers/CategoryPage";
 const initialState = {
   posts: {
     items: [],
-    categories: []
+    categories: [],
+    filters: { category: "all" }
   },
   comments: {
     items: []
