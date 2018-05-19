@@ -1,24 +1,25 @@
 import {
-  getVisibilityFilter,
+  getCategoryFilter,
   getPosts,
-  makeGetVisiblePosts
+  makeGetVisiblePosts,
+  getPostDateOrderFilter
 } from "../../selectors";
 
-const setup = ({ visibilityFilter = "all" } = {}) => {
+const setup = ({ category = "all", date = "" } = {}) => {
   const items = [{ id: 1, category: "react" }, { id: 1, category: "python" }];
   const state = {
     posts: {
-      visibilityFilter,
+      filters: { category, date },
       items
     }
   };
   return { state, items };
 };
-describe("getVisibilityFilter", () => {
-  it("should return state.posts.visibilityFilter", () => {
+describe("getCategoryFilter", () => {
+  it("should return state.posts.filters.category", () => {
     const { state } = setup();
     const expected = "all";
-    expect(getVisibilityFilter(state, {})).toBe(expected);
+    expect(getCategoryFilter(state, {})).toBe(expected);
   });
 });
 describe("getPosts", () => {
@@ -35,11 +36,18 @@ describe("makeGetVisiblePosts", () => {
     const getVisibleTodos = makeGetVisiblePosts();
     expect(getVisibleTodos(state)).toBe(expected);
   });
-  it("should correctly filter posts using filter settled in state", () => {
+  it("should correctly filter posts using filter default in state", () => {
     const filter = "react";
-    const { state } = setup({ visibilityFilter: "react" });
+    const { state } = setup({ category: "react" });
     const expected = state.posts.items.filter(post => post.category === filter);
     const getVisibleTodos = makeGetVisiblePosts();
     expect(getVisibleTodos(state)).toEqual(expected);
+  });
+});
+describe("getPostDateOrderFilter", () => {
+  it("should return state.posts.filters.date", () => {
+    const { state } = setup();
+    const expected = "";
+    expect(getPostDateOrderFilter(state, {})).toBe(expected);
   });
 });
