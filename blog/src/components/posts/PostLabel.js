@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import VoteForm from "../votes/VoteForm";
 import { sendVote, updatePost } from "../../actions/postActions";
 import connect from "react-redux/lib/connect/connect";
+import CommentCountLabel from "../ui/CommentCountLabel";
 
 export const PostLabel = props => {
   return (
@@ -31,6 +32,9 @@ export const PostLabel = props => {
         </div>
       </div>
       <div className="flex-row d-flex">
+        <div className="p-2">
+          <CommentCountLabel count={props.post.commentCount} />
+        </div>
         <div className="p-2">
           <span className="success align-middle">
             <i

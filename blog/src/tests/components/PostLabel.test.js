@@ -2,6 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 
 import { PostLabel } from "../../components/posts/PostLabel";
+import CommentCountLabel from "../../components/ui/CommentCountLabel";
 
 function setup() {
   const props = {
@@ -9,6 +10,7 @@ function setup() {
       id: 1,
       category: "react",
       title: "Test title",
+      commentCount: "4",
       author: "Test Author"
     }
   };
@@ -35,7 +37,11 @@ describe("PostLabel", () => {
       props.post.author
     );
   });
-  describe("sendUpVote", () => {
-    it("should ", () => {});
+  describe("CommentsCountLabel", () => {
+    it("should render CommentsCountLabel  component", () => {
+      const { enzymeWrapper } = setup();
+      const component = enzymeWrapper.find(CommentCountLabel);
+      expect(component.length).toEqual(1);
+    });
   });
 });
