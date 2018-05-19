@@ -9,7 +9,7 @@ const CommentCountLabel = ({ count }) => (
 );
 
 CommentCountLabel.propTypes = {
-  count: PropTypes.string.isRequired
+  count: PropTypes.number.isRequired
 };
 
 export default CommentCountLabel;

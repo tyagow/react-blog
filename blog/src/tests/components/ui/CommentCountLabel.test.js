@@ -4,7 +4,7 @@ import CommentCountLabel from "../../../components/ui/CommentCountLabel";
 
 const setup = () => {
   const props = {
-    count: "5"
+    count: 5
   };
   const enzymeWrapper = Enzyme.shallow(<CommentCountLabel {...props} />);
   return { enzymeWrapper, props };
