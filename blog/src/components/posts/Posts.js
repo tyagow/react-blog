@@ -31,7 +31,7 @@ export class Posts extends Component {
         <hr />
 
         <ButtonList
-          active={this.props.visibilityFilter}
+          active={this.props.filters.category}
           labels={["all", ...this.props.categories]}
           data-test="posts-categories-buttonlist"
           callback={this.props.updatePostFilter}
@@ -54,7 +54,7 @@ const makeMapStateToProps = () => {
     posts: getVisiblePosts(state, props),
     newPost: state.posts.item,
     categories: state.posts.categories,
-    visibilityFilter: state.posts.visibilityFilter
+    filters: { category: state.posts.filters.category }
   });
   return mapStateToProps;
 };

@@ -34,9 +34,15 @@ describe("Posts", () => {
   });
   describe("mapStateToProps", () => {
     it("should map correctly given state to props", () => {
-      const state = { posts: { items: [], item: {} } };
+      const state = {
+        posts: { items: [], item: {}, filters: { category: "all" } }
+      };
       const props = {};
-      expect(mapStateToProps(state, props)).toEqual({ posts: [], newPost: {} });
+      expect(mapStateToProps(state, props)).toEqual({
+        posts: [],
+        newPost: {},
+        filters: { category: "all" }
+      });
     });
   });
 });
@@ -47,6 +53,7 @@ const getPostProps = posts => {
   const updatePostFilter = jest.fn();
   const props = {
     posts: posts ? posts : [post],
+    filters: { category: "all" },
     categories: ["react"],
     getCategories: getCategories,
     getPosts: getPosts,

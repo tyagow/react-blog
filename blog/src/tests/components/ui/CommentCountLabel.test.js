@@ -16,6 +16,6 @@ describe("CommentCountLabel", () => {
   });
   it("should render given value as prop", () => {
     const { enzymeWrapper, props } = setup();
-    expect(enzymeWrapper.text()).toEqual(props.count);
+    expect(enzymeWrapper.text()).toContain(props.count);
   });
 });
