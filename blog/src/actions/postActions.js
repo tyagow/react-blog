@@ -5,7 +5,7 @@ import {
   GET_POST_BY_ID_SUCCESS,
   FETCH_CATEGORIES_SUCCESS,
   UPDATE_POST,
-  UPDATE_POST_FILTER
+  UPDATE_POST_CATEGORY_FILTER
 } from "./actionTypes";
 
 export const setPosts = posts => ({
@@ -98,7 +98,7 @@ export const updatePost = post => ({
 
 export const updatePostFilter = filter => dispatch => {
   dispatch({
-    type: UPDATE_POST_FILTER,
+    type: UPDATE_POST_CATEGORY_FILTER,
     payload: filter
   });
 };

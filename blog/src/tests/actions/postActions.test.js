@@ -180,7 +180,7 @@ describe("actions", async () => {
     it("should dispatch correct action and payload", () => {
       const expectedRsult = [
         {
-          type: types.UPDATE_POST_FILTER,
+          type: types.UPDATE_POST_CATEGORY_FILTER,
           payload: "all"
         }
       ];

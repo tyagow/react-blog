@@ -9,7 +9,9 @@ describe("PostReducer reducer", () => {
       item: {},
       postDetail: {},
       categories: [],
-      visibilityFilter: "all"
+      filters: {
+        category: "all"
+      }
     });
   });
 
@@ -113,18 +115,18 @@ describe("PostReducer reducer", () => {
       });
     });
   });
-  describe("UPDATE_POST_FILTER", () => {
-    it("should update correctly visibilityFilter with given payload", () => {
+  describe("UPDATE_POST_CATEGORY_FILTER", () => {
+    it("should update correctly filters.category with given payload", () => {
       let initialState = {
-        visibilityFilter: "all"
+        filters: { category: "all", dataOrder: "" }
       };
       expect(
         PostReducer(initialState, {
-          type: types.UPDATE_POST_FILTER,
+          type: types.UPDATE_POST_CATEGORY_FILTER,
           payload: "react"
         })
       ).toEqual({
-        visibilityFilter: "react"
+        filters: { category: "react", dataOrder: "" }
       });
     });
   });
