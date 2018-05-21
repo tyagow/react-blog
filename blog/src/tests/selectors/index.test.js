@@ -50,4 +50,16 @@ describe("getPostDateOrderFilter", () => {
     const expected = "";
     expect(getPostDateOrderFilter(state, {})).toBe(expected);
   });
+  it("should create a filter  and correctly return all posts whenstate created", () => {
+    const { state } = setup();
+    const expected = state.posts.items;
+    const getVisibleTodos = makeGetVisiblePosts();
+    expect(getVisibleTodos(state)).toBe(expected);
+  });
+  it("should sort array as i expect :)", () => {
+    const elements = [{ id: 3 }, { id: 2 }];
+    const elementsExpected = [{ id: 2 }, { id: 3 }];
+    expect(elements.sort(element => element.id)).toEqual(elementsExpected);
+    expect(elements).not.toEqual(elementsExpected);
+  });
 });

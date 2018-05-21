@@ -11,16 +11,21 @@ export const getPosts = (state, props) => state.posts.items;
 
 export const makeGetVisiblePosts = () => {
   return createSelector(
-    [getCategoryFilter, getPosts],
-    (categoryFilter, posts) => {
-      switch (categoryFilter) {
-        case "all":
-          return posts;
-        default:
-          return posts.filter(post => post.category === categoryFilter);
-      }
+    [getCategoryFilter, getPostDateOrderFilter, getPosts],
+    (categoryFilter, dateOrder, posts) => {
+      let filteredPosts = filterPyCategory(categoryFilter, posts);
+
+      return filteredPosts;
     }
   );
+};
+
+const filterPyCategory = (categoryFilter, posts) => {
+  let filteredPosts;
+  categoryFilter === "all"
+    ? (filteredPosts = posts)
+    : (filteredPosts = posts.filter(post => post.category === categoryFilter));
+  return filteredPosts;
 };
 
 export default makeGetVisiblePosts;
