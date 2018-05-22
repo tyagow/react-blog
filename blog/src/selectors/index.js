@@ -7,7 +7,7 @@ export const getCategoryFilter = (state, props) => {
 export const getPostDateOrderFilter = (state, props) => {
   return state.posts.filters.date;
 };
-export const getPosts = (state, props) => state.posts.items;
+export const getPosts = (state, props) => [...state.posts.items];
 
 export const makeGetVisiblePosts = () => {
   return createSelector(
@@ -26,6 +26,12 @@ const filterPyCategory = (categoryFilter, posts) => {
     ? (filteredPosts = posts)
     : (filteredPosts = posts.filter(post => post.category === categoryFilter));
   return filteredPosts;
+};
+
+export const orderPostsByTimestamp = (posts, order) => {
+  let ordenedPosts = [...posts];
+  ordenedPosts.sort((postA, postB) => postA.timestamp > postB.timestamp);
+  return ordenedPosts;
 };
 
 export default makeGetVisiblePosts;

@@ -2,7 +2,8 @@ import {
   getCategoryFilter,
   getPosts,
   makeGetVisiblePosts,
-  getPostDateOrderFilter
+  getPostDateOrderFilter,
+  orderPostsByTimestamp
 } from "../../selectors";
 
 const setup = ({ category = "all", date = "" } = {}) => {
@@ -19,14 +20,14 @@ describe("getCategoryFilter", () => {
   it("should return state.posts.filters.category", () => {
     const { state } = setup();
     const expected = "all";
-    expect(getCategoryFilter(state, {})).toBe(expected);
+    expect(getCategoryFilter(state, {})).toEqual(expected);
   });
 });
 describe("getPosts", () => {
   it("should return state.posts.items", () => {
     const { state } = setup();
     const expected = state.posts.items;
-    expect(getPosts(state, {})).toBe(expected);
+    expect(getPosts(state, {})).toEqual(expected);
   });
 });
 describe("makeGetVisiblePosts", () => {
@@ -34,7 +35,7 @@ describe("makeGetVisiblePosts", () => {
     const { state } = setup();
     const expected = state.posts.items;
     const getVisibleTodos = makeGetVisiblePosts();
-    expect(getVisibleTodos(state)).toBe(expected);
+    expect(getVisibleTodos(state)).toEqual(expected);
   });
   it("should correctly filter posts using filter default in state", () => {
     const filter = "react";
@@ -48,12 +49,14 @@ describe("getPostDateOrderFilter", () => {
   it("should return state.posts.filters.date", () => {
     const { state } = setup();
     const expected = "";
-    expect(getPostDateOrderFilter(state, {})).toBe(expected);
+    expect(getPostDateOrderFilter(state, {})).toEqual(expected);
   });
-  it("should create a filter  and correctly return all posts whenstate created", () => {
-    const { state } = setup();
-    const expected = state.posts.items;
-    const getVisibleTodos = makeGetVisiblePosts();
-    expect(getVisibleTodos(state)).toBe(expected);
+});
+describe("orderPostByTimestamp", () => {
+  it("should return ascendent ordened list by timestamp if 'asc' is passed", () => {
+    const posts = [{ timestamp: 6 }, { timestamp: 2 }, { timestamp: 5 }];
+    const expected = [{ timestamp: 2 }, { timestamp: 5 }, { timestamp: 6 }];
+    expect(orderPostsByTimestamp(posts, "asc")).toEqual(expected);
   });
+  it("should return ordened", () => {});
 });
