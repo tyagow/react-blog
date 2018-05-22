@@ -7,7 +7,10 @@ import {
 } from "../../selectors";
 
 const setup = ({ category = "all", date = "" } = {}) => {
-  const items = [{ id: 1, category: "react" }, { id: 1, category: "python" }];
+  const items = [
+    { id: 1, category: "react", timestamp: 44 },
+    { id: 1, category: "python", timestamp: 66 }
+  ];
   const state = {
     posts: {
       filters: { category, date },
@@ -44,6 +47,13 @@ describe("makeGetVisiblePosts", () => {
     const getVisibleTodos = makeGetVisiblePosts();
     expect(getVisibleTodos(state)).toEqual(expected);
   });
+  it("should correctly return posts list sorted asc by timestamp if state.posts.date = 'asc'", () => {
+    const filter = "react";
+    const { state } = setup({ date: "asc" });
+    const expected = state.posts.items.filter(post => post.category === filter);
+    const getVisibleTodos = makeGetVisiblePosts();
+    expect(getVisibleTodos(state)).toEqual(expected);
+  });
 });
 describe("getPostDateOrderFilter", () => {
   it("should return state.posts.filters.date", () => {
@@ -58,5 +68,9 @@ describe("orderPostByTimestamp", () => {
     const expected = [{ timestamp: 2 }, { timestamp: 5 }, { timestamp: 6 }];
     expect(orderPostsByTimestamp(posts, "asc")).toEqual(expected);
   });
-  it("should return ordened", () => {});
+  it("should return descendent ordened list of by timestamp if 'desc' is passed", () => {
+    const posts = [{ timestamp: 6 }, { timestamp: 2 }, { timestamp: 5 }];
+    const expected = [{ timestamp: 6 }, { timestamp: 5 }, { timestamp: 2 }];
+    expect(orderPostsByTimestamp(posts, "desc")).toEqual(expected);
+  });
 });

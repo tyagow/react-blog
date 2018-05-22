@@ -14,7 +14,7 @@ export const makeGetVisiblePosts = () => {
     [getCategoryFilter, getPostDateOrderFilter, getPosts],
     (categoryFilter, dateOrder, posts) => {
       let filteredPosts = filterPyCategory(categoryFilter, posts);
-
+      //filteredPosts = orderPostsByTimestamp(filteredPosts, dateOrder);
       return filteredPosts;
     }
   );
@@ -30,7 +30,15 @@ const filterPyCategory = (categoryFilter, posts) => {
 
 export const orderPostsByTimestamp = (posts, order) => {
   let ordenedPosts = [...posts];
-  ordenedPosts.sort((postA, postB) => postA.timestamp > postB.timestamp);
+  if (order !== "asc" && order !== "desc") {
+    return posts;
+  }
+  ordenedPosts.sort((postA, postB) => {
+    if (order === "asc") {
+      return postA.timestamp > postB.timestamp;
+    }
+    return postA.timestamp < postB.timestamp;
+  });
   return ordenedPosts;
 };
 
