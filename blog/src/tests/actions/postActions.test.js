@@ -189,4 +189,17 @@ describe("actions", async () => {
       expect(store.getActions()).toEqual(expectedRsult);
     });
   });
+  describe("updateDateOrderFilter", () => {
+    it("should dispatch correct action and payload", () => {
+      const expectedRsult = [
+        {
+          type: types.UPDATE_POST_DATE_ORDER,
+          payload: ""
+        }
+      ];
+      const store = global.mockStore();
+      actions.updatePostDateOrder("")(store.dispatch);
+      expect(store.getActions()).toEqual(expectedRsult);
+    });
+  });
 });

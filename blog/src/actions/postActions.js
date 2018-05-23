@@ -5,7 +5,8 @@ import {
   GET_POST_BY_ID_SUCCESS,
   FETCH_CATEGORIES_SUCCESS,
   UPDATE_POST,
-  UPDATE_POST_CATEGORY_FILTER
+  UPDATE_POST_CATEGORY_FILTER,
+  UPDATE_POST_DATE_ORDER
 } from "./actionTypes";
 
 export const setPosts = posts => ({
@@ -99,6 +100,13 @@ export const updatePost = post => ({
 export const updatePostFilter = filter => dispatch => {
   dispatch({
     type: UPDATE_POST_CATEGORY_FILTER,
+    payload: filter
+  });
+};
+
+export const updatePostDateOrder = filter => dispatch => {
+  dispatch({
+    type: UPDATE_POST_DATE_ORDER,
     payload: filter
   });
 };
