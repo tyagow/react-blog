@@ -9,7 +9,8 @@ import {
 const setup = ({ category = "all", date = "" } = {}) => {
   const items = [
     { id: 1, category: "react", timestamp: 44 },
-    { id: 1, category: "python", timestamp: 66 }
+    { id: 1, category: "python", timestamp: 66 },
+    { id: 1, category: "python", timestamp: 22 }
   ];
   const state = {
     posts: {
@@ -48,9 +49,8 @@ describe("makeGetVisiblePosts", () => {
     expect(getVisibleTodos(state)).toEqual(expected);
   });
   it("should correctly return posts list sorted asc by timestamp if state.posts.date = 'asc'", () => {
-    const filter = "react";
     const { state } = setup({ date: "asc" });
-    const expected = state.posts.items.filter(post => post.category === filter);
+    const expected = orderPostsByTimestamp(state.posts.items, "asc");
     const getVisibleTodos = makeGetVisiblePosts();
     expect(getVisibleTodos(state)).toEqual(expected);
   });
