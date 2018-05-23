@@ -36,6 +36,13 @@ export class Posts extends Component {
           data-test="posts-categories-buttonlist"
           callback={this.props.updatePostFilter}
         />
+        <ButtonList
+          active={this.props.filters.date}
+          labels={["all", ...this.props.categories]}
+          data-test="posts-categories-buttonlist"
+          callback={this.props.updatePostFilter}
+        />
+
         <br />
         {items}
       </div>
