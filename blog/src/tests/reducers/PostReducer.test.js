@@ -10,7 +10,8 @@ describe("PostReducer reducer", () => {
       postDetail: {},
       categories: [],
       filters: {
-        category: "all"
+        category: "all",
+        date: ""
       }
     });
   });
@@ -118,7 +119,7 @@ describe("PostReducer reducer", () => {
   describe("UPDATE_POST_CATEGORY_FILTER", () => {
     it("should update correctly filters.category with given payload", () => {
       let initialState = {
-        filters: { category: "all", dataOrder: "" }
+        filters: { category: "all" }
       };
       expect(
         PostReducer(initialState, {
@@ -126,7 +127,22 @@ describe("PostReducer reducer", () => {
           payload: "react"
         })
       ).toEqual({
-        filters: { category: "react", dataOrder: "" }
+        filters: { category: "react" }
+      });
+    });
+  });
+  describe("UODATE_POST_DATE_ORDER", () => {
+    it("should update correctly filters.date with given payload", () => {
+      let initialState = {
+        filters: { date: "" }
+      };
+      expect(
+        PostReducer(initialState, {
+          type: types.UPDATE_POST_DATE_ORDER,
+          payload: "asc"
+        })
+      ).toEqual({
+        filters: { date: "asc" }
       });
     });
   });

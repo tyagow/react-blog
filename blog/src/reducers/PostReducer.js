@@ -5,7 +5,8 @@ import {
   GET_POST_BY_ID_SUCCESS,
   FETCH_CATEGORIES_SUCCESS,
   UPDATE_POST,
-  UPDATE_POST_CATEGORY_FILTER
+  UPDATE_POST_CATEGORY_FILTER,
+  UPDATE_POST_DATE_ORDER
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -15,7 +16,8 @@ const initialState = {
   categories: [],
   fetching: false,
   filters: {
-    category: "all"
+    category: "all",
+    date: ""
   }
 };
 
@@ -65,6 +67,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         filters: { ...state.filters, category: action.payload }
+      };
+
+    case UPDATE_POST_DATE_ORDER:
+      return {
+        ...state,
+        filters: { ...state.filters, date: action.payload }
       };
 
     default:
