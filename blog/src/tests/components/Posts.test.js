@@ -4,16 +4,21 @@ import { shallow } from "enzyme";
 import { Posts, mapStateToProps } from "../../components/posts/Posts";
 
 const setup = (posts = undefined, renderer = shallow) => {
-  const { props, getCategories, getPosts, updatePostFilter } = getPostProps(
-    posts
-  );
+  const {
+    props,
+    getCategories,
+    getPosts,
+    updatePostFilter,
+    updatePostDateOrder
+  } = getPostProps(posts);
   const enzymeWrapper = renderer(<Posts {...props} />);
   return {
     props,
     enzymeWrapper,
     getCategories,
     getPosts,
-    updatePostFilter
+    updatePostFilter,
+    updatePostDateOrder
   };
 };
 describe("Posts", () => {
@@ -51,13 +56,16 @@ const getPostProps = posts => {
   const getPosts = jest.fn();
   const getCategories = jest.fn();
   const updatePostFilter = jest.fn();
+  const updatePostDateOrder = jest.fn();
+
   const props = {
     posts: posts ? posts : [post],
     filters: { category: "all" },
     categories: ["react"],
     getCategories: getCategories,
     getPosts: getPosts,
-    updatePostFilter
+    updatePostFilter,
+    updatePostDateOrder
   };
   return { props, getCategories, getPosts };
 };
