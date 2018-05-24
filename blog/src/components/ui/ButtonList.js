@@ -11,24 +11,22 @@ export class ButtonList extends Component {
   }
   render() {
     return (
-      <div className="">
-        <div className="btn-group">
-          {this.props.labels &&
-            this.props.labels.map(label => (
-              <button
-                data-test={label}
-                type="button"
-                className={
-                  "btn btn-outline-info btn-sm" +
-                  (this.props.active === label ? " active" : "")
-                }
-                onClick={e => this.onClick(label)}
-                key={"posts-cetegories-btn-filter" + label}
-              >
-                {label}
-              </button>
-            ))}
-        </div>
+      <div className="btn-group">
+        {this.props.labels &&
+          this.props.labels.map(label => (
+            <button
+              data-test={label}
+              type="button"
+              className={
+                "btn btn-outline-info btn-sm" +
+                (this.props.active === label ? " active" : "")
+              }
+              onClick={e => this.onClick(label)}
+              key={"posts-cetegories-btn-filter" + label}
+            >
+              {label}
+            </button>
+          ))}
       </div>
     );
   }
