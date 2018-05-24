@@ -7,7 +7,8 @@ import PostLabel from "./PostLabel";
 import {
   getPosts,
   getCategories,
-  updatePostFilter
+  updatePostFilter,
+  updatePostDateOrder
 } from "../../actions/postActions";
 import { makeGetVisiblePosts } from "../../selectors";
 import ButtonList from "../../components/ui/ButtonList";
@@ -29,20 +30,27 @@ export class Posts extends Component {
           </Link>
         </h1>
         <hr />
+        <div className="row p-2">
+          <div className="col-1">Category{"   "}</div>
+          <div className="col-3">
+            <ButtonList
+              active={this.props.filters.category}
+              labels={["all", ...this.props.categories]}
+              data-test="posts-categories-buttonlist"
+              callback={this.props.updatePostFilter}
+            />
+          </div>
 
-        <ButtonList
-          active={this.props.filters.category}
-          labels={["all", ...this.props.categories]}
-          data-test="posts-categories-buttonlist"
-          callback={this.props.updatePostFilter}
-        />
-        <ButtonList
-          active={this.props.filters.date}
-          labels={["all", ...this.props.categories]}
-          data-test="posts-categories-buttonlist"
-          callback={this.props.updatePostFilter}
-        />
-
+          <div className="col-2">Date Order{"   "}</div>
+          <div className="col-2">
+            <ButtonList
+              active={this.props.filters.date}
+              labels={["asc", "desc"]}
+              data-test="posts-date-order-buttonlist"
+              callback={this.props.updatePostDateOrder}
+            />
+          </div>
+        </div>
         <br />
         {items}
       </div>
@@ -61,7 +69,10 @@ const makeMapStateToProps = () => {
     posts: getVisiblePosts(state, props),
     newPost: state.posts.item,
     categories: state.posts.categories,
-    filters: { category: state.posts.filters.category }
+    filters: {
+      category: state.posts.filters.category,
+      date: state.posts.filters.date
+    }
   });
   return mapStateToProps;
 };
@@ -74,5 +85,6 @@ export const getPostLabelList = posts =>
 export default connect(mapStateToProps, {
   getPosts,
   getCategories,
-  updatePostFilter
+  updatePostFilter,
+  updatePostDateOrder
 })(Posts);
