@@ -9,7 +9,10 @@ const setup = (posts = undefined, renderer = shallow) => {
     getCategories,
     getPosts,
     updatePostFilter,
-    updatePostDateOrder
+    updatePostDateOrder,
+    updatePost,
+    onDelete,
+    sendVote
   } = getPostProps(posts);
   const enzymeWrapper = renderer(<Posts {...props} />);
   return {
@@ -18,7 +21,10 @@ const setup = (posts = undefined, renderer = shallow) => {
     getCategories,
     getPosts,
     updatePostFilter,
-    updatePostDateOrder
+    updatePostDateOrder,
+    updatePost,
+    onDelete,
+    sendVote
   };
 };
 describe("Posts", () => {
@@ -54,6 +60,9 @@ describe("Posts", () => {
 
 const getPostProps = posts => {
   const getPosts = jest.fn();
+  const updatePost = jest.fn();
+  const onDelete = jest.fn();
+  const sendVote = jest.fn();
   const getCategories = jest.fn();
   const updatePostFilter = jest.fn();
   const updatePostDateOrder = jest.fn();
@@ -65,7 +74,10 @@ const getPostProps = posts => {
     getCategories: getCategories,
     getPosts: getPosts,
     updatePostFilter,
-    updatePostDateOrder
+    updatePostDateOrder,
+    updatePost: updatePost,
+    requestAPIDeletePost: onDelete,
+    sendVote
   };
   return { props, getCategories, getPosts };
 };

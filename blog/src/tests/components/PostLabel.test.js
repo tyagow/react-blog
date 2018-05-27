@@ -5,6 +5,9 @@ import { PostLabel } from "../../components/posts/PostLabel";
 import CommentCountLabel from "../../components/ui/CommentCountLabel";
 
 function setup() {
+  const onDelete = jest.fn();
+  const sendVote = jest.fn();
+  const updatePost = jest.fn();
   const props = {
     post: {
       id: 1,
@@ -12,12 +15,16 @@ function setup() {
       title: "Test title",
       commentCount: 4,
       author: "Test Author"
-    }
+    },
+    onDelete: onDelete,
+    updatePost: updatePost,
+    sendVote: sendVote
   };
   const enzymeWrapper = shallow(<PostLabel {...props} />);
   return {
     props,
-    enzymeWrapper
+    enzymeWrapper,
+    onDelete
   };
 }
 describe("PostLabel", () => {
@@ -42,6 +49,19 @@ describe("PostLabel", () => {
       const { enzymeWrapper } = setup();
       const component = enzymeWrapper.find(CommentCountLabel);
       expect(component.length).toEqual(1);
+    });
+  });
+  describe("deleteButton", () => {
+    it("should show a delete button and it should call props.onDelete", () => {
+      const { enzymeWrapper } = setup();
+      const deleteButton = enzymeWrapper.find("[data-test='deleteButton']");
+      expect(deleteButton.length).toEqual(1);
+    });
+    it("should call props.onDelete", () => {
+      const { enzymeWrapper, onDelete } = setup();
+      const component = enzymeWrapper.find("[data-test='deleteButton']");
+      component.simulate("click");
+      expect(onDelete).toBeCalled();
     });
   });
 });
