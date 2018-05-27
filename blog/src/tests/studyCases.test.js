@@ -7,3 +7,10 @@ describe("sorting array copy returns copy ?", () => {
     expect(elements).not.toEqual(elementsExpected);
   });
 });
+
+describe("copy object with spread operator changing one attribute", () => {
+  it("should change attribute of an object", () => {
+    const element = { id: "1", deleted: false };
+    expect({ ...element, deleted: true }).toEqual({ id: "1", deleted: true });
+  });
+});
