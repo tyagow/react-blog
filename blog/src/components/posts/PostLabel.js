@@ -1,16 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+
 import VoteForm from "../votes/VoteForm";
-import { sendVote, updatePost } from "../../actions/postActions";
-import connect from "react-redux/lib/connect/connect";
 import CommentCountLabel from "../ui/CommentCountLabel";
 
 export const PostLabel = props => {
   return (
     <div key={props.post.id}>
-      <Link to={`/${props.post.category}/${props.post.id}`}>
-        <h3 className="postlabel-title text-info">{props.post.title}</h3>
-      </Link>
+      <div className="d-flex flex-row">
+        <div className="col">
+          <Link to={`/${props.post.category}/${props.post.id}`}>
+            <h3 className="postlabel-title text-info">{props.post.title}</h3>
+          </Link>
+        </div>
+        <div className="col-2">
+          <button
+            data-test="deleteButton"
+            className="btn btn-outline-danger btn-sm ml-4 "
+            onClick={() => props.onDelete(props.post.id)}
+          >
+            delete
+          </button>
+        </div>
+      </div>
 
       <div className="d-flex flex-row">
         <div className="p-2">
@@ -50,7 +63,7 @@ export const PostLabel = props => {
             className="fa fa-thumbs-up"
             id={props.post.id}
             label="posts"
-            callback={updatePost}
+            callback={props.updatePost}
           />
         </div>
         <div className="p-2">
@@ -59,7 +72,7 @@ export const PostLabel = props => {
             className="fa fa-thumbs-down"
             id={props.post.id}
             label="posts"
-            callback={updatePost}
+            callback={props.updatePost}
           />
         </div>
       </div>
@@ -68,4 +81,11 @@ export const PostLabel = props => {
   );
 };
 
-export default connect(undefined, { sendVote, updatePost })(PostLabel);
+PostLabel.propTypes = {
+  post: PropTypes.object.isRequired,
+  sendVote: PropTypes.func.isRequired,
+  updatePost: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired
+};
+
+export default PostLabel;

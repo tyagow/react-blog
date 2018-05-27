@@ -8,8 +8,12 @@ import {
   getPosts,
   getCategories,
   updatePostFilter,
-  updatePostDateOrder
+  updatePostDateOrder,
+  sendVote,
+  updatePost,
+  requestAPIDeletePost
 } from "../../actions/postActions";
+
 import { makeGetVisiblePosts } from "../../selectors";
 import ButtonList from "../../components/ui/ButtonList";
 
@@ -20,7 +24,11 @@ export class Posts extends Component {
   };
 
   render() {
-    const items = getPostLabelList(this.props.posts);
+    const items = getPostLabelList(this.props.posts, {
+      sendVote: this.props.sendVote,
+      updatePost: this.props.updatePost,
+      onDelete: this.props.requestAPIDeletePost
+    });
     return (
       <div>
         <h1 className="mt-4">
@@ -79,12 +87,15 @@ const makeMapStateToProps = () => {
 
 export const mapStateToProps = makeMapStateToProps();
 
-export const getPostLabelList = posts =>
-  posts.map(post => <PostLabel key={post.id} post={post} />);
+export const getPostLabelList = (posts, actions) =>
+  posts.map(post => <PostLabel key={post.id} post={post} {...actions} />);
 
 export default connect(mapStateToProps, {
   getPosts,
   getCategories,
   updatePostFilter,
-  updatePostDateOrder
+  updatePostDateOrder,
+  sendVote,
+  updatePost,
+  requestAPIDeletePost
 })(Posts);
