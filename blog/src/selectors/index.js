@@ -13,7 +13,10 @@ export const makeGetVisiblePosts = () => {
   return createSelector(
     [getCategoryFilter, getPostDateOrderFilter, getPosts],
     (categoryFilter, dateOrder, posts) => {
-      let filteredPosts = filterPyCategory(categoryFilter, posts);
+      let filteredPosts = filterPyCategory(
+        categoryFilter,
+        filterNotDeletedPosts(posts)
+      );
       filteredPosts = orderPostsByTimestamp(filteredPosts, dateOrder);
       return filteredPosts;
     }
@@ -27,6 +30,9 @@ const filterPyCategory = (categoryFilter, posts) => {
     : (filteredPosts = posts.filter(post => post.category === categoryFilter));
   return filteredPosts;
 };
+
+export const filterNotDeletedPosts = posts =>
+  posts.filter(post => !post.deleted);
 
 export const orderPostsByTimestamp = (posts, order) => {
   let ordenedPosts = [...posts];
