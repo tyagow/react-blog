@@ -6,7 +6,8 @@ import {
   FETCH_CATEGORIES_SUCCESS,
   UPDATE_POST,
   UPDATE_POST_CATEGORY_FILTER,
-  UPDATE_POST_DATE_ORDER
+  UPDATE_POST_DATE_ORDER,
+  DELETE_POST
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -73,6 +74,15 @@ export default function(state = initialState, action) {
       return {
         ...state,
         filters: { ...state.filters, date: action.payload }
+      };
+
+    case DELETE_POST:
+      const items = state.items.map(post => {
+        return post.id === action.payload ? { ...post, deleted: true } : post;
+      });
+      return {
+        ...state,
+        items
       };
 
     default:

@@ -146,4 +146,17 @@ describe("PostReducer reducer", () => {
       });
     });
   });
+  describe("DELETE_POST", () => {
+    it("should update post to deleted", () => {
+      let initialState = {
+        items: [{ id: "1", deleted: false }]
+      };
+      expect(
+        PostReducer(initialState, {
+          type: types.DELETE_POST,
+          payload: "1"
+        }).items
+      ).toEqual([{ id: "1", deleted: true }]);
+    });
+  });
 });

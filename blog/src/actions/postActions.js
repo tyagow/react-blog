@@ -6,7 +6,8 @@ import {
   FETCH_CATEGORIES_SUCCESS,
   UPDATE_POST,
   UPDATE_POST_CATEGORY_FILTER,
-  UPDATE_POST_DATE_ORDER
+  UPDATE_POST_DATE_ORDER,
+  DELETE_POST
 } from "./actionTypes";
 
 export const setPosts = posts => ({
@@ -103,6 +104,23 @@ export const updatePostFilter = filter => dispatch => {
     payload: filter
   });
 };
+
+export const requestAPIDeletePost = postId => dispatch => {
+  dispatch({
+    type: API,
+    payload: {
+      url: "http://127.0.0.1:3001/posts/" + postId,
+      success: getPosts,
+      label: "deletePost",
+      method: "delete"
+    }
+  });
+};
+
+export const makeDeletePostAction = postId => () => ({
+  type: DELETE_POST,
+  payload: postId
+});
 
 export const updatePostDateOrder = filter => dispatch => {
   dispatch({

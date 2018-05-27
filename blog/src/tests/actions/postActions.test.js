@@ -202,4 +202,24 @@ describe("actions", async () => {
       expect(store.getActions()).toEqual(expectedRsult);
     });
   });
+  describe("requestAPIDeletePost", () => {
+    it("should dispatch correct action and payload attributes", () => {
+      const store = global.mockStore();
+      actions.requestAPIDeletePost("1")(store.dispatch);
+      expect(store.getActions()[0].payload.label).toEqual("deletePost");
+      expect(store.getActions()[0].payload.method).toEqual("delete");
+      expect(store.getActions()[0].payload.url).toContain(
+        "http://127.0.0.1:3001/posts/1"
+      );
+    });
+  });
+  describe("makeDeletePostAction", () => {
+    it("should return function with correct postId defined inside", () => {
+      const deletePostAction = actions.makeDeletePostAction("1");
+      expect(deletePostAction()).toEqual({
+        type: types.DELETE_POST,
+        payload: "1"
+      });
+    });
+  });
 });
