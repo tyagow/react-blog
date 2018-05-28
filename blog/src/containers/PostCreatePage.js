@@ -6,7 +6,9 @@ export default () => {
   return (
     <div>
       <Header />
-      <PostForm />
+      <div className="container pt-4">
+        <PostForm />
+      </div>
     </div>
   );
 };
