@@ -8,7 +8,7 @@ import Header from "../components/ui/Header";
 
 export class CategoryPage extends Component {
   static propTypes = {
-    category: PropTypes.string.isRequired
+    category: PropTypes.string
   };
   componentDidMount = () => {
     this.props.updatePostFilter(this.props.category);
@@ -27,5 +27,9 @@ export class CategoryPage extends Component {
     );
   }
 }
+
+CategoryPage.defaultProps = {
+  category: "all"
+};
 
 export default connect(undefined, { updatePostFilter })(CategoryPage);

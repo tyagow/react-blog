@@ -3,10 +3,9 @@ import * as Enzyme from "enzyme";
 import { MemoryRouter } from "react-router";
 import { Provider } from "react-redux";
 import App from "../../containers/App";
-import HomePage from "../../containers/HomePage";
 import NotFoundPage from "../../containers/NotFoundPage";
 import PostDetailPage from "../../containers/PostDetailPage";
-import PostForm from "../../components/posts/PostForm";
+import PostCreatePage from "../../containers/PostCreatePage";
 import { CategoryPage } from "../../containers/CategoryPage";
 
 const initialState = {
@@ -20,15 +19,6 @@ const initialState = {
   }
 };
 describe("App component", () => {
-  test("invalid path should redirect to 404", () => {
-    const wrapper = Enzyme.mount(
-      <MemoryRouter initialEntries={["/random/deep/todeep"]}>
-        <App />
-      </MemoryRouter>
-    );
-    expect(wrapper.find(HomePage)).toHaveLength(0);
-    expect(wrapper.find(NotFoundPage)).toHaveLength(1);
-  });
   test("valid path / should render HomePage component", () => {
     const store = global.mockStore(initialState);
 
@@ -59,7 +49,7 @@ describe("App component", () => {
     expect(wrapper.find(PostDetailPage)).toHaveLength(1);
     expect(wrapper.find(NotFoundPage)).toHaveLength(0);
   });
-  test("valid path /posts/create should render PostForm", () => {
+  test("valid path /posts/create should render PostCreatePage", () => {
     const store = global.mockStore(initialState);
 
     const wrapper = Enzyme.mount(
@@ -71,7 +61,7 @@ describe("App component", () => {
         </Provider>
       </MemoryRouter>
     );
-    expect(wrapper.find(PostForm)).toHaveLength(1);
+    expect(wrapper.find(PostCreatePage)).toHaveLength(1);
     expect(wrapper.find(NotFoundPage)).toHaveLength(0);
   });
   test("valid path /react/ should render CategoryPage", () => {
