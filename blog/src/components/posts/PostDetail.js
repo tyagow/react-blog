@@ -16,7 +16,7 @@ export class PostDetail extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.post) {
-      return { ...nextProps.post };
+      return { ...nextProps.post, editing: nextProps.edit };
     }
     return null;
   }
