@@ -15,6 +15,14 @@ export const PostLabel = props => {
           </Link>
         </div>
         <div className="col-2">
+          <Link to={`/${props.post.category}/${props.post.id}/edit`}>
+            <button
+              data-test="editButton"
+              className="btn btn-outline-info btn-sm ml-4 "
+            >
+              edit
+            </button>
+          </Link>
           <button
             data-test="deleteButton"
             className="btn btn-outline-danger btn-sm ml-4 "
