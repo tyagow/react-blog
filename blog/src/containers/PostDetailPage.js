@@ -11,7 +11,10 @@ const PostDetailPage = props => (
     <div className="post-detail-page-container">
       <div className="container">
         <div className="row">
-          <PostDetail postId={props.match.params.postId} />
+          <PostDetail
+            postId={props.match.params.postId}
+            edit={!props.match.isExact}
+          />
         </div>
         <div className="row">
           <ToggleComponent labelOn="Create Comment" labelOff="Hide Form">
