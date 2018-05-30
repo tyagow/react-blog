@@ -17,7 +17,7 @@ export class Comments extends Component {
       <div className="col-8 mt-4">
         {this.props.comments && (
           <div className="">
-            <h3>Comments</h3>
+            <h3>Comments({this.props.comments.length})</h3>
             <hr />
             {this.props.comments.map(comment => (
               <div key={comment.id} className="jumbotron  bg-light p-4 ">
