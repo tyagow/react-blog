@@ -1,18 +1,14 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import Timestamp from "react-timestamp";
 
-import { getPostById, updatePostDetail } from "../../actions/postActions";
+import VoteForm from "../votes/VoteForm";
 
-export class PostDetail extends Component {
+export default class PostDetail extends Component {
   state = {
     editing: false
   };
-  componentDidMount() {
-    this.props.getPostById(this.props.postId);
-  }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.post) {
@@ -37,6 +33,7 @@ export class PostDetail extends Component {
   };
   render() {
     const { editing, title, author, timestamp, body } = this.state;
+
     return (
       <div className="col-12">
         {title && (
@@ -64,15 +61,26 @@ export class PostDetail extends Component {
                   Update
                 </button>
               ) : (
-                <button
-                  data-test="postdetail-btn-editable"
-                  className="btn btn-info ml-4  btn-sm"
-                  onClick={() => {
-                    this.onClick();
-                  }}
-                >
-                  Edit
-                </button>
+                <React.Fragment>
+                  <button
+                    data-test="postdetail-btn-editable"
+                    className="btn btn-outline-info ml-4  btn-sm"
+                    onClick={() => {
+                      this.onClick();
+                    }}
+                  >
+                    Edit
+                  </button>
+                  <button
+                    data-test="deleteButton"
+                    className="btn btn-outline-danger btn-sm ml-4 "
+                    onClick={() =>
+                      this.props.requestAPIDeletePost(this.props.post.id)
+                    }
+                  >
+                    delete
+                  </button>
+                </React.Fragment>
               )}
             </h1>
             <p className="lead" />
@@ -106,6 +114,35 @@ export class PostDetail extends Component {
                 <span data-test="postdetail-body">{body}</span>
               )}
             </p>
+            <div className="flex-row d-flex">
+              <div className="p-2" data-test="vote-score">
+                <span className="success align-middle">
+                  <i
+                    className="fa fa-heart   text-danger"
+                    style={{ fontSize: "24px" }}
+                  />{" "}
+                  <strong> {this.props.post.voteScore}</strong>
+                </span>
+              </div>
+              <div className="p-2">
+                <VoteForm
+                  type="upVote"
+                  className="fa fa-thumbs-up"
+                  id={this.props.post.id}
+                  label="posts"
+                  callback={this.props.updatePost}
+                />
+              </div>
+              <div className="p-2">
+                <VoteForm
+                  type="downVote"
+                  className="fa fa-thumbs-down"
+                  id={this.props.post.id}
+                  label="posts"
+                  callback={this.props.updatePost}
+                />
+              </div>
+            </div>
             <br />
           </div>
         )}
@@ -115,13 +152,5 @@ export class PostDetail extends Component {
 }
 
 PostDetail.propTypes = {
-  postId: PropTypes.string.isRequired,
-  post: PropTypes.object
+  post: PropTypes.object.isRequired
 };
-const mapStateToProps = state => ({
-  post: state.posts.postDetail
-});
-
-export default connect(mapStateToProps, { getPostById, updatePostDetail })(
-  PostDetail
-);

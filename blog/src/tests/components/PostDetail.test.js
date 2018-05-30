@@ -1,19 +1,20 @@
 import React from "react";
 import { shallow } from "enzyme";
-import { PostDetail } from "../../components/posts/PostDetail";
+import PostDetail from "../../components/posts/PostDetail";
 function setup(editing = false) {
   const props = {
-    postId: "1",
-    getPostById: jest.fn(),
     post: {
       id: 1,
       author: "Mike",
       body: "Post bodyyyyy",
       timestamp: "1526300729",
       category: "react",
-      title: "Test title"
+      title: "Test title",
+      commentCount: 500,
+      voteScore: 20
     },
-    updatePostDetail: jest.fn()
+    updatePostDetail: jest.fn(),
+    requestAPIDeletePost: jest.fn()
   };
   const enzymeWrapper = shallow(<PostDetail {...props} />);
   enzymeWrapper.setState({ editing });
@@ -67,6 +68,19 @@ describe("PostDetail", () => {
       });
     });
   });
+  describe("deleteButton", () => {
+    it("should show a delete button and it should call props.onDelete", () => {
+      const { enzymeWrapper } = setup();
+      const deleteButton = enzymeWrapper.find("[data-test='deleteButton']");
+      expect(deleteButton.length).toEqual(1);
+    });
+    it("should call props.onDelete", () => {
+      const { enzymeWrapper, props } = setup();
+      const component = enzymeWrapper.find("[data-test='deleteButton']");
+      component.simulate("click");
+      expect(props.requestAPIDeletePost).toBeCalled();
+    });
+  });
 
   describe("PostDetail elements", () => {
     describe("title", () => {
@@ -108,7 +122,14 @@ describe("PostDetail", () => {
         expect(bodyEditableComponent.length).toBe(1);
         expect(bodyEditableComponent.props().value).toEqual(body);
       });
-      // TODO:  Create test onChange
+    });
+    describe("voteScore", () => {
+      it("should display voteScore", () => {
+        const { enzymeWrapper, props } = setup();
+        const voteScore = enzymeWrapper.find("[data-test='vote-score']");
+        expect(voteScore.length).toBe(1);
+        expect(voteScore.text()).toContain(props.post.voteScore);
+      });
     });
   });
 });

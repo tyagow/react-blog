@@ -1,30 +1,37 @@
 import React from "react";
-import { shallow, configure, mount } from "enzyme";
-import Adapter from "enzyme-adapter-react-16";
-import { Provider } from "react-redux";
-import { MemoryRouter } from "react-router-dom";
+import { shallow } from "enzyme";
 
-import PostDetailPage from "../../containers/PostDetailPage";
+import { PostDetailPage } from "../../containers/PostDetailPage";
+import PostDetail from "../../components/posts/PostDetail";
 
-configure({ adapter: new Adapter() });
-const initialState = {
-  posts: {
-    postDetail: {}
-  },
-  comments: {
-    items: []
-  }
+const setup = () => {
+  const props = {
+    postId: "1",
+    getPostById: jest.fn(),
+    post: {
+      id: 1,
+      category: "react",
+      title: "Test title",
+      commentCount: 4,
+      author: "Test Author"
+    },
+    updatePostDetail: jest.fn(),
+    requestAPIDeletePost: jest.fn()
+  };
+  const enzymeWrapper = shallow(<PostDetailPage {...props} />);
+  return {
+    props,
+    enzymeWrapper
+  };
 };
 
 describe("PostDetailPage", () => {
   it("renders without crashing", () => {
-    expect(
-      shallow(<PostDetailPage match={{ params: { postId: "1" } }} />)
-    ).toMatchSnapshot();
+    const { enzymeWrapper } = setup();
+    expect(enzymeWrapper).toMatchSnapshot();
   });
-  test("should render CommentForm Component, checking by shallow render", () => {
-    expect(
-      shallow(<PostDetailPage match={{ params: { postId: "1" } }} />)
-    ).toMatchSnapshot();
+  it("should render a PostDetail component", () => {
+    const { enzymeWrapper } = setup();
+    expect(enzymeWrapper.find(PostDetail).length).toEqual(1);
   });
 });
