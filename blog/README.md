@@ -14,9 +14,15 @@ To get started developing right away:
 
   * `cd api-server`
   * `npm install`
+  * `node server`
+
+* In another terminal window, run the client server:
+
+  * `cd blog`
+  * `npm install`
   * `npm test`
   * `npm run test:coverage`
-  * `node server`
+  * `npm start`
 
 ## Dependecies
 

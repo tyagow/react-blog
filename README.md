@@ -17,13 +17,14 @@ To get started developing right away:
 
   * `cd api-server`
   * `npm install`
-  * `npm test`
-  * `npm run test:coverage`
   * `node server`
 
-* In another terminal window, use Create React App to scaffold out the front-end
-  * `create-react-app frontend`
-  * `cd frontend`
+* In another terminal window, run the client server:
+
+  * `cd blog`
+  * `npm install`
+  * `npm test`
+  * `npm run test:coverage`
   * `npm start`
 
 ## API Server
