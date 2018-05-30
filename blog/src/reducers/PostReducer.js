@@ -61,7 +61,8 @@ export default function(state = initialState, action) {
             item.id === action.payload.id
               ? { ...item, ...action.payload }
               : item
-        )
+        ),
+        postDetail: { ...action.payload }
       };
 
     case UPDATE_POST_CATEGORY_FILTER:
@@ -80,9 +81,14 @@ export default function(state = initialState, action) {
       const items = state.items.map(post => {
         return post.id === action.payload ? { ...post, deleted: true } : post;
       });
+      const postDetail =
+        state.postDetail && state.postDetail.id === action.payload
+          ? {}
+          : state.postDetail;
       return {
         ...state,
-        items
+        items,
+        postDetail
       };
 
     default:

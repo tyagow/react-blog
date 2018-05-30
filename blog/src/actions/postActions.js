@@ -9,6 +9,7 @@ import {
   UPDATE_POST_DATE_ORDER,
   DELETE_POST
 } from "./actionTypes";
+import { push } from "react-router-redux";
 
 export const setPosts = posts => ({
   type: FETCH_POSTS_SUCCESS,
@@ -110,11 +111,12 @@ export const requestAPIDeletePost = postId => dispatch => {
     type: API,
     payload: {
       url: "http://127.0.0.1:3001/posts/" + postId,
-      success: getPosts,
+      success: makeDeletePostAction(postId),
       label: "deletePost",
       method: "delete"
     }
   });
+  dispatch(push("/"));
 };
 
 export const makeDeletePostAction = postId => () => ({

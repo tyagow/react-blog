@@ -95,7 +95,11 @@ describe("PostReducer reducer", () => {
           id: "894tuq4ut84ut8v4t8wun89g",
           voteScore: 1
         }
-      ]
+      ],
+      postDetail: {
+        id: "894tuq4ut84ut8v4t8wun89g",
+        voteScore: 1
+      }
     };
     it("should update comment", () => {
       expect(
@@ -112,7 +116,11 @@ describe("PostReducer reducer", () => {
             id: "894tuq4ut84ut8v4t8wun89g",
             voteScore: 2
           }
-        ]
+        ],
+        postDetail: {
+          id: "894tuq4ut84ut8v4t8wun89g",
+          voteScore: 2
+        }
       });
     });
   });
