@@ -21,7 +21,9 @@ class App extends Component {
         />
         <Route
           path="/:category/:postId"
-          render={({ match }) => <PostDetailPage match={match} />}
+          render={({ match }) => (
+            <PostDetailPage postId={match.params.postId} />
+          )}
         />
         <Route component={NotFoundPage} />
       </Switch>

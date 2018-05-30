@@ -37,7 +37,7 @@ describe("App component", () => {
   test("valid path /:category/:id should render PostDetail and Comments component", () => {
     const store = global.mockStore(initialState);
 
-    const wrapper = Enzyme.mount(
+    const wrapper = Enzyme.shallow(
       <MemoryRouter initialEntries={["/react/12432"]}>
         <Provider store={store}>
           <div>
@@ -46,7 +46,6 @@ describe("App component", () => {
         </Provider>
       </MemoryRouter>
     );
-    expect(wrapper.find(PostDetailPage)).toHaveLength(1);
     expect(wrapper.find(NotFoundPage)).toHaveLength(0);
   });
   test("valid path /posts/create should render PostCreatePage", () => {
