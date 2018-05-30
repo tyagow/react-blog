@@ -28,21 +28,18 @@ describe("Comments", () => {
   });
   it("should render self and subcomponents", () => {
     const { enzymeWrapper } = setup();
-    expect(enzymeWrapper.find("h3").text()).toBe("Comments");
+    const title = enzymeWrapper.find("h3").text();
+    expect(title).toContain("Comments");
     const commentAuthor = enzymeWrapper.find("h4.comment-author");
     expect(commentAuthor.length).toBe(1);
     expect(commentAuthor.text()).toBe("test");
-
-    // const todoInputProps = enzymeWrapper.find("TodoTextInput").props();
-    // expect(todoInputProps.newTodo).toBe(true);
-    // expect(todoInputProps.placeholder).toEqual("What needs to be done?");
   });
-  // it("should call addTodo if length of text is greater than 0", () => {
-  //   const { enzymeWrapper, props } = setup();
-  //   const input = enzymeWrapper.find("TodoTextInput");
-  //   input.props().onSave("");
-  //   expect(props.addTodo.mock.calls.length).toBe(0);
-  //   input.props().onSave("Use Redux");
-  //   expect(props.addTodo.mock.calls.length).toBe(1);
-  // });
+  describe("total comments", () => {
+    it("should display the total comments in the title ", () => {
+      const { enzymeWrapper, props } = setup();
+      const title = enzymeWrapper.find("h3").text();
+
+      expect(title).toContain("(" + props.comments.length + ")");
+    });
+  });
 });
