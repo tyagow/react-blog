@@ -4,16 +4,17 @@ import { MemoryRouter } from "react-router";
 import { Provider } from "react-redux";
 import App from "../../containers/App";
 import NotFoundPage from "../../containers/NotFoundPage";
-import PostDetailPage from "../../containers/PostDetailPage";
 import PostCreatePage from "../../containers/PostCreatePage";
 import { CategoryPage } from "../../containers/CategoryPage";
 
+const categories = [];
 const initialState = {
   posts: {
     items: [],
     categories: [],
     filters: { category: "all" }
   },
+  categories,
   comments: {
     items: []
   }
