@@ -1,6 +1,6 @@
 import React from "react";
 import { shallow } from "enzyme";
-import PostDetail from "../../components/posts/PostDetail";
+import { PostDetail } from "../../components/posts/PostDetail";
 function setup(editing = false) {
   const props = {
     post: {
@@ -13,6 +13,7 @@ function setup(editing = false) {
       commentCount: 500,
       voteScore: 20
     },
+    match: { isExact: !editing },
     updatePostDetail: jest.fn(),
     requestAPIDeletePost: jest.fn()
   };

@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 import Timestamp from "react-timestamp";
 
 import VoteForm from "../votes/VoteForm";
+import withRouter from "react-router-dom/withRouter";
 
-export default class PostDetail extends Component {
-  state = {
-    editing: false
+export class PostDetail extends Component {
+  componentDidMount = () => {
+    this.setState({ editing: !this.props.match.isExact });
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
@@ -154,3 +155,5 @@ export default class PostDetail extends Component {
 PostDetail.propTypes = {
   post: PropTypes.object.isRequired
 };
+
+export default withRouter(PostDetail);
