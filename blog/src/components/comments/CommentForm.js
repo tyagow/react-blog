@@ -10,8 +10,7 @@ export class CommentForm extends Component {
     super(props);
     this.state = {
       body: "",
-      author: "",
-      parentId: props.parentId
+      author: ""
     };
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
@@ -24,7 +23,7 @@ export class CommentForm extends Component {
       body: this.state.body,
       author: this.state.author,
       timestamp: Date.now(),
-      parentId: this.state.parent_id
+      parentId: this.props.parentId
     };
     this.props.createComment(comment);
   }
@@ -78,7 +77,7 @@ export class CommentForm extends Component {
 
 CommentForm.propTypes = {
   createComment: PropTypes.func.isRequired,
-  parent_id: PropTypes.string
+  parentId: PropTypes.string
 };
 
 export default connect(undefined, { createComment })(CommentForm);
