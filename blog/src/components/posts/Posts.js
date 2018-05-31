@@ -16,6 +16,7 @@ import {
 
 import { makeGetVisiblePosts } from "../../selectors";
 import ButtonList from "../../components/ui/ButtonList";
+import { reselectCategories } from "../../reducers/CategoryReducer";
 
 export class Posts extends Component {
   componentDidMount = () => {
@@ -76,7 +77,7 @@ const makeMapStateToProps = () => {
   const mapStateToProps = (state, props) => ({
     posts: getVisiblePosts(state, props),
     newPost: state.posts.item,
-    categories: state.posts.categories,
+    categories: reselectCategories(state),
     filters: {
       category: state.posts.filters.category,
       date: state.posts.filters.date

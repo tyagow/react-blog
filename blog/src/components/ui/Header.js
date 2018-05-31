@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Link from "react-router-dom/Link";
 import connect from "react-redux/lib/connect/connect";
 import { getCategories } from "../../actions/postActions";
+import { reselectCategories } from "../../reducers/CategoryReducer";
 
 export class Header extends Component {
   componentDidMount = () => {
@@ -9,7 +10,7 @@ export class Header extends Component {
   };
 
   render() {
-    const { categories } = this.props;
+    const categories = this.props.categories;
     return (
       <div>
         <nav className="navbar navbar-expand-sm bg-info navbar-dark">
@@ -39,8 +40,8 @@ export class Header extends Component {
   }
 }
 
-export const mapStateToProps = state => ({
-  categories: state.posts.categories
+const mapStateToProps = state => ({
+  categories: reselectCategories(state)
 });
 
 export default connect(mapStateToProps, { getCategories })(Header);
