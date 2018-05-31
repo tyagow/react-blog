@@ -7,6 +7,7 @@ import VoteForm from "../votes/VoteForm";
 import withRouter from "react-router-dom/withRouter";
 
 export class PostDetail extends Component {
+  state = { editing: false };
   componentDidMount = () => {
     this.setState({ editing: !this.props.match.isExact });
   };
