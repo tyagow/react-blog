@@ -142,4 +142,5 @@ export const updatePostDetail = post => dispatch => {
       body: JSON.stringify({ title: post.title, body: post.body })
     }
   });
+  dispatch(push("/" + post.category + "/" + post.id));
 };

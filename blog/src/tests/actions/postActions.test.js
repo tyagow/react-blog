@@ -152,18 +152,16 @@ describe("actions", async () => {
         title: "test",
         body: "body test"
       };
-      const expectedAction = [
-        {
-          type: types.API,
-          payload: {
-            label: "postdetail_update",
-            success: actions.setPost,
-            url: "http://127.0.0.1:3001/posts/1",
-            method: "put",
-            body: JSON.stringify(postOption)
-          }
+      const expectedAction = {
+        type: types.API,
+        payload: {
+          label: "postdetail_update",
+          success: actions.setPost,
+          url: "http://127.0.0.1:3001/posts/1",
+          method: "put",
+          body: JSON.stringify(postOption)
         }
-      ];
+      };
 
       let post = {
         id: "1",
@@ -172,7 +170,7 @@ describe("actions", async () => {
       };
 
       actions.updatePostDetail(post)(store.dispatch);
-      expect(store.getActions()).toEqual(expectedAction);
+      expect(store.getActions()[0]).toEqual(expectedAction);
     });
   });
 
