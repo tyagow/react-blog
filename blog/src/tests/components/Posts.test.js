@@ -46,13 +46,15 @@ describe("Posts", () => {
   describe("mapStateToProps", () => {
     it("should map correctly given state to props", () => {
       const state = {
-        posts: { items: [], item: {}, filters: { category: "all" } }
+        posts: { items: [], item: {}, filters: { category: "all" } },
+        categories: []
       };
       const props = {};
       expect(mapStateToProps(state, props)).toEqual({
         posts: [],
         newPost: {},
-        filters: { category: "all" }
+        filters: { category: "all" },
+        categories: []
       });
     });
   });
