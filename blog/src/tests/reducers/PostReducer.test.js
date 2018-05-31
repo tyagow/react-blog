@@ -8,7 +8,6 @@ describe("PostReducer reducer", () => {
       items: [],
       item: {},
       postDetail: {},
-      categories: [],
       filters: {
         category: "all",
         date: ""
@@ -71,21 +70,6 @@ describe("PostReducer reducer", () => {
       )
     ).toEqual({
       postDetail: post
-    });
-  });
-  it("should handle FETCH_CATEGORIES_SUCCESS action", () => {
-    const categories = ["react"];
-    const to_normalize = { categories: [{ name: "react" }] };
-    expect(
-      PostReducer(
-        {},
-        {
-          type: types.FETCH_CATEGORIES_SUCCESS,
-          payload: to_normalize
-        }
-      )
-    ).toEqual({
-      categories: categories
     });
   });
   describe("UPDATE_POST", () => {

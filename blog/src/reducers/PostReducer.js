@@ -3,7 +3,6 @@ import {
   NEW_POST_SUCCESS,
   FETCH_POSTS_FAILURE,
   GET_POST_BY_ID_SUCCESS,
-  FETCH_CATEGORIES_SUCCESS,
   UPDATE_POST,
   UPDATE_POST_CATEGORY_FILTER,
   UPDATE_POST_DATE_ORDER,
@@ -14,7 +13,6 @@ const initialState = {
   items: [],
   item: {},
   postDetail: {},
-  categories: [],
   fetching: false,
   filters: {
     category: "all",
@@ -45,12 +43,6 @@ export default function(state = initialState, action) {
       return {
         ...state,
         postDetail: action.payload
-      };
-
-    case FETCH_CATEGORIES_SUCCESS:
-      return {
-        ...state,
-        categories: action.payload.categories.map(x => x.name)
       };
 
     case UPDATE_POST:
