@@ -38,7 +38,7 @@ export class PostDetailPage extends Component {
           </div>
           <div className="row">
             <ToggleComponent labelOn="Create Comment" labelOff="Hide Form">
-              <CommentForm parend_id={this.props.postId} />
+              <CommentForm parentId={this.props.postId} />
             </ToggleComponent>
           </div>
           <div className="row">
