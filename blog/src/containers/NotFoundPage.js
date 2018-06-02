@@ -5,7 +5,15 @@ import { RingLoader } from "react-spinners";
 export default class NotFoundPage extends Component {
   state = { loading: true };
   componentDidMount = () => {
-    setTimeout(() => this.setState({ loading: false }), 4000);
+    this._mounted = true;
+    setTimeout(() => {
+      if (this._mounted) {
+        this.setState({ loading: false });
+      }
+    }, 4000);
+  };
+  componentWillUnmount = () => {
+    this._mounted = false;
   };
 
   render() {
