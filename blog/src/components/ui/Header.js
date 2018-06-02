@@ -16,7 +16,9 @@ export class Header extends Component {
         <nav className="navbar navbar-expand-sm bg-info navbar-dark">
           <ul className="navbar-nav">
             <li className="navbar-brand">
-              <span className="">... Udacity Readble</span>
+              <span className="">
+                <strong>... Udacity Readble</strong>
+              </span>
             </li>
             <li className="nav-item ">
               <Link to="/">

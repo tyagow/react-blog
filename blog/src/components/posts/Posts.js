@@ -40,7 +40,10 @@ export class Posts extends Component {
         </h1>
         <hr />
         <div className="row p-2">
-          <div className="col-1">Category{"   "}</div>
+          <div className="col-2 ">
+            <strong>Category</strong>
+            {"   "}
+          </div>
           <div className="col-3">
             <ButtonList
               active={this.props.filters.category}
@@ -49,8 +52,12 @@ export class Posts extends Component {
               callback={this.props.updatePostFilter}
             />
           </div>
-
-          <div className="col-2">Date Order{"   "}</div>
+        </div>
+        <div className="row p-2">
+          <div className="col-2">
+            <strong>Date Order</strong>
+            {"   "}
+          </div>
           <div className="col-2">
             <ButtonList
               active={this.props.filters.date}
@@ -60,6 +67,7 @@ export class Posts extends Component {
             />
           </div>
         </div>
+        <hr />
         <br />
         {items}
       </div>
