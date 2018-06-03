@@ -17,7 +17,7 @@ export class Header extends Component {
           <ul className="navbar-nav">
             <li className="navbar-brand">
               <span className="">
-                <strong>... Udacity Readble</strong>
+                <strong>... React Blog</strong>
               </span>
             </li>
             <li className="nav-item ">
