@@ -14,9 +14,9 @@ export class PostDetail extends Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     if (nextProps.post) {
-      return { ...nextProps.post, editing: nextProps.edit };
+      return { ...nextProps.post };
     }
-    return null;
+    return undefined;
   }
   onClick = () => {
     this.setState({ editing: !this.state.editing });
@@ -29,7 +29,8 @@ export class PostDetail extends Component {
     const post = {
       id: this.state.id,
       title: this.state.title,
-      body: this.state.body
+      body: this.state.body,
+      category: this.state.category
     };
     this.props.updatePostDetail(post);
   };
