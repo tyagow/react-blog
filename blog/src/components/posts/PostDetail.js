@@ -9,37 +9,40 @@ import withRouter from "react-router-dom/withRouter";
 export class PostDetail extends Component {
   state = { editing: false };
   componentDidMount = () => {
+    console.log({ editing: !this.props.match.isExact });
     this.setState({ editing: !this.props.match.isExact });
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.post) {
-      return { ...nextProps.post };
+    if (nextProps.post === prevState.post) {
+      return undefined;
     }
-    return undefined;
+    return { post: { ...nextProps.post } };
   }
   onClick = () => {
     this.setState({ editing: !this.state.editing });
   };
   onChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({
+      post: { ...this.state.post, [e.target.name]: e.target.value }
+    });
   };
   updatePost = () => {
     this.setState({ editing: false });
     const post = {
-      id: this.state.id,
-      title: this.state.title,
-      body: this.state.body,
-      category: this.state.category
+      id: this.state.post.id,
+      title: this.state.post.title,
+      body: this.state.post.body,
+      category: this.state.post.category
     };
     this.props.updatePostDetail(post);
   };
   render() {
-    const { editing, title, author, timestamp, body } = this.state;
+    const { editing, post } = this.state;
 
     return (
       <div className="col-12">
-        {title && (
+        {post.title && (
           <div>
             <h1 className="mt-4">
               {editing ? (
@@ -48,10 +51,10 @@ export class PostDetail extends Component {
                   type="text"
                   name="title"
                   onChange={this.onChange}
-                  value={title}
+                  value={post.title}
                 />
               ) : (
-                <span data-test="postdetail-title">{title}</span>
+                <span data-test="postdetail-title">{post.title}</span>
               )}
               {editing ? (
                 <button
@@ -88,13 +91,13 @@ export class PostDetail extends Component {
             </h1>
             <p className="lead" />
             <p>
-              <i className="fa fa-user" /> by {author}{" "}
+              <i className="fa fa-user" /> by {post.author}{" "}
             </p>
 
             <hr />
             <p>
               <i className="fa fa-calendar" />{" "}
-              <Timestamp time={timestamp} twentyFourHour />
+              <Timestamp time={post.timestamp} twentyFourHour />
             </p>
             <p>
               <i className="fa fa-tags" /> Category:{" "}
@@ -111,10 +114,10 @@ export class PostDetail extends Component {
                   type="text"
                   name="body"
                   onChange={this.onChange}
-                  value={body}
+                  value={post.body}
                 />
               ) : (
-                <span data-test="postdetail-body">{body}</span>
+                <span data-test="postdetail-body">{post.body}</span>
               )}
             </p>
             <div className="flex-row d-flex">
