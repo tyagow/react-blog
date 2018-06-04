@@ -96,7 +96,13 @@ export class PostDetail extends Component {
             <hr />
             <p>
               <i className="fa fa-calendar" />{" "}
-              <Timestamp time={post.timestamp} twentyFourHour />
+              {new Intl.DateTimeFormat("pt-BR", {
+                year: "numeric",
+                month: "numeric",
+                day: "numeric",
+                hour: "numeric",
+                minute: "numeric"
+              }).format(post.timestamp)}
             </p>
             <p>
               <i className="fa fa-tags" /> Category:{" "}
