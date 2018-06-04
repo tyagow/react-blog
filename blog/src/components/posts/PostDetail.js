@@ -9,7 +9,6 @@ import withRouter from "react-router-dom/withRouter";
 export class PostDetail extends Component {
   state = { editing: false };
   componentDidMount = () => {
-    console.log({ editing: !this.props.match.isExact });
     this.setState({ editing: !this.props.match.isExact });
   };
 
@@ -101,8 +100,8 @@ export class PostDetail extends Component {
             </p>
             <p>
               <i className="fa fa-tags" /> Category:{" "}
-              <Link to={`/${this.state.category}`}>
-                <span className="badge badge-info">{this.state.category}</span>
+              <Link to={`/${post.category}`}>
+                <span className="badge badge-info">{post.category}</span>
               </Link>
             </p>
 
