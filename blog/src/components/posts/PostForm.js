@@ -118,11 +118,7 @@ PostForm.propTypes = {
   createPost: PropTypes.func.isRequired,
   categories: PropTypes.array
 };
-const mapStateToProps = ({ categories }) => {
-  return {
-    categories: categories.items
-  };
-};
+const mapStateToProps = ({ categories }) => ({ categories });
 
 export default connect(mapStateToProps, { createPost, getCategories })(
   withRouter(PostForm)
