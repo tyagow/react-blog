@@ -13,7 +13,7 @@ export class PostDetail extends Component {
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (prevState.post) {
+    if (prevState.post && prevState.post.id === nextProps.post.id) {
       return null;
     }
 
