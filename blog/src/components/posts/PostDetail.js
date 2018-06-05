@@ -12,9 +12,10 @@ export class PostDetail extends Component {
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    if (nextProps.post === prevState.post) {
-      return undefined;
+    if (prevState.post) {
+      return null;
     }
+
     return { post: { ...nextProps.post } };
   }
   onClick = () => {
