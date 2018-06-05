@@ -8,7 +8,8 @@ import withRouter from "react-router-dom/withRouter";
 export class PostDetail extends Component {
   state = { editing: false };
   componentDidMount = () => {
-    this.setState({ editing: !this.props.match.isExact });
+    const { post } = this.props;
+    this.setState({ editing: !this.props.match.isExact, post });
   };
 
   static getDerivedStateFromProps(nextProps, prevState) {
