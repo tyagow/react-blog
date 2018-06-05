@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import Timestamp from "react-timestamp";
 
 import VoteForm from "../votes/VoteForm";
 import withRouter from "react-router-dom/withRouter";
