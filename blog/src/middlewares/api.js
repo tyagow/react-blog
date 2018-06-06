@@ -2,6 +2,11 @@ import * as types from "../actions/actionTypes";
 
 import { startNetwork, endNetwork } from "../actions/ui";
 
+const urlApi =
+  process.env.NODE_ENV === "production"
+    ? window.origin + "/api/"
+    : "http://localhost:5000";
+
 const api = ({ dispatch, getState }) => next => action => {
   if (action.type !== types.API) {
     return next(action);
@@ -27,7 +32,7 @@ const api = ({ dispatch, getState }) => next => action => {
     method: method,
     body: body
   };
-  fetch(url, options_header)
+  fetch(`${urlApi}`, options_header)
     .then(response => response.json())
     .then(data => {
       dispatch(success(data));

@@ -20,7 +20,7 @@ export const getPosts = () => dispatch => {
   return dispatch({
     type: API,
     payload: {
-      url: "http://127.0.0.1:3001/posts/",
+      url: "posts/",
       success: setPosts,
       label: "posts"
     }
@@ -31,7 +31,7 @@ export const getPostById = postId => dispatch => {
   dispatch({
     type: API,
     payload: {
-      url: "http://127.0.0.1:3001/posts/" + postId,
+      url: "posts/" + postId,
       success: setPost,
       label: "post_detail"
     }
@@ -47,7 +47,7 @@ export const createPost = postData => dispatch => {
   dispatch({
     type: API,
     payload: {
-      url: "http://127.0.0.1:3001/posts/",
+      url: "posts/",
       success: newPost,
       label: "post_create",
       method: "post",
@@ -66,7 +66,7 @@ export const getCategories = () => dispatch => {
   dispatch({
     type: API,
     payload: {
-      url: "http://127.0.0.1:3001/categories",
+      url: "categories",
       success: setCategories,
       label: "post_categories_list"
     }
@@ -85,7 +85,7 @@ export const sendVote = ({ type, url, callback, label }) => dispatch => {
   dispatch({
     type: API,
     payload: {
-      url: "http://127.0.0.1:3001/" + url,
+      url: "" + url,
       success: callback,
       label: label + "_vote",
       method: "post",
@@ -110,7 +110,7 @@ export const requestAPIDeletePost = postId => dispatch => {
   dispatch({
     type: API,
     payload: {
-      url: "http://127.0.0.1:3001/posts/" + postId,
+      url: "posts/" + postId,
       success: makeDeletePostAction(postId),
       label: "deletePost",
       method: "delete"
@@ -135,7 +135,7 @@ export const updatePostDetail = post => dispatch => {
   dispatch({
     type: API,
     payload: {
-      url: "http://127.0.0.1:3001/posts/" + post.id,
+      url: "posts/" + post.id,
       success: setPost,
       label: "postdetail_update",
       method: "put",

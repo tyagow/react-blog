@@ -10,7 +10,7 @@ describe("actions", async () => {
         payload: {
           label: "posts",
           success: actions.setPosts,
-          url: "http://127.0.0.1:3001/posts/"
+          url: "posts/"
         }
       }
     ];
@@ -35,7 +35,7 @@ describe("actions", async () => {
         payload: {
           label: "post_detail",
           success: actions.setPost,
-          url: "http://127.0.0.1:3001/posts/1"
+          url: "posts/1"
         }
       }
     ];
@@ -61,7 +61,7 @@ describe("actions", async () => {
         payload: {
           label: "post_create",
           success: actions.newPost,
-          url: "http://127.0.0.1:3001/posts/",
+          url: "posts/",
           method: "post",
           body: JSON.stringify(post)
         }
@@ -89,7 +89,7 @@ describe("actions", async () => {
         payload: {
           label: "post_categories_list",
           success: actions.setCategories,
-          url: "http://127.0.0.1:3001/categories"
+          url: "categories"
         }
       }
     ];
@@ -118,7 +118,7 @@ describe("actions", async () => {
           payload: {
             label: "posts_vote",
             success: actions.getPosts,
-            url: "http://127.0.0.1:3001/posts/1",
+            url: "posts/1",
             method: "post",
             body: JSON.stringify(voteOption)
           }
@@ -157,7 +157,7 @@ describe("actions", async () => {
         payload: {
           label: "postdetail_update",
           success: actions.setPost,
-          url: "http://127.0.0.1:3001/posts/1",
+          url: "posts/1",
           method: "put",
           body: JSON.stringify(postOption)
         }
@@ -206,9 +206,7 @@ describe("actions", async () => {
       actions.requestAPIDeletePost("1")(store.dispatch);
       expect(store.getActions()[0].payload.label).toEqual("deletePost");
       expect(store.getActions()[0].payload.method).toEqual("delete");
-      expect(store.getActions()[0].payload.url).toContain(
-        "http://127.0.0.1:3001/posts/1"
-      );
+      expect(store.getActions()[0].payload.url).toContain("posts/1");
     });
   });
   describe("makeDeletePostAction", () => {

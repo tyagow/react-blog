@@ -10,7 +10,7 @@ describe("commentActions", async () => {
         payload: {
           label: "comments_list",
           success: actions.setComments,
-          url: "http://127.0.0.1:3001/posts/1/comments"
+          url: "posts/1/comments"
         }
       }
     ];
@@ -37,7 +37,7 @@ describe("commentActions", async () => {
           success: actions.newComment,
           method: "post",
           body: JSON.stringify({ id: "1" }),
-          url: "http://127.0.0.1:3001/comments"
+          url: "comments"
         }
       }
     ];
@@ -66,7 +66,7 @@ describe("commentActions", async () => {
             body: { option: "upVote" },
             success: actions.updateComment,
             method: "post",
-            url: "http://127.0.0.1:3001/comments/1"
+            url: "comments/1"
           }
         }
       ];

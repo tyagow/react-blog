@@ -9,7 +9,7 @@ export const fetchCommentsByPostId = postId => dispatch => {
   dispatch({
     type: API,
     payload: {
-      url: "http://127.0.0.1:3001/posts/" + postId + "/comments",
+      url: "posts/" + postId + "/comments",
       success: setComments,
       label: "comments_list"
     }
@@ -21,7 +21,7 @@ export const submitVoteComment = (commentId, type) => dispatch => {
   dispatch({
     type: API,
     payload: {
-      url: "http://127.0.0.1:3001/comments/" + commentId,
+      url: "comments/" + commentId,
       body: { option: type },
       method: "post",
       success: updateComment,
@@ -49,7 +49,7 @@ export const createComment = comment => dispatch => {
   dispatch({
     type: API,
     payload: {
-      url: "http://127.0.0.1:3001/comments",
+      url: "comments",
       body: JSON.stringify(comment),
       method: "post",
       success: newComment,
