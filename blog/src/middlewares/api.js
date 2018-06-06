@@ -4,8 +4,8 @@ import { startNetwork, endNetwork } from "../actions/ui";
 
 const urlApi =
   process.env.NODE_ENV === "production"
-    ? window.origin + "/api/"
-    : "http://localhost:5000";
+    ? `${window.origin}/api`
+    : "http://localhost:3001/api";
 
 const api = ({ dispatch, getState }) => next => action => {
   if (action.type !== types.API) {
@@ -32,7 +32,7 @@ const api = ({ dispatch, getState }) => next => action => {
     method: method,
     body: body
   };
-  fetch(`${urlApi}`, options_header)
+  fetch(`${urlApi}/${url}`, options_header)
     .then(response => response.json())
     .then(data => {
       dispatch(success(data));
