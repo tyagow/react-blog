@@ -6,7 +6,6 @@ import { ConnectedRouter } from "react-router-redux";
 import "bootstrap/dist/css/bootstrap.css";
 import "font-awesome/css/font-awesome.min.css";
 import "./styles/index.css";
-import registerServiceWorker from "./registerServiceWorker";
 
 import store, { history } from "./store/store";
 import App from "./containers/App";
@@ -20,4 +19,3 @@ ReactDOM.render(
 
   document.getElementById("root")
 );
-registerServiceWorker();
