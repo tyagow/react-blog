@@ -5,7 +5,7 @@
   "main": "index.js",
   "keywords": ["udacity", "redux", "readable", "react"],
   "scripts": {
-    "start": "node server",
+    "start": "node api-server/server.js",
     "heroku-postbuild":
       "cd blog/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
