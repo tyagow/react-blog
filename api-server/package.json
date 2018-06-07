@@ -1,0 +1,19 @@
+{
+  "name": "reactnd-readable",
+  "version": "0.0.1",
+  "description": "A Udacity Reddit Clone project for ReactND",
+  "main": "index.js",
+  "keywords": ["udacity", "redux", "readable", "react"],
+  "scripts": {
+    "start": "node api-server/server.js"
+  },
+  "author": "Tiago Almeida",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "clone": "^2.1.1",
+    "cors": "^2.8.3",
+    "dotenv": "^4.0.0",
+    "express": "^4.15.2"
+  }
+}
