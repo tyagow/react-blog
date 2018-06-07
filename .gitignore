@@ -22,7 +22,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 */package-lock.json
-api-server/
+api-server/node_modules
 blog/node_modules/
 .vscode/
-
+blog/build/
